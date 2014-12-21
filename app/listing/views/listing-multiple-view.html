@@ -2,12 +2,15 @@
 
   <super-navbar>
     <super-navbar-title>
-      Index
+      Multiple Listings
     </super-navbar-title>
   </super-navbar>
 
   <div class="padding">
-    <h1>Pow! Here's your fresh module!</h1>
+    <h1>Listings</h1>
   </div>
-
+  <div ng-repeat="listing in listings">
+  {{ listing.Style }}
+  {{ listing.Bedrooms }}
+  </div>
 </div>
