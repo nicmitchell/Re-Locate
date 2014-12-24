@@ -9,8 +9,10 @@
   <div class="padding">
     <h1>Listings</h1>
   </div>
-  <div ng-repeat="listing in listings">
-  {{ listing.Style }}
-  {{ listing.Bedrooms }}
+  <div layout="row" ng-repeat="listing in listings">
+    <div>Style: {{ listing.Style }}</div>
+    <div>Bedroom: {{ listing.Bedrooms }}</div>
+    <div>Baths: {{ listing.BathsTotal }}</div>
+    <hr>
   </div>
 </div>

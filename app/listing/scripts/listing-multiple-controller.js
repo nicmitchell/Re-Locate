@@ -1,5 +1,5 @@
 angular
-  .module('listing.multiple')
+  .module('listing', ['supersonic', 'listing.services'])
   .controller('ListingMultipleController', function($scope, supersonic, Listings) {
     // model
     $scope.listings = {};
@@ -12,6 +12,7 @@ angular
     // };
     $scope.getListings = function(){
       $scope.listings = Listings.getListings();
+      console.log('get listings called');
     };
     $scope.getListings();
   });
