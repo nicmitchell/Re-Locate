@@ -9,10 +9,25 @@
   <div class="padding">
     <h1>Listings</h1>
   </div>
-  <div layout="row" class="md-theme-light" ng-repeat="listing in listings">
-    <div>Style: {{ listing.Style }}</div>
-    <div>Bedroom: {{ listing.Bedrooms }}</div>
-    <div>Baths: {{ listing.BathsTotal }}</div>
-    <hr>
-  </div>
+
+<md-list>
+  <md-item ng-repeat="listing in listings">
+    <md-item-content>
+      <div class="md-tile-left">
+        <img ng-src="{{listing.Style}}">
+      </div>
+      <super-navigate location="listing#listing-single-view" data-params-id="{{ listing.ListingID }}">
+        <button class="button button-block button-positive">
+          {{ listing.ListingID }}
+        </button>
+      </super-navigate>
+      <div class="md-tile-content">
+        <h3>Style: {{listing.Style}}</h3>
+        <h4>Beds: {{listing.Bedrooms}}</h4>
+        <p>Baths: {{listing.BathsTotal}}</p>
+      </div>
+    </md-item-content>
+  </md-item>
+</md-list>
+
 </div>

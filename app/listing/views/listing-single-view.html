@@ -8,6 +8,15 @@
 
   <div class="padding">
     <h1>Single Listing</h1>
+    <h2>Model: {{ listing }}</h2>
+    <h2 ng-bind="listing['ListingID']"></h2>
+    <h2 ng-bind='listing.ListingID'></h2>
+    <div>Style: {{ listing.Style }}</div>
+    <div>Bedroom: {{ listing.Bedrooms }}</div>
+    <div>Baths: {{ listing.BathsTotal }}</div>
+  </div>
+  <div ng-model="listing">
+  {{ test }}
   </div>
 
 </div>
