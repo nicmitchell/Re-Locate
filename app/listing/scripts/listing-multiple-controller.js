@@ -1,11 +1,10 @@
 angular
-  .module('listing', ['supersonic', 'listing.services'])
+  .module('listing')
   .controller('ListingMultipleController', function($scope, supersonic, Listings) {
-    // model
     $scope.listings = {};
     $scope.getListings = function(){
       $scope.listings = Listings.getListings();
-      console.log('get listings called');
+      steroids.logger.log("get listings called");
     };
     $scope.getListings();
   });

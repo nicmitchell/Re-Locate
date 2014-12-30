@@ -1,4 +1,1 @@
-angular.module('listing', [
-  // Declare any module-specific AngularJS dependencies here
-  'common'
-]);
+angular.module('listing', ['common', 'listing.services']);
