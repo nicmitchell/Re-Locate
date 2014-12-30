@@ -43,7 +43,6 @@ tab-bar-item#index {
 }
 
 tab-bar-item#profile {
-  /* this works without the file - 150 icons available http://ionicons.com */
   background-image: url(icons/person.png);
 }
 

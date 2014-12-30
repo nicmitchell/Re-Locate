@@ -19,11 +19,6 @@ module.exports =
       id: "profile"
       location: "user#show-user"
     }
-    {
-      title: "Internet"
-      id: "internet"
-      location: "http://google.com" # URLs are supported!
-    }
   ]
 
   # rootView:
