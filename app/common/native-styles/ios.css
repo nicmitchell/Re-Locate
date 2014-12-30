@@ -42,6 +42,10 @@ tab-bar-item#index {
   background-image: url(icons/home.svg);
 }
 
+tab-bar-item#profile {
+  background-image: url(icons/person.png);
+}
+
 tab-bar-item#internet {
   background-image: url(icons/search.svg);
 }
