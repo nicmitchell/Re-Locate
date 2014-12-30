@@ -2,21 +2,14 @@
 
   <super-navbar>
     <super-navbar-title>
-      Listing
+      
     </super-navbar-title>
   </super-navbar>
 
   <div class="padding">
-    <h1>Single Listing</h1>
-    <h2>Model: {{ listing }}</h2>
-    <h2 ng-bind="listing['ListingID']"></h2>
-    <h2 ng-bind='listing.ListingID'></h2>
-    <div>Style: {{ listing.Style }}</div>
-    <div>Bedroom: {{ listing.Bedrooms }}</div>
-    <div>Baths: {{ listing.BathsTotal }}</div>
+    <h2>{{ listing.StreetNumber }} {{ listing.StreetName }}</h2>
+    <h3>Style: {{ listing.Style }}</h3>
+    <h3>Bedroom: {{ listing.Bedrooms }}</h3>
+    <h3>Baths: {{ listing.BathsTotal }}</h3>
   </div>
-  <div ng-model="listing">
-  {{ test }}
-  </div>
-
 </div>

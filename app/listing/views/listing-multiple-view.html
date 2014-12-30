@@ -9,25 +9,23 @@
   <div class="padding">
     <h1>Listings</h1>
   </div>
-
-<md-list>
-  <md-item ng-repeat="listing in listings">
-    <md-item-content>
-      <div class="md-tile-left">
-        <img ng-src="{{listing.Style}}">
-      </div>
-      <super-navigate location="listing#listing-single-view" data-params-id="{{ listing.ListingID }}">
-        <button class="button button-block button-positive">
-          {{ listing.ListingID }}
-        </button>
-      </super-navigate>
-      <div class="md-tile-content">
-        <h3>Style: {{listing.Style}}</h3>
-        <h4>Beds: {{listing.Bedrooms}}</h4>
-        <p>Baths: {{listing.BathsTotal}}</p>
-      </div>
-    </md-item-content>
-  </md-item>
-</md-list>
-
+<md-content>
+  <md-list>
+    <md-item ng-repeat="listing in listings">
+      <md-item-content>
+        <div class="md-tile-content">
+          <h2>{{ listing.StreetNumber }} {{ listing.StreetName }}</h2>
+          <h3>Style: {{listing.Style}}</h3>
+          <h3>Beds: {{listing.Bedrooms}}</h3>
+          <h3>Baths: {{listing.BathsTotal}}</h3>
+        </div>
+        <super-navigate class="md-tile-right" location="listing#listing-single-view" data-params-id="{{ listing.ListingID }}">
+          <button class="button button-block button-positive">
+            See It
+          </button>
+        </super-navigate>
+      </md-item-content>
+    </md-item>
+  </md-list>
+</md-content>
 </div>
