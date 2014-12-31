@@ -5,7 +5,6 @@ var standard = {
   "BathsTotal": "main", //combine with half baths
   "HalfBaths": "main",
   "Age": "main", //4 digit year
-  "Acreage": "main",
   "SqFtRange": "main",
   "StreetNumber": "address",
   "StreetName": "address",
@@ -13,6 +12,7 @@ var standard = {
   "StateOrProvince": "address",
   "PostalCode": "address", //"other" is also a value
   "PublicRemarks": "extra",
+  "Acreage": "extra",
   "County": "extra",
   "Style": "extra",
   "Condition": "extra",
