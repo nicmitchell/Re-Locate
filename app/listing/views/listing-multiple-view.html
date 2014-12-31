@@ -2,30 +2,32 @@
 
   <super-navbar>
     <super-navbar-title>
-      Multiple Listings
+      Listings
     </super-navbar-title>
   </super-navbar>
 
-  <div class="padding">
-    <h1>Listings</h1>
-  </div>
-<md-content>
-  <md-list>
-    <md-item ng-repeat="listing in listings">
-      <md-item-content>
-        <div class="md-tile-content">
-          <h2>{{ listing.StreetNumber }} {{ listing.StreetName }}</h2>
-          <h3>Style: {{listing.Style}}</h3>
-          <h3>Beds: {{listing.Bedrooms}}</h3>
-          <h3>Baths: {{listing.BathsTotal}}</h3>
-        </div>
-        <super-navigate class="md-tile-right" location="listing#listing-single-view" data-params-id="{{ listing.ListingID }}">
-          <button class="button button-block button-positive">
-            See It
-          </button>
-        </super-navigate>
-      </md-item-content>
-    </md-item>
-  </md-list>
-</md-content>
+  <md-content>
+    <md-list>
+      <md-item ng-repeat="listing in listings">
+        <md-item-content>
+          <div class="md-tile-content">
+            <h2>{{ listing.address.StreetNumber }} {{ listing.address.StreetName }}</h2>
+            <h3>ListPrice: {{listing.main.ListPrice}}</h3>
+            <h3>Bedrooms: {{listing.main.Bedrooms}}</h3>
+            <h3>BathsTotal: {{listing.main.BathsTotal}}</h3>
+            <h3>HalfBaths: {{listing.main.HalfBaths}}</h3>
+            <h3>Age: {{listing.main.Age}}</h3>
+            <h3>Acreage: {{listing.main.Acreage}}</h3>
+            <h3>SqFtRange: {{listing.main.SqFtRange}}</h3>
+
+          </div>
+          <super-navigate class="md-tile-right" location="listing#listing-single-view" data-params-id="{{ listing.extra.ListingID }}">
+            <button class="button button-block button-positive">
+              See It
+            </button>
+          </super-navigate>
+        </md-item-content>
+      </md-item>
+    </md-list>
+  </md-content>
 </div>

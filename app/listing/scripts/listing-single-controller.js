@@ -10,7 +10,7 @@ angular
     $scope._refreshViewData = function() {
       // find the listing that was clicked
       for(var i = 0; i < FIXTURE_LISTINGS.length; i++){
-        if (FIXTURE_LISTINGS[i].ListingID === $scope.dataId){
+        if (FIXTURE_LISTINGS[i].extra.ListingID === $scope.dataId){
           $scope.listing = FIXTURE_LISTINGS[i];
           $scope.showSpinner = false;
           return;
