@@ -2,14 +2,76 @@
 
   <super-navbar>
     <super-navbar-title>
-      
+      {{ listing.address.StreetNumber }} {{ listing.address.StreetName }}
     </super-navbar-title>
   </super-navbar>
 
   <div class="padding">
-    <h2>{{ listing.StreetNumber }} {{ listing.StreetName }}</h2>
-    <h3>Style: {{ listing.Style }}</h3>
-    <h3>Bedroom: {{ listing.Bedrooms }}</h3>
-    <h3>Baths: {{ listing.BathsTotal }}</h3>
+    <h2>
+      {{listing.address.StreetNumber}}
+      {{listing.address.StreetName}}
+      {{listing.address.City}}
+      {{listing.address.StateOrProvince}}
+      {{listing.address.PostalCode}}
+    </h2>
+    <h3>ListPrice: {{listing.main.ListPrice}}</h3>
+    <h3>Bedrooms: {{listing.main.Bedrooms}}</h3>
+    <h3>BathsTotal: {{listing.main.BathsTotal}}</h3>
+    <h3>HalfBaths: {{listing.main.HalfBaths}}</h3>
+    <h3>Age: {{listing.main.Age}}</h3>
+    <h3>Acreage: {{listing.main.Acreage}}</h3>
+    <h3>SqFtRange: {{listing.main.SqFtRange}}</h3>
+    <hr>
+    <h3>PublicRemarks: {{listing.extra.PublicRemarks}}</h3>
+    <h3>County: {{listing.extra.County}}</h3>
+    <h3>Style: {{listing.extra.Style}}</h3>
+    <h3>Condition: {{listing.extra.Condition}}</h3>
+    <h3>Includes: {{listing.extra.Includes}}</h3>
+    <h3>Appliance: {{listing.extra.Appliance}}</h3>
+    <h3>Fireplace: {{listing.extra.Fireplace}}</h3>
+    <h3>InteriorFeatures: {{listing.extra.InteriorFeatures}}</h3>
+    <h3>DiningRoom: {{listing.extra.DiningRoom}}</h3>
+    <h3>Misc: {{listing.extra.Misc}}</h3>
+    <h3>Garage: {{listing.extra.Garage}}</h3>
+    <h3>PropertyConstructionMaterial: {{listing.extra.PropertyConstructionMaterial}}</h3>
+    <h3>SiteDescription: {{listing.extra.SiteDescription}}</h3>
+    <h3>Miscellaneous: {{listing.extra.Miscellaneous}}</h3>
+    <h3>TypeHeat: {{listing.extra.TypeHeat}}</h3>
+    <h3>Gas: {{listing.extra.Gas}}</h3>
+    <h3>Electric: {{listing.extra.Electric}}</h3>
+    <h3>Sewer: {{listing.extra.Sewer}}</h3>
+    <h3>Water: {{listing.extra.Water}}</h3>
+    <h3>Floors: {{listing.extra.Floors}}</h3>
+    <h3>LotNumber: {{listing.extra.LotNumber}}</h3>
+    <h3>Possession: {{listing.extra.Possession}}</h3>
+    <h3>ContingencyStatus: {{listing.extra.ContingencyStatus}}</h3>
+    <h3>Zoning: {{listing.extra.Zoning}}</h3>
+    <h3>Units: {{listing.extra.Units}}</h3>
+    <h3>OccupancyDescription: {{listing.extra.OccupancyDescription}}</h3>
+    <h3>ListingID: {{listing.extra.ListingID}}</h3>
+    <hr>
+    <h3>ListDate: {{listing.extraPremium.ListDate}}</h3>
+    <h3>DaysOnMarketContinuous: {{listing.extraPremium.DaysOnMarketContinuous}}</h3>
+    <h3>AddressSubdivisionName: {{listing.extraPremium.AddressSubdivisionName}}</h3>
+    <h3>Area: {{listing.extraPremium.Area}}</h3>
+    <h3>ProposedAssessments: {{listing.extraPremium.ProposedAssessments}}</h3>
+    <h3>ConfirmedSpcAssessment: {{listing.extraPremium.ConfirmedSpcAssessment}}</h3>
+    <h3>Foreclosure: {{listing.extraPremium.Foreclosure}}</h3>
+    <h3>ShortSaleYN: {{listing.extraPremium.ShortSaleYN}}</h3>
+    <h3>DueDiligencePeriod: {{listing.extraPremium.DueDiligencePeriod}}</h3>
+    <h3>ElementarySchool: {{listing.extraPremium.ElementarySchool}}</h3>
+    <h3>MiddleSchool: {{listing.extraPremium.MiddleSchool}}</h3>
+    <h3>HighSchool: {{listing.extraPremium.HighSchool}}</h3>
+    <h3>VirtualTourURL: {{listing.extraPremium.VirtualTourURL}}</h3>
+    <h3>WoodedAcres: {{listing.extraPremium.WoodedAcres}}</h3>
+    <h3>TaxID: {{listing.extraPremium.TaxID}}</h3>
+    <h3>DeedBookNumber: {{listing.extraPremium.DeedBookNumber}}</h3>
+    <h3>DeedPage: {{listing.extraPremium.DeedPage}}</h3>
+    <h3>PlatBook: {{listing.extraPremium.PlatBook}}</h3>
+    <h3>PlatBookPage: {{listing.extraPremium.PlatBookPage}}</h3>
+    <h3>ClosePrice: {{listing.extraPremium.ClosePrice}}</h3>
+    <h3>CloseDate: {{listing.extraPremium.CloseDate}}</h3>
+    <h3>OwnerName: {{listing.extraPremium.OwnerName}}</h3>
+    <h3>HomeWarrantyYN: {{listing.extraPremium.HomeWarrantyYN}}</h3>
   </div>
 </div>
