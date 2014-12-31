@@ -4,7 +4,6 @@ angular
     $scope.listings = {};
     $scope.getListings = function(){
       $scope.listings = Listings.getListings();
-      steroids.logger.log("get listings called");
     };
     $scope.getListings();
   });
