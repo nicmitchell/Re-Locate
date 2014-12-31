@@ -11,11 +11,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141231201905) do
+ActiveRecord::Schema.define(version: 20141231210810) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "hstore"
+
+  create_table "listings", force: true do |t|
+    t.boolean  "active",               default: true
+    t.boolean  "idx",                  default: true
+    t.integer  "price"
+    t.integer  "bedrooms"
+    t.float    "baths"
+    t.integer  "age"
+    t.integer  "sqft_max"
+    t.hstore   "address_fields"
+    t.hstore   "extra"
+    t.hstore   "extraPremium"
+    t.hstore   "exclude"
+    t.datetime "mls_data_updated_at"
+    t.datetime "mls_photo_updated_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "listings", ["active"], name: "index_listings_on_active", using: :btree
+  add_index "listings", ["age"], name: "index_listings_on_age", using: :btree
+  add_index "listings", ["baths"], name: "index_listings_on_baths", using: :btree
+  add_index "listings", ["bedrooms"], name: "index_listings_on_bedrooms", using: :btree
+  add_index "listings", ["idx"], name: "index_listings_on_idx", using: :btree
+  add_index "listings", ["price"], name: "index_listings_on_price", using: :btree
+  add_index "listings", ["sqft_max"], name: "index_listings_on_sqft_max", using: :btree
 
   create_table "widgets", force: true do |t|
     t.string   "name"
