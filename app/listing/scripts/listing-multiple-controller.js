@@ -3,7 +3,10 @@ angular
   .controller('ListingMultipleController', function($scope, Listings, $localForage) {
     $scope.listings = {};
     $scope.getListings = function(){
-      $scope.listings = Listings.getListings();
+      Listings.getListings().then(function(data){
+        $scope.listings = data;
+        console.log('listings in controller', $scope.listings);
+      });
     };
     $scope.getListings();
   });

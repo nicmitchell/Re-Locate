@@ -4,14 +4,13 @@ angular.module('listing', ['common', 'listing.services'])
     storeName: 'listings' // name of the table
   });
 }])
+// getting sample data via ajax to load into localForage
 .run(function($http, $localForage){
   return $http({
     method: 'GET',
     url: '/listing-samples.js'
   })
   .then(function(res){
-    console.log('response data', res.data);
-    console.log('response data length', res.data.length);
     for(var i = 0, l = res.data.length; i < l; i ++){
       $localForage.setItem(res.data[i].ListingID, res.data[i]);
     }
