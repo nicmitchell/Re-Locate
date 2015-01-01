@@ -1,7 +1,7 @@
 angular
   .module('listing')
   .controller('ListingMultipleController', function($scope, Listings, $localForage) {
-    $scope.listings = {};
+    $scope.listings = [];
     $scope.getListings = function(){
       // get listings via promise
       Listings.getListings().then(function(data){
