@@ -8,6 +8,7 @@
 
   <md-content>
     <md-list>
+
       <md-item ng-repeat="listing in listings">
         <md-item-content>
           <div class="md-tile-content">
@@ -17,8 +18,8 @@
             <h3>BathsTotal: {{listing.main.BathsTotal}}</h3>
             <h3>HalfBaths: {{listing.main.HalfBaths}}</h3>
             <h3>Age: {{listing.main.Age}}</h3>
+            <h3>Acreage: {{listing.main.Acreage}}</h3>
             <h3>SqFtRange: {{listing.main.SqFtRange}}</h3>
-
           </div>
           <super-navigate class="md-tile-right" location="listing#listing-single-view" data-params-id="{{ listing.extra.ListingID }}">
             <button class="button button-block button-positive">
