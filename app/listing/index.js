@@ -4,15 +4,16 @@ angular.module('listing', ['common', 'listing.services'])
     storeName: 'listings' // name of the table
   });
 }])
-// getting sample data via ajax to load into localForage
+// load sample data into localForage via ajax 
 .run(function($http, $localForage){
   return $http({
     method: 'GET',
-    url: '/listing-samples.js'
+    url: '/sample-listings.json'
   })
   .then(function(res){
+    console.log('listing ID in .run', res.data);
     for(var i = 0, l = res.data.length; i < l; i ++){
-      $localForage.setItem(res.data[i].ListingID, res.data[i]);
+      $localForage.setItem(res.data[i].extra.ListingID, res.data[i]);
     }
     return res.data;
   });

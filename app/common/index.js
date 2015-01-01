@@ -4,7 +4,10 @@ angular.module('common', [
   'LocalForageModule'
 ])
 .config(['$localForageProvider', function($localForageProvider){
+  // Notify on itemSet, itemRemove
+  $localForageProvider.setNotify(true, true); 
+  // name of the database and prefix for your data, it is "lf" by default
   $localForageProvider.config({
-    name: 'appData' // name of the database and prefix for your data, it is "lf" by default
+    name: 'appData' 
   });
 }]);

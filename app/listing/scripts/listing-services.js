@@ -1,15 +1,15 @@
 angular.module('listing.services', ['common'])
 
-.factory('Listings', function ($http, $localForage) {
+.factory('Listings', function ($http, $localForage, $rootScope) {
   // this should be changed for search functionality
   // take an input of search variables, retrieve from local storage, attach to $scope.listings
   var getListings = function(){
-    var listings = {};
+    var listings = [];
     return $localForage.iterate(function(value, key) {
       // only return the item if it has a valid ListingID
       // add other search criteria here
-      if(value.ListingID) {
-        listings[key] = value;
+      if(value.extra.ListingID) {
+        listings.push(value);
       }
     }).then(function() {
       // return listings with promise to make sure we have all data
@@ -17,7 +17,8 @@ angular.module('listing.services', ['common'])
       return listings;
     });
   };
+  
   return { 
-    getListings: getListings
+    getListings: getListings,
   };
-});
+})

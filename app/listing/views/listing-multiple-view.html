@@ -8,10 +8,12 @@
 
   <md-content>
     <md-list>
+
       <md-item ng-repeat="listing in listings">
+        {{ listing.ListingID }}
         <md-item-content>
           <div class="md-tile-content">
-            <h2>{{ listing.address.StreetNumber }} {{ listing.address.StreetName }}</h2>
+            <h2>{{ listing.StreetNumber }} {{ listing.address.StreetName }}</h2>
             <h3>ListPrice: {{listing.main.ListPrice}}</h3>
             <h3>Bedrooms: {{listing.main.Bedrooms}}</h3>
             <h3>BathsTotal: {{listing.main.BathsTotal}}</h3>
