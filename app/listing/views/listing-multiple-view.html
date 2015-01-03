@@ -1,4 +1,4 @@
-<div ng-controller="ListingMultipleController">
+<div ng-controller="ListingMultipleController" class="padding">
 
   <super-navbar>
     <super-navbar-title>
@@ -9,24 +9,27 @@
   <md-content>
     <md-list>
       <md-item ng-repeat="listing in listings">
-        <md-item-content>
-          <div class="md-tile-content">
-            <h2>{{ listing.address.StreetNumber }} {{ listing.address.StreetName }}</h2>
-            <h3>ListPrice: {{listing.main.ListPrice}}</h3>
-            <h3>Bedrooms: {{listing.main.Bedrooms}}</h3>
-            <h3>BathsTotal: {{listing.main.BathsTotal}}</h3>
-            <h3>HalfBaths: {{listing.main.HalfBaths}}</h3>
-            <h3>Age: {{listing.main.Age}}</h3>
-            <h3>Acreage: {{listing.main.Acreage}}</h3>
-            <h3>SqFtRange: {{listing.main.SqFtRange}}</h3>
-          </div>
-          <super-navigate class="md-tile-right" location="listing#listing-single-view" data-params-id="{{ listing.extra.ListingID }}">
-            <button class="button button-block button-positive">
+        <super-navigate location="listing#listing-single-view" data-params-id="{{ listing.extra.ListingID }}" >
+          <h2>{{ listing.address.StreetNumber }} {{ listing.address.StreetName }}</h2>
+          <md-item-content>
+            <img src="/sample-images/417925_01.jpg" flex='25'>
+            <div class="md-tile-content" flex>
+              <h3>ListPrice: {{listing.main.ListPrice}}</h3>
+              <h3>Bedrooms: {{listing.main.Bedrooms}}</h3>
+              <h3>BathsTotal: {{listing.main.BathsTotal}}</h3>
+              <h3>HalfBaths: {{listing.main.HalfBaths}}</h3>
+              <!-- <h3>Age: {{listing.main.Age}}</h3> -->
+              <!-- <h3>Acreage: {{listing.main.Acreage}}</h3> -->
+              <!-- <h3>SqFtRange: {{listing.main.SqFtRange}}</h3> -->
+            </div>
+          <div class="md-tile-right" flex layout-margin layout-padding>
+            <button class="button button-block button-positive" flex>
               See It
             </button>
-          </super-navigate>
-        </md-item-content>
+          </div>
+          </md-item-content>
+          <hr />
+        </super-navigate>
       </md-item>
     </md-list>
   </md-content>
-</div>
