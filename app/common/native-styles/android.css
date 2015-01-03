@@ -69,7 +69,7 @@ tab-bar-item#index {
 }
 
 tab-bar-item#profile {
-  background-image: url(icons/person.png);
+  background-image: url(icons/person.svg);
 }
 
 tab-bar-item#internet {

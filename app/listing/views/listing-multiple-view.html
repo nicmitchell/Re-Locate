@@ -1,4 +1,4 @@
-<div ng-controller="ListingMultipleController">
+<div ng-controller="ListingMultipleController" class="padding">
 
   <super-navbar>
     <super-navbar-title>
@@ -10,9 +10,9 @@
     <md-list>
       <md-item ng-repeat="listing in listings">
         <super-navigate location="listing#listing-single-view" data-params-id="{{ listing.extra.ListingID }}" >
-        <h2 layout-margin>{{ listing.address.StreetNumber }} {{ listing.address.StreetName }}</h2>
+          <h2>{{ listing.address.StreetNumber }} {{ listing.address.StreetName }}</h2>
           <md-item-content>
-            <img src="/sample-images/417925_01.jpg" flex='25' layout-margin>
+            <img src="/sample-images/417925_01.jpg" flex='25'>
             <div class="md-tile-content" flex>
               <h3>ListPrice: {{listing.main.ListPrice}}</h3>
               <h3>Bedrooms: {{listing.main.Bedrooms}}</h3>
