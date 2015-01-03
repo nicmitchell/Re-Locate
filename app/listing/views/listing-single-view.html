@@ -5,12 +5,25 @@
       {{ listing.address.StreetNumber }} {{ listing.address.StreetName }}
     </super-navbar-title>
   </super-navbar>
+  <style>
+    img {
+        max-width: 219px;
+    }
+  </style>
+  <div layout="row" style="overflow:scroll">
+      <img layout="column" src="/sample-images/417925_01.jpg" flex flex-sm="75" flex-md="75">
+      <img layout="column" src="/sample-images/417925_02.jpg" flex flex-sm="75" flex-md="75">
+      <img layout="column" src="/sample-images/417925_04.jpg" flex flex-sm="75" flex-md="75">
+      <img layout="column" src="/sample-images/417925_05.jpg" flex flex-sm="75" flex-md="75">
+      <img layout="column" src="/sample-images/417925_06.jpg" flex flex-sm="75" flex-md="75">
+  </div>
 
   <div class="padding">
     <h2>
       {{listing.address.StreetNumber}}
       {{listing.address.StreetName}}
-      {{listing.address.City}}
+    <br />
+      {{listing.address.City}},
       {{listing.address.StateOrProvince}}
       {{listing.address.PostalCode}}
     </h2>
