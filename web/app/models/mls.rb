@@ -17,7 +17,12 @@ class Mls
       end
 
       api = client
-      api.login
+      begin
+        api.login
+      rescue => e
+        puts 'Error: ' + e.message
+        exit!
+      end
 
       defaults = {format: 'COMPACT-DECODED'}
       results = api.find(:all, defaults.merge(opts)) # opts overwrite defaults
