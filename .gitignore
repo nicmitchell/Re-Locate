@@ -6,3 +6,4 @@ bower_components
 logs/
 web/log/
 web/tmp/
+web/config/application.yml
