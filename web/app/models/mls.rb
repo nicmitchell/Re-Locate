@@ -15,6 +15,11 @@ class Mls
       })
     end
 
+    def refresh
+      Office.rets_update
+      Listing.rets_update
+    end
+
     def get(opts)
       unless opts[:search_type] && opts[:class]
         raise ArgumentError, 'opts[:search_type] && opts[:class] are required'

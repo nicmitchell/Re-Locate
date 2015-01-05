@@ -1,5 +1,12 @@
 class Listing < ActiveRecord::Base
+  def self.rets_update
+    newer_than = Listing.order(:updated_at).last.updated_at.strftime('%Y-%m-%dT%T')
+    records = Mls.get_homes query: '(ModificationTimestamp=#{newer_than}+)'
+    rets_process(records)
+  end
+
   def self.rets_process(records)
+    return unless records.present?
     mls = Mls.config[:listing]
 
     records.each do |record|
@@ -16,6 +23,7 @@ class Listing < ActiveRecord::Base
           end
         end
       end
+      listing.send(:rets_office, record)
 
       listing.save!
     end
@@ -33,7 +41,7 @@ class Listing < ActiveRecord::Base
     end
 
     def rets_active(record)
-      self.active = record['ListingStatus'] == "Active"
+      self.active = record['ListingStatus'] == 'Active'
     end
 
     def rets_sqft(record) # '1501 TO 1600', '5000 PLUS'
@@ -43,6 +51,10 @@ class Listing < ActiveRecord::Base
     def rets_baths(record)
       half = record['HalfBaths'].to_i > 0 ? '.5' : '.0'
       self.baths = "#{record['BathsTotal']}#{half}".to_f
+    end
+
+    def rets_office(record)
+      self.extra['office_name'] = Office.where(:mls_id => record['ListingOfficeUID']).first.name
     end
 
 end

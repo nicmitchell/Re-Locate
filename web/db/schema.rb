@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150104053644) do
+ActiveRecord::Schema.define(version: 20150105182831) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,17 @@ ActiveRecord::Schema.define(version: 20150104053644) do
   add_index "listings", ["price"], name: "index_listings_on_price", using: :btree
   add_index "listings", ["sqft_max"], name: "index_listings_on_sqft_max", using: :btree
   add_index "listings", ["year"], name: "index_listings_on_year", using: :btree
+
+  create_table "offices", force: true do |t|
+    t.string   "name"
+    t.string   "mls_id"
+    t.boolean  "active",         default: true
+    t.datetime "mls_updated_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "offices", ["mls_id"], name: "index_offices_on_mls_id", using: :btree
 
   create_table "widgets", force: true do |t|
     t.string   "name"

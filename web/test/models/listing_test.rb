@@ -31,11 +31,21 @@ class ListingTest < ActiveSupport::TestCase
   end
 
   test 'rets_active no' do
-    assert_equal false, Listing.new.send(:rets_active, 'Closed')
+    assert_equal false, Listing.new.send(:rets_active, {'ListingStatus' => 'Closed'})
   end
 
   test 'rets_active yes' do
-    assert_equal true, Listing.new.send(:rets_active, 'Active')
+    assert_equal true, Listing.new.send(:rets_active, {'ListingStatus' => 'Active'})
+  end
+
+  test 'rets_office' do
+    subject_name = 'Cool Realty'
+    Office.create(mls_id: '12345', name: subject_name)
+    Office.create(mls_id: '67890', name: 'Sucky Realty')
+    listing = Listing.new(extra: {})
+    listing.send(:rets_office, {'ListingOfficeUID' => '12345'})
+
+    assert_equal subject_name, listing.extra['office_name']
   end
 
 end
