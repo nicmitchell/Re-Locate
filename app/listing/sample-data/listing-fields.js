@@ -40,7 +40,6 @@ var standard = {
   "OccupancyDescription": "extra",
   "ListingID": "extra",
   "ListDate": "extraPremium",
-  "DaysOnMarketContinuous": "extraPremium", // I'm pretty sure this is over multiple listings/agents
   "AddressSubdivisionName": "extraPremium",
   "Area": "extraPremium",
   "ProposedAssessments": "extraPremium",
@@ -63,6 +62,7 @@ var standard = {
   "OwnerName": "extraPremium", //may not be allowed to show
   "HomeWarrantyYN": "extraPremium",
   "ListingStatus": "exclude",
+  "DaysOnMarketContinuous": "exclude",
   "IDX": "exclude",
   "PropertyType": "exclude", // this is the only property type we will have
   "OfficeIDX": "exclude",
