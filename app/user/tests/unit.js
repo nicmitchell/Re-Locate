@@ -4,6 +4,6 @@ var expect = chai.expect;
 
 describe('User', function() {
   it('user module is defined', function() {
-  expect(angular.module('user')).to.not.be.undefined();
+    expect(angular.module('user')).to.not.be.undefined();
   });
 });
