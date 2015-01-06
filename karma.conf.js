@@ -16,8 +16,8 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
         'dist/components/angular/angular.min.js',
-        'dist/app/**/*.js',
         'dist/app/*.js',
+        'dist/app/**/*.js',
         'test/*'
     ],
 
