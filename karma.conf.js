@@ -5,16 +5,20 @@ module.exports = function(config) {
   config.set({
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
-    basePath: '',
+    basePath: './',
 
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ['mocha'],
+    frameworks: ['mocha','chai'],
 
 
     // list of files / patterns to load in the browser
     files: [
+        'dist/components/angular/angular.min.js',
+        'dist/app/*.js',
+        'dist/app/**/*.js',
+        'test/*'
     ],
 
 
@@ -56,6 +60,8 @@ module.exports = function(config) {
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
     browsers: ['Chrome'],
 
+    // If browser does not capture in given timeout [ms], kill it
+    captureTimeout: 20000,
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
