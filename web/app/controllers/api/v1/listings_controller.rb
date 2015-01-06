@@ -2,7 +2,8 @@ module Api
   module V1
     class ListingsController < ApplicationController
       def index
-        render json: {message: 'Resource not found'}
+        @listings = Listing.paginate(:page => params[:page], :per_page => 100)
+        render :json => @listings
       end
     end
   end
