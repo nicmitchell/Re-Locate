@@ -1,9 +1,9 @@
 .DS_Store
-/dist
-node_modules
-bower_components
-.sass-cache/
-logs/
-web/log/
-web/tmp/
-web/config/application.yml
+/dist/*
+/node_modules/*
+/bower_components/*
+.sass-cache
+/logs/*
+/web/log/*
+/web/tmp/*
+/web/config/application.yml
