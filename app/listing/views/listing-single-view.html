@@ -20,22 +20,22 @@
 
   <div class="padding">
     <h2>
-      {{listing.address.StreetNumber}}
-      {{listing.address.StreetName}}
+      {{listing.address_fields.StreetNumber}}
+      {{listing.address_fields.StreetName}}
     <br />
-      {{listing.address.City}},
-      {{listing.address.StateOrProvince}}
-      {{listing.address.PostalCode}}
+      {{listing.address_fields.City}},
+      {{listing.address_fields.StateOrProvince}}
+      {{listing.address_fields.PostalCode}}
     </h2>
-    <h3>ListPrice: {{listing.main.ListPrice}}</h3>
-    <h3>Bedrooms: {{listing.main.Bedrooms}}</h3>
-    <h3>BathsTotal: {{listing.main.BathsTotal}}</h3>
-    <h3>HalfBaths: {{listing.main.HalfBaths}}</h3>
-    <h3>Age: {{listing.main.Age}}</h3>
-    <h3>SqFtRange: {{listing.main.SqFtRange}}</h3>
+    <h3>ListPrice: {{listing.price}}</h3>
+    <h3>Bedrooms: {{listing.beds}}</h3>
+    <h3>BathsTotal: {{listing.extra.BathsTotal}}</h3>
+    <h3>HalfBaths: {{listing.extra.HalfBaths}}</h3>
+    <h3>Age: {{listing.extra.Age}}</h3>
+    <h3>SqFtRange: {{listing.extra.SqFtRange}}</h3>
     <hr>
     <h3>PublicRemarks: {{listing.extra.PublicRemarks}}</h3>
-    <h3>Acreage: {{listing.main.Acreage}}</h3>
+    <h3>Acreage: {{listing.extra.Acreage}}</h3>
     <h3>County: {{listing.extra.County}}</h3>
     <h3>Style: {{listing.extra.Style}}</h3>
     <h3>Condition: {{listing.extra.Condition}}</h3>

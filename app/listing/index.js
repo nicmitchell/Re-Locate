@@ -8,6 +8,7 @@ angular.module('listing', ['common', 'listing.services'])
 .run(function($http, $localForage){
   return $http({
     method: 'GET',
+    // url: 'http://black-paper-ant.herokuapp.com/api/v1/listings'
     url: '/sample-listings.json'
   })
   .then(function(res){
