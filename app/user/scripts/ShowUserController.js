@@ -6,17 +6,12 @@ angular
     supersonic.ui.views.current.whenVisible(function() {
       $scope.$apply(function() {
         $scope.user = User.getCurrent();
-        // hide/show correct buttons
-        $scope.isCurrentUser = Object.keys($scope.user).length;
+
+        $scope.userButtonText = 'Create';
+        if(Object.keys($scope.user).length) {
+          $scope.userButtonText = 'Edit';
+        }
       });
     });
-
-    // for development only (unless we allow a user to delete his/her account)
-    $scope.destroy = function() {
-      localStorage.removeItem('currentUser');
-      $scope.user = User.getCurrent();
-      // hide/show correct buttons
-      $scope.isCurrentUser = false;
-    };
 
   });
