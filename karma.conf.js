@@ -5,20 +5,26 @@ module.exports = function(config) {
   config.set({
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
-    basePath: './',
-
+    basePath: '',
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ['mocha','chai'],
+    frameworks: ['jasmine'],
 
 
     // list of files / patterns to load in the browser
     files: [
         'dist/components/angular/angular.min.js',
-        'dist/app/*.js',
-        'dist/app/**/*.js',
-        'test/*'
+        'dist/components/angular-mocks/angular-mocks.js',
+        'dist/components/supersonic/supersonic.js',
+        'dist/components/localforage/dist/localforage.js',
+        'dist/components/angular-localforage/dist/angular-localForage.js',
+        // 'dist/app/*.js',
+        'dist/app/common.js',
+        'dist/app/example.js',
+        'dist/app/listing.js',
+        'dist/app/user.js',
+        'tests/*.js'
     ],
 
 
@@ -65,6 +71,7 @@ module.exports = function(config) {
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
-    singleRun: false
+    singleRun: true
+
   });
 };
