@@ -40,6 +40,10 @@ var standard = {
   "OccupancyDescription": "extra",
   "ListingID": "extra",
   "ListDate": "extraPremium",
+<<<<<<< HEAD
+=======
+  "DaysOnMarketContinuous": "extraPremium", // I'm pretty sure this is over multiple listings/agents
+>>>>>>> (fix) updated missing files
   "AddressSubdivisionName": "extraPremium",
   "Area": "extraPremium",
   "ProposedAssessments": "extraPremium",
