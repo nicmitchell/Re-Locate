@@ -15,8 +15,8 @@ module.exports =
       location: "listing#listing-multiple-view"
     }
     {
-      title: "Profile"
-      id: "profile"
+      title: "Account"
+      id: "account"
       location: "user#show-user"
     }
   ]

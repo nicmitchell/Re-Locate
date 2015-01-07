@@ -68,7 +68,7 @@ tab-bar-item#index {
   background-image: url(icons/home.svg);
 }
 
-tab-bar-item#profile {
+tab-bar-item#account {
   background-image: url(icons/person.svg);
 }
 
