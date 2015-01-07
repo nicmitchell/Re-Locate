@@ -7,14 +7,20 @@ module.exports = function(config) {
     // base path that will be used to resolve all patterns (eg. files, exclude)
     basePath: '',
 
-
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ['mocha'],
+    frameworks: ['jasmine'],
 
 
     // list of files / patterns to load in the browser
     files: [
+        'dist/components/angular/angular.min.js',
+        'dist/components/angular-mocks/angular-mocks.js',
+        'dist/components/supersonic/supersonic.js',
+        'dist/components/localforage/dist/localforage.js',
+        'dist/components/angular-localforage/dist/angular-localForage.js',
+        'dist/app/*.js',
+        'tests/*.js'
     ],
 
 
@@ -56,9 +62,12 @@ module.exports = function(config) {
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
     browsers: ['Chrome'],
 
+    // If browser does not capture in given timeout [ms], kill it
+    captureTimeout: 20000,
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
-    singleRun: false
+    singleRun: true
+
   });
 };
