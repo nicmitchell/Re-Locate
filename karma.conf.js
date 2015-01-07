@@ -19,11 +19,7 @@ module.exports = function(config) {
         'dist/components/supersonic/supersonic.js',
         'dist/components/localforage/dist/localforage.js',
         'dist/components/angular-localforage/dist/angular-localForage.js',
-        // 'dist/app/*.js',
-        'dist/app/common.js',
-        'dist/app/example.js',
-        'dist/app/listing.js',
-        'dist/app/user.js',
+        'dist/app/*.js',
         'tests/*.js'
     ],
 
