@@ -1,6 +1,6 @@
 angular
   .module('listing')
-  .controller('ListingSingleController', function($scope, supersonic, Listings, FIXTURE_LISTINGS) {
+  .controller('ListingSingleController', function($scope, supersonic, Listings, $localForage) {
 
     $scope.listing = null;
     $scope.showSpinner = true;
@@ -9,13 +9,10 @@ angular
     // Update the view
     $scope._refreshViewData = function() {
       // find the listing that was clicked
-      for(var i = 0; i < FIXTURE_LISTINGS.length; i++){
-        if (FIXTURE_LISTINGS[i].extra.ListingID === $scope.dataId){
-          $scope.listing = FIXTURE_LISTINGS[i];
-          $scope.showSpinner = false;
-          return;
-        }
-      }
+      $localForage.getItem($scope.dataId).then(function(data){
+        $scope.listing = data;
+        return;
+      });
     };
 
     // update the view when params are set
