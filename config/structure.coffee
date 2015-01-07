@@ -15,8 +15,8 @@ module.exports =
       location: "listing#listing-multiple-view"
     }
     {
-      title: "Profile"
-      id: "profile"
+      title: "Account"
+      id: "account"
       location: "user#show-user"
     }
   ]
@@ -26,12 +26,8 @@ module.exports =
 
   preloads: [
     {
-      id: "learn-more"
-      location: "example#learn-more"
-    }
-    {
-      id: "using-the-scanner"
-      location: "example#using-the-scanner"
+      id: "listing"
+      location: "listing#listing-multiple-view"
     }
   ]
 

@@ -1,7 +1,7 @@
 <div ng-controller='ShowUserController'>
   <super-navbar>
     <super-navbar-title>
-      Profile
+      Account
     </super-navbar-title>
   </super-navbar>
 
@@ -11,21 +11,11 @@
       <h2 ng-bind='user.email'></h2>
       <h2 ng-bind='user.phone'></h2>
 
-      <super-navigate location="user#new-user" ng-hide='isCurrentUser'>
+      <super-navigate location="user#edit-user">
         <button class="button button-block button-positive">
-          Create
+          {{ userButtonText }}
         </button>
       </super-navigate>
-
-      <super-navigate location="user#edit-user" ng-show='isCurrentUser'>
-        <button class="button button-block button-positive">
-          Edit
-        </button>
-      </super-navigate>
-
-      <button class="button button-block button-positive" ng-show='isCurrentUser' ng-click='destroy()'>
-        Clear user (dev only)
-      </button>
 
     </div>
   </div>
