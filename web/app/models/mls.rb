@@ -41,12 +41,15 @@ class Mls
     end
 
     def get_homes(opts = {})
-      defaults = {search_type: 'Property', class: 'ResidentialProperty'}
-      get(defaults.merge(opts)) # opts overwrite defaults
+      get_records(opts, 'Property', 'ResidentialProperty')
     end
 
     def get_offices(opts = {})
-      defaults = {search_type: 'Office', class: 'Office'}
+      get_records(opts, 'Office', 'Office')
+    end
+
+    def get_records(opts, type, klass)
+      defaults = {search_type: type, class: klass}
       get(defaults.merge(opts)) # opts overwrite defaults
     end
 
