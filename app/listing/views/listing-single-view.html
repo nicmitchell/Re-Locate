@@ -11,11 +11,7 @@
     }
   </style>
   <div layout="row" style="overflow:scroll">
-      <img layout="column" src="/sample-images/417925_01.jpg" flex flex-sm="75" flex-md="75">
-      <img layout="column" src="/sample-images/417925_02.jpg" flex flex-sm="75" flex-md="75">
-      <img layout="column" src="/sample-images/417925_04.jpg" flex flex-sm="75" flex-md="75">
-      <img layout="column" src="/sample-images/417925_05.jpg" flex flex-sm="75" flex-md="75">
-      <img layout="column" src="/sample-images/417925_06.jpg" flex flex-sm="75" flex-md="75">
+    <img ng-repeat="photo in photos()" layout="column" ng-src="{{photo}}" flex flex-sm="75" flex-md="75">
   </div>
 
   <div class="padding">

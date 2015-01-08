@@ -52,6 +52,7 @@
     - "Zoning"
     - "Units"
     - "OccupancyDescription"
+    - "PhotoCount"
     - "ListingID"
 
   :premium:
@@ -85,7 +86,6 @@
     - "PropertyType"
     - "OfficeIDX"
     - "DisplayAddressListing"
-    - "PhotoCount"
     - "PhotoModificationTimestamp"
     - "ModificationTimestamp"
     - "VirtualTourYN"
