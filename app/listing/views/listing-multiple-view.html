@@ -7,8 +7,13 @@
   </super-navbar>
 
   <md-content>
+    <h3>Search:</h3>
+    <input ng-model="q.address_fields.StreetNumber" id="search-address" class="form-control" placeholder="Address">
+    <input ng-model="q.address_fields.StreetName" id="search-street" class="form-control" placeholder="Street">
+    <input ng-model="q.beds" id="search-beds" class="form-control" placeholder="Bedrooms">
+    <input ng-model="q.extra.BathsTotal" id="search-baths" class="form-control" placeholder="Full Bathrooms">
     <md-list>
-      <md-item dir-paginate="listing in listings | itemsPerPage: 10">
+      <md-item dir-paginate="listing in listings | filter:q | itemsPerPage: 10" current-page="currentPage">
         <super-navigate location="listing#listing-single-view" data-params-id="{{ listing.mls_num }}" >
           <h2>{{ listing.address_fields.StreetNumber }} {{ listing.address_fields.StreetName }}</h2>
           <md-item-content>
