@@ -1,0 +1,35 @@
+<div ng-controller="IndexController">
+  <super-navbar>
+    <super-navbar-title>
+      Home Index
+    </super-navbar-title>
+  </super-navbar>
+
+  <div ng-show="showSpinner" ng-include="'_spinner.html'"></div>
+  <div ng-hide="showSpinner">
+    <ul class="list" ng-hide="homes.length == 0">
+
+      <super-navigate location="home#show" data-params-id="{{ home.id }}" ng-repeat="home in homes">
+        <li class="item item-icon-right" style="background: url('http://pcspads.com/listing_pics/{{ home.mls_num }}/{{ home.mls_num }}_01.jpg') no-repeat;">
+          <h2>
+            <span ng-bind="home.address_fields.StreetNumber"></span>
+            <span ng-bind="home.address_fields.StreetName"></span>
+          </h2>
+
+          <span ng-bind="home.price | currency:undefined:0"></span> - 
+          <span ng-bind="home.beds"></span> Bedrooms
+          <span ng-bind="home.extra.BathsTotal"></span> Full Baths
+          <span ng-bind="home.extra.HalfBaths"></span> Half Baths
+
+          <i class="icon super-ios7-arrow-right"></i>
+        </li>
+      </super-navigate>
+
+    </ul>
+
+    <h4 ng-show="homes.length == 0" class="assertive padding">
+      No homes found.
+    </h4>
+
+  </div>
+</div>
