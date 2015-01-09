@@ -3,3 +3,6 @@
   text-align: center;
   font-weight: 600;
 }
+
+.agent-pic { width: 100%; border-bottom: 1px solid black; }
+.agent-contact { text-align: center; }

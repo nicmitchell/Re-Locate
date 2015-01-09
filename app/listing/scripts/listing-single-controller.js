@@ -1,6 +1,6 @@
 angular
   .module('listing')
-  .controller('ListingSingleController', function($scope, supersonic, Listings, $localForage) {
+  .controller('ListingSingleController', function($scope, supersonic, Listings, $localForage, User) {
 
     $scope.listing = null;
     $scope.showSpinner = true;
@@ -26,6 +26,10 @@ angular
 
           return photo_list;
         };
+
+        if(Object.keys(User.getCurrent()).length) {
+          $scope.isCurrentUser = true;
+        }
 
         return;
       });

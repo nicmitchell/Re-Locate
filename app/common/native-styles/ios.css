@@ -34,11 +34,7 @@ tab-bar tab-bar-item:selected {
   color: #1596f7;
 }
 
-tab-bar-item#settings {
-  background-image: url(icons/cog.svg);
-}
-
-tab-bar-item#index {
+tab-bar-item#listing {
   background-image: url(icons/home.svg);
 }
 
@@ -46,10 +42,6 @@ tab-bar-item#account {
   background-image: url(icons/person.svg);
 }
 
-tab-bar-item#listing {
-  background-image: url(icons/grid.svg);
-}
-
-tab-bar-item#internet {
-  background-image: url(icons/search.svg);
+tab-bar-item#contact {
+  background-image: url(icons/ios-contact-outline.svg);
 }

@@ -7,7 +7,6 @@ angular
       $scope.$apply(function() {
         $scope.user = User.getCurrent();
 
-        $scope.userButtonText = 'Create';
         if(Object.keys($scope.user).length) {
           $scope.userButtonText = 'Edit';
         }
@@ -15,4 +14,3 @@ angular
     });
 
   });
-  

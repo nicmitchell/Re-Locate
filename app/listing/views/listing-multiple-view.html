@@ -9,10 +9,10 @@
   <md-content>
     <md-list>
       <md-item ng-repeat="listing in listings">
-        <super-navigate location="listing#listing-single-view" data-params-id="{{ listing.extra.ListingID }}" >
+        <super-navigate location="listing#listing-single-view" data-params-id="{{ listing.mls_num }}" >
           <h2>{{ listing.address_fields.StreetNumber }} {{ listing.address_fields.StreetName }}</h2>
           <md-item-content>
-            <img src="http://pcspads.com/listing_pics/{{ listing.extra.ListingID }}/{{ listing.extra.ListingID }}_01.jpg" flex='25'>
+            <img src="http://pcspads.com/listing_pics/{{ listing.mls_num }}/{{ listing.mls_num }}_01.jpg" flex='25'>
             <div class="md-tile-content" flex>
               <h3>ListPrice: {{listing.price}}</h3>
               <h3>Bedrooms: {{listing.beds}}</h3>

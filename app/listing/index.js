@@ -1,4 +1,4 @@
-angular.module('listing', ['common', 'listing.services'])
+angular.module('listing', ['common', 'listing.services', 'user'])
 .config(['$localForageProvider', function($localForageProvider, $http){
   $localForageProvider.config({
     storeName: 'listings' // name of the table
