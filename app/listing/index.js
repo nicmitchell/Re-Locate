@@ -9,7 +9,7 @@ angular.module('listing', ['common', 'listing.services', 'angularUtils.directive
   return $http({
     method: 'GET',
     // url: 'http://black-paper-ant.herokuapp.com/api/v1/listings'
-    url: '/listings.json'
+    url: '/sample-listings.json'
   })
   .then(function(res){
     console.log('listing ID in .run', res.data);
