@@ -17,7 +17,7 @@ angular.module('listing.services', ['common'])
       return listings;
     });
   };
-  
+
   return { 
     getListings: getListings
   };

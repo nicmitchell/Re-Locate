@@ -10,9 +10,8 @@ angular
       });
     };
     // listen for changes in localForage and refresh $scope.listings
-    $scope.$on("LocalForageModule.setItem", 
-      function(scope, listing){ 
-        console.log('localForage updated', listing.key); 
-        $scope.getListings();
-      });
+    $scope.$on("LocalForageModule.setItem", function(scope, listing){ 
+      console.log('localForage updated', listing.key); 
+      $scope.getListings();
+    });
   });
