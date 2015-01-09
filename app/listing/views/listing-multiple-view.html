@@ -8,7 +8,7 @@
 
   <md-content>
     <md-list>
-      <md-item ng-repeat="listing in listings">
+      <md-item dir-paginate="listing in listings | itemsPerPage: 10">
         <super-navigate location="listing#listing-single-view" data-params-id="{{ listing.extra.ListingID }}" >
           <h2>{{ listing.address_fields.StreetNumber }} {{ listing.address_fields.StreetName }}</h2>
           <md-item-content>
