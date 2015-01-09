@@ -8,7 +8,6 @@ angular.module('listing.services', ['common'])
     return $localForage.iterate(function(value, key) {
       // only return the item if it has a valid ListingID
       // add other search criteria here
-      console.log('getListings called');
       if(value.extra.ListingID) {
         listings.push(value);
       }
@@ -19,8 +18,6 @@ angular.module('listing.services', ['common'])
     });
   };
 
-
-  
   return { 
     getListings: getListings
   };
