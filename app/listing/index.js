@@ -1,4 +1,4 @@
-angular.module('listing', ['common', 'listing.services', 'user'])
+angular.module('listing', ['common', 'listing.services', 'user', 'angularUtils.directives.dirPagination'])
 .config(['$localForageProvider', function($localForageProvider, $http){
   $localForageProvider.config({
     storeName: 'listings' // name of the table
