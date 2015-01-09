@@ -20,9 +20,11 @@
   <script src="/components/localforage/dist/localforage.min.js"></script>
   <script src="/components/angular-localforage/dist/angular-localForage.min.js"></script>
 
-
+  <script src="/app/user.js"></script>
   <% _.each(yield.modules, function(module) { %>
+  <% if( module !== 'user') { %>
   <script src="/app/<%= module %>.js"></script>
+  <% } %>
   <% }); %>
 </head>
 <body ng-app="<%= yield.moduleName %>">
