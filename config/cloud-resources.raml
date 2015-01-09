@@ -1,0 +1,191 @@
+#%RAML 0.8
+title: Steroids Data
+mediaType: application/json
+baseUri: https://rest-api.appgyver.com/v1/
+
+traits:
+  - securedBySteroidsApiKey:
+      headers:
+        steroidsApiKey:
+          type: string
+          example: exampleapikey
+          default: 5c24c99770650e0f2d82a3a8378355e1c1cd3ecbf71b5a8cab280129279f95ab
+        steroidsAppId:
+          type: integer
+          example: 1234
+          default: 38093
+
+
+resourceTypes:
+  - dolan_db_collection:
+      usage: This resourceType should be used for any collection of items
+      is: [ securedBySteroidsApiKey ]
+      get:
+        description: |
+          {
+            "action": "collection"
+          }
+        responses:
+          200:
+            description: |
+              {
+                "rootKey": "objects"
+              }
+            body:
+              application/json:
+                schema: <<resourcePathName>> # e.g cars
+      post:
+        description: |
+          {
+            "action": "create",
+            "rootKey": "object"
+          }
+        body:
+          application/json:
+            schema: <<resourcePathName | !singularize>>
+        responses:
+          200:
+            description: |
+              {
+                "rootKey": "object"
+              }
+            body:
+              application/json:
+                schema: <<resourcePathName | !singularize>> # e.g. car
+
+  - dolan_db_member:
+      usage: This resourceType should be used for any built.io item
+      is: [ securedBySteroidsApiKey ]
+      get:
+        description: |
+          {
+            "action": "find"
+          }
+        responses:
+          200:
+            description: |
+              {
+                "rootKey": "object"
+              }
+            body:
+              application/json:
+                schema: <<resourcePathName>> # e.g. car
+      put:
+        description: |
+          {
+            "action": "update",
+            "rootKey": "object"
+          }
+        body:
+          application/json:
+            schema: <<resourcePathName | !singularize>>
+        responses:
+          200:
+            description: |
+              {
+                "rootKey": "object"
+              }
+            body:
+              application/json:
+                schema: <<resourcePathName>>
+      delete:
+        description: |
+          {
+            "action": "destroy"
+          }
+        responses:
+          200:
+      
+
+
+/Home:
+  description: |
+    {
+      "resourceName": "Home",
+      "identifierKey": "id"
+    }
+  get:
+    is: [ securedBySteroidsApiKey ]
+    description: |
+      {
+        "action": "collection"
+      }
+  
+    responses:
+      200:
+        description: |
+          {
+          }
+  
+        body:
+          application/json:
+            schema: |
+              {"$schema":"http://json-schema.org/schema","title":"Home collection","type":"array","items":{"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical Home representation","properties":{"price":{"type":"integer"},"beds":{"type":"integer"},"baths":{"type":"string"},"year":{"type":"integer"},"sqft_max":{"type":"integer"},"address_fields":{"type":"object"},"extra":{"type":"object"},"premium":{"type":"object"},"mls_num":{"type":"string"},"id":{"type":"string"}},"required":[]}}
+  
+  post:
+    is: [ securedBySteroidsApiKey ]
+    description: |
+      {
+        "action": "create"
+      }
+  
+    responses:
+      200:
+        description: |
+          {
+          }
+  
+        body:
+          application/json:
+            schema: |
+              {"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical Home representation","properties":{"price":{"type":"integer"},"beds":{"type":"integer"},"baths":{"type":"string"},"year":{"type":"integer"},"sqft_max":{"type":"integer"},"address_fields":{"type":"object"},"extra":{"type":"object"},"premium":{"type":"object"},"mls_num":{"type":"string"},"id":{"type":"string"}},"required":[]}
+  
+
+  /{id}:
+    get:
+      is: [ securedBySteroidsApiKey ]
+      description: |
+        {
+          "action": "find"
+        }
+    
+      responses:
+        200:
+          description: |
+            {
+            }
+    
+          body:
+            application/json:
+              schema: |
+                {"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical Home representation","properties":{"price":{"type":"integer"},"beds":{"type":"integer"},"baths":{"type":"string"},"year":{"type":"integer"},"sqft_max":{"type":"integer"},"address_fields":{"type":"object"},"extra":{"type":"object"},"premium":{"type":"object"},"mls_num":{"type":"string"},"id":{"type":"string"}},"required":[]}
+    
+    put:
+      is: [ securedBySteroidsApiKey ]
+      description: |
+        {
+          "action": "update"
+        }
+    
+      responses:
+        200:
+          description: |
+            {
+            }
+    
+          body:
+            application/json:
+              schema: |
+                {"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical Home representation","properties":{"price":{"type":"integer"},"beds":{"type":"integer"},"baths":{"type":"string"},"year":{"type":"integer"},"sqft_max":{"type":"integer"},"address_fields":{"type":"object"},"extra":{"type":"object"},"premium":{"type":"object"},"mls_num":{"type":"string"},"id":{"type":"string"}},"required":[]}
+    
+    delete:
+      is: [ securedBySteroidsApiKey ]
+      description: |
+        {
+          "action": "destroy"
+        }
+    
+      responses:
+        200:
+
+
