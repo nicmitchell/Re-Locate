@@ -102,26 +102,8 @@ resourceTypes:
   description: |
     {
       "resourceName": "Home",
-      "identifierKey": "id"
+      "identifierKey": "ml"
     }
-  get:
-    is: [ securedBySteroidsApiKey ]
-    description: |
-      {
-        "action": "collection"
-      }
-  
-    responses:
-      200:
-        description: |
-          {
-          }
-  
-        body:
-          application/json:
-            schema: |
-              {"$schema":"http://json-schema.org/schema","title":"Home collection","type":"array","items":{"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical Home representation","properties":{"price":{"type":"integer"},"beds":{"type":"integer"},"baths":{"type":"string"},"year":{"type":"integer"},"sqft_max":{"type":"integer"},"address_fields":{"type":"object"},"extra":{"type":"object"},"premium":{"type":"object"},"mls_num":{"type":"string"},"id":{"type":"string"}},"required":[]}}
-  
   post:
     is: [ securedBySteroidsApiKey ]
     description: |
@@ -138,8 +120,28 @@ resourceTypes:
         body:
           application/json:
             schema: |
-              {"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical Home representation","properties":{"price":{"type":"integer"},"beds":{"type":"integer"},"baths":{"type":"string"},"year":{"type":"integer"},"sqft_max":{"type":"integer"},"address_fields":{"type":"object"},"extra":{"type":"object"},"premium":{"type":"object"},"mls_num":{"type":"string"},"id":{"type":"string"}},"required":[]}
+              {"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical Home representation","properties":{"ml":{"type":"string"},"pr":{"type":"integer"},"bd":{"type":"integer"},"ba":{"type":"string"},"yr":{"type":"integer"},"ft":{"type":"integer"},"ad":{"type":"string"}},"required":[]}
   
+
+  /.json:
+    get:
+      is: [ securedBySteroidsApiKey ]
+      description: |
+        {
+          "action": "collection"
+        }
+    
+      responses:
+        200:
+          description: |
+            {
+            }
+    
+          body:
+            application/json:
+              schema: |
+                {"$schema":"http://json-schema.org/schema","title":"Home collection","type":"array","items":{"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical Home representation","properties":{"ml":{"type":"string"},"pr":{"type":"integer"},"bd":{"type":"integer"},"ba":{"type":"string"},"yr":{"type":"integer"},"ft":{"type":"integer"},"ad":{"type":"string"}},"required":[]}}
+    
 
   /{id}:
     get:
@@ -158,7 +160,7 @@ resourceTypes:
           body:
             application/json:
               schema: |
-                {"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical Home representation","properties":{"price":{"type":"integer"},"beds":{"type":"integer"},"baths":{"type":"string"},"year":{"type":"integer"},"sqft_max":{"type":"integer"},"address_fields":{"type":"object"},"extra":{"type":"object"},"premium":{"type":"object"},"mls_num":{"type":"string"},"id":{"type":"string"}},"required":[]}
+                {"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical Home representation","properties":{"ml":{"type":"string"},"pr":{"type":"integer"},"bd":{"type":"integer"},"ba":{"type":"string"},"yr":{"type":"integer"},"ft":{"type":"integer"},"ad":{"type":"string"}},"required":[]}
     
     put:
       is: [ securedBySteroidsApiKey ]
@@ -176,7 +178,7 @@ resourceTypes:
           body:
             application/json:
               schema: |
-                {"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical Home representation","properties":{"price":{"type":"integer"},"beds":{"type":"integer"},"baths":{"type":"string"},"year":{"type":"integer"},"sqft_max":{"type":"integer"},"address_fields":{"type":"object"},"extra":{"type":"object"},"premium":{"type":"object"},"mls_num":{"type":"string"},"id":{"type":"string"}},"required":[]}
+                {"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical Home representation","properties":{"ml":{"type":"string"},"pr":{"type":"integer"},"bd":{"type":"integer"},"ba":{"type":"string"},"yr":{"type":"integer"},"ft":{"type":"integer"},"ad":{"type":"string"}},"required":[]}
     
     delete:
       is: [ securedBySteroidsApiKey ]

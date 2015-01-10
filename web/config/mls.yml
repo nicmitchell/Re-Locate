@@ -1,8 +1,8 @@
 :listing:
-  :mls_num: "ListingID"
-  :price:   "ListPrice"
-  :beds:    "Bedrooms"
-  :year:    "Age"
+  :ml: "ListingID"
+  :pr:   "ListPrice"
+  :bd:    "Bedrooms"
+  :yr:    "Age"
   :mls_data_updated_at:   "PhotoModificationTimestamp"
   :mls_photo_updated_at:  "ModificationTimestamp"
 

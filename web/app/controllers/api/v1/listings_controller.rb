@@ -1,14 +1,17 @@
 module Api
   module V1
     class ListingsController < ApplicationController
+      caches_page :index
+
       def index
-        @listings = Listing.select('id, price, beds, baths, year, sqft_max, address_fields, mls_num')
-        render :json => @listings
+        # need as_json to remove :id
+        render json: Listing.select('ml, pr, bd, ba, yr, ft, ad').as_json(only: [:ml, :pr, :bd, :ba, :yr, :ft, :ad])
       end
+
       def show
-        @listings = Listing.find(params[:id])
-        render :json => @listings
+        render :json => Listing.find_by(ml: (params[:id]))
       end
+
     end
   end
 end

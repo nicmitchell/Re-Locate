@@ -1,46 +1,19 @@
 <div ng-controller="ShowController">
   <super-navbar>
-    <super-navbar-title>
-      Show
-    </super-navbar-title>
+    <super-navbar-title ng-bind="home.ad"></super-navbar-title>
   </super-navbar>
 
   <div class="padding">
     <div ng-show="showSpinner" ng-include="'_spinner.html'"></div>
     <div ng-hide="showSpinner">
-      <h2 ng-bind="home['price']"></h2>
-      
-      
-      
-       <p>beds: <span ng-bind="home['beds']"></span></p> 
-      
-       <p>baths: <span ng-bind="home['baths']"></span></p> 
-      
-       <p>year: <span ng-bind="home['year']"></span></p> 
-      
-       <p>sqft_max: <span ng-bind="home['sqft_max']"></span></p> 
-      
-       <p>address_fields: <span ng-bind="home['address_fields']"></span></p> 
-      
-       <p>extra: <span ng-bind="home['extra']"></span></p> 
-      
-       <p>premium: <span ng-bind="home['premium']"></span></p> 
-      
-       <p>mls_num: <span ng-bind="home['mls_num']"></span></p> 
-      
-       <p>id: <span ng-bind="home['id']"></span></p> 
-      
-
-
-      <super-modal-show location="home#edit?id={{ home.id }}">
-        <button class="button button-block button-positive">
-          Edit
-        </button>
-      </super-modal-show>
-
-      <button ng-click="remove(home.id)" class="button button-block button-negative">
-        Remove
-      </button>
+      <h2 ng-bind="home.pr"></h2>
+      <p><span ng-bind="home.br"></span> Beds <span ng-bind="home.ba"></span> Baths</p>
+      <p>Year: <span ng-bind="home.yr"></span></p>
+      <p>SqFt: <span ng-bind="home.sf"></span></p>
+      <p><span ng-bind="home.ad"></span></p>
+      <p>extra: <span ng-bind="home['extra']"></span></p> 
+      <p>premium: <span ng-bind="home['premium']"></span></p> 
+      <p>MLS Number: <span ng-bind="home.ml"></span></p>
     </div>
   </div>
 </div>
