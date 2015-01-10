@@ -58,6 +58,7 @@ GEM
     multi_json (1.10.1)
     nokogiri (1.5.11)
     oj (2.11.1)
+    oj_mimic_json (1.0.1)
     pg (0.17.1)
     rack (1.5.2)
     rack-cors (0.3.1)
@@ -134,6 +135,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   oj
+  oj_mimic_json
   pg
   rack-cors
   rails (= 4.1.8)

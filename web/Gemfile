@@ -32,6 +32,7 @@ gem 'will_paginate', '~> 3.0.6'
 gem 'rack-cors', :require => 'rack/cors'
 
 gem 'oj'
+gem 'oj_mimic_json'
 
 # set environment variables
 gem 'figaro'
