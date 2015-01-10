@@ -2,7 +2,11 @@ module Api
   module V1
     class ListingsController < ApplicationController
       def index
-        @listings = Listing.select('price, beds, baths, year, sqft_max, address_fields, extra, premium, mls_num').paginate(:page => params[:page], :per_page => 200)
+        @listings = Listing.select('id, price, beds, baths, year, sqft_max, address_fields, mls_num')
+        render :json => @listings
+      end
+      def show
+        @listings = Listing.find(params[:id])
         render :json => @listings
       end
     end
