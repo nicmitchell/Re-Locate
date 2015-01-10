@@ -7,19 +7,39 @@
 
   <div ng-show="showSpinner" ng-include="'_spinner.html'"></div>
   <div ng-hide="showSpinner">
+    
+    <div class="search padding">
+      <h3>Filter:</h3>
+      <input ng-model="q.address_fields.StreetNumber" id="search-address" class="form-control" placeholder="Address">
+      <!-- not sorting by stret name -->
+      <input ng-model="q.address_fields.StreetName" id="search-street" class="form-control" placeholder="Street">
+      <input ng-model="q.beds" id="search-beds" class="form-control" placeholder="Bedrooms">
+      <input ng-model="q.extra.BathsTotal" id="search-baths" class="form-control" placeholder="Full Bathrooms">
+    </div>
+    <style>
+      img {
+        
+        float: left;
+      }
+    </style>
     <ul class="list" ng-hide="homes.length == 0">
+      <super-navigate location="home#show" data-params-id="{{ home.id }}" dir-paginate="home in homes | filter:q | itemsPerPage: 10" current-page="currentPage">
+        <li class="item item-icon-right" layout="flex">
 
-      <super-navigate location="home#show" data-params-id="{{ home.id }}" ng-repeat="home in homes">
-        <li class="item item-icon-right" style="background: url('http://pcspads.com/listing_pics/{{ home.mls_num }}/{{ home.mls_num }}_01.jpg') no-repeat;">
-          <h2>
-            <span ng-bind="home.address_fields.StreetNumber"></span>
-            <span ng-bind="home.address_fields.StreetName"></span>
-          </h2>
-
-          <span ng-bind="home.price | currency:undefined:0"></span> - 
-          <span ng-bind="home.beds"></span> Bedrooms
-          <span ng-bind="home.extra.BathsTotal"></span> Full Baths
-          <span ng-bind="home.extra.HalfBaths"></span> Half Baths
+          <img style="height: 100%; max-width: 100%; width: 100%;" src="http://pcspads.com/listing_pics/{{ home.mls_num }}/{{ home.mls_num }}_01.jpg" flex>
+        
+          <div class="padding" style="float:left" flex>
+            <h2>
+              <span ng-bind="home.address_fields.StreetNumber"></span>
+              <span ng-bind="home.address_fields.StreetName"></span>
+            </h2>
+            <p class="house">
+              <span ng-bind="home.price | currency:undefined:0"></span><br>
+              <span ng-bind="home.beds"></span> Bedroom<br>
+              <span ng-bind="home.baths"></span> Bath
+            </p>
+          </div>
+          
 
           <i class="icon super-ios7-arrow-right"></i>
         </li>
@@ -27,6 +47,8 @@
 
     </ul>
 
+    <dir-pagination-controls template-url="dirPagination.tpl.html"></dir-pagination-controls>
+    
     <h4 ng-show="homes.length == 0" class="assertive padding">
       No homes found.
     </h4>
