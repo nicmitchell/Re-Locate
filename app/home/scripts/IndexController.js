@@ -7,6 +7,7 @@ angular
 
     Home.all().whenChanged( function (homes) {
         $scope.$apply( function () {
+          console.log('homes',homes);
           $scope.homes = homes;
           $scope.showSpinner = false;
         });

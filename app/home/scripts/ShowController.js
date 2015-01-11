@@ -16,19 +16,17 @@ angular
     var _refreshViewData = function () {
       Home.find($scope.dataId).then( function (home) {
         $scope.$apply( function () {
-          // will need to take an address
           // translates address to lat/long for Google maps
-          Geocode.geocode(home.ad)
-            .then(function(data){
-              $scope.map = data;
+          // will need to take an address
+          Geocode.geocode(home.ad).then(function(data){
+            $scope.map = data;
           });
-
 
           $scope.home = home;
           $scope.showSpinner = false;
         });
       });
-    }
+    };
 
     supersonic.ui.views.current.whenVisible( function () {
       if ( $scope.dataId ) {
