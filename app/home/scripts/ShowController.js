@@ -11,7 +11,8 @@ angular
     $scope.home = null;
     $scope.showSpinner = true;
     $scope.dataId = undefined;
-    $scope.map = {}; 
+    $scope.map = {};
+    $scope.marker = {};
 
     var _refreshViewData = function () {
       Home.find($scope.dataId).then( function (home) {
@@ -19,7 +20,8 @@ angular
           // translates address to lat/long for Google maps
           // will need to take an address
           Geocode.geocode(home.ad).then(function(data){
-            $scope.map = data;
+            $scope.map = data.map;
+            $scope.marker = data.marker;
           });
 
           $scope.home = home;

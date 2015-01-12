@@ -8,12 +8,23 @@ angular
         url: 'https://maps.googleapis.com/maps/api/geocode/json?address=' + address
       })
       .then(function(res){
+        var lat = res.data.results[0].geometry.location.lat;
+        var lng = res.data.results[0].geometry.location.lng;
         return { 
-          center: { 
-            latitude: res.data.results[0].geometry.location.lat, 
-            longitude: res.data.results[0].geometry.location.lng
-          }, 
-          zoom: 16
+          map: { 
+            center: { 
+              latitude: lat, 
+              longitude: lng
+            }, 
+            zoom: 16
+          },
+          marker: {
+            id: 0,
+            coords: {
+              latitude: lat,
+              longitude: lng
+            }
+          }
         };
       });
     };
