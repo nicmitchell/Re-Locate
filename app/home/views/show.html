@@ -14,6 +14,11 @@
       <p>extra: <span ng-bind="home['extra']"></span></p> 
       <p>premium: <span ng-bind="home['premium']"></span></p> 
       <p>MLS Number: <span ng-bind="home.ml"></span></p>
+      <style>
+        .angular-google-map-container { height: 400px; }
+      </style> 
+    
+      <ui-gmap-google-map center='map.center' zoom='map.zoom' style="height:400px"></ui-gmap-google-map>
     </div>
   </div>
 </div>
