@@ -10,7 +10,7 @@ class Listing < ActiveRecord::Base
     mls = Mls.config[:listing]
 
     records.each do |record|
-      listing = Listing.where(:mls_num => record[mls[:mls_num]]).first_or_initialize
+      listing = Listing.where(:ml => record[mls[:ml]]).first_or_initialize
 
       mls.each do |key, val|
         if key == :modify
@@ -23,12 +23,14 @@ class Listing < ActiveRecord::Base
           end
         end
       end
+      listing.send(:rets_address)
       listing.send(:rets_office, record)
 
       listing.save!
     end
 
     Listing.delete_all(active: false)
+    FileUtils.rm(Rails.root.join('public', 'api', 'v1', 'listings.json').to_s)
   end
 
   private
@@ -45,16 +47,21 @@ class Listing < ActiveRecord::Base
     end
 
     def rets_sqft(record) # '1501 TO 1600', '5000 PLUS'
-      self.sqft_max = record['SqFtRange'].split(' TO ').last.to_i
+      self.ft = record['SqFtRange'].split(' TO ').last.to_i
     end
 
     def rets_baths(record)
       half = record['HalfBaths'].to_i > 0 ? '.5' : '.0'
-      self.baths = "#{record['BathsTotal']}#{half}".to_f
+      self.ba = "#{record['BathsTotal']}#{half}".to_f
     end
 
     def rets_office(record)
       self.extra['office_name'] = Office.where(:mls_id => record['ListingOfficeUID']).first.name
+    end
+
+    def rets_address
+      a = self.address_fields
+      self.ad = "#{a['StreetNumber']} #{a['StreetName']} #{a['City']} #{a['PostalCode']}".titlecase
     end
 
 end

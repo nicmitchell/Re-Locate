@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150105182831) do
+ActiveRecord::Schema.define(version: 20150110202609) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,11 +19,11 @@ ActiveRecord::Schema.define(version: 20150105182831) do
 
   create_table "listings", force: true do |t|
     t.boolean  "active",               default: true
-    t.integer  "price"
-    t.integer  "beds"
-    t.float    "baths"
-    t.integer  "year"
-    t.integer  "sqft_max"
+    t.integer  "pr"
+    t.integer  "bd"
+    t.float    "ba"
+    t.integer  "yr"
+    t.integer  "ft"
     t.hstore   "address_fields"
     t.hstore   "extra"
     t.hstore   "premium"
@@ -32,16 +32,11 @@ ActiveRecord::Schema.define(version: 20150105182831) do
     t.datetime "mls_photo_updated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "mls_num"
+    t.string   "ml"
+    t.string   "ad"
   end
 
-  add_index "listings", ["active"], name: "index_listings_on_active", using: :btree
-  add_index "listings", ["baths"], name: "index_listings_on_baths", using: :btree
-  add_index "listings", ["beds"], name: "index_listings_on_beds", using: :btree
-  add_index "listings", ["mls_num"], name: "index_listings_on_mls_num", using: :btree
-  add_index "listings", ["price"], name: "index_listings_on_price", using: :btree
-  add_index "listings", ["sqft_max"], name: "index_listings_on_sqft_max", using: :btree
-  add_index "listings", ["year"], name: "index_listings_on_year", using: :btree
+  add_index "listings", ["ml"], name: "index_listings_on_ml", using: :btree
 
   create_table "offices", force: true do |t|
     t.string   "name"

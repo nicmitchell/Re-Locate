@@ -26,6 +26,8 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 # https://github.com/estately/rets
 gem 'rets'
 
+gem 'actionpack-page_caching'
+
 # Paginate
 gem 'will_paginate', '~> 3.0.6'
 

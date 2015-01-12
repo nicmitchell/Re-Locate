@@ -1,7 +1,7 @@
 <div ng-controller="IndexController">
   <super-navbar>
     <super-navbar-title>
-      Home Index
+      Homes
     </super-navbar-title>
   </super-navbar>
 
@@ -10,41 +10,30 @@
     
     <div class="search padding">
       <h3>Filter:</h3>
-      <input ng-model="q.address_fields.StreetNumber" id="search-address" class="form-control" placeholder="Address">
-      <!-- not sorting by stret name -->
-      <input ng-model="q.address_fields.StreetName" id="search-street" class="form-control" placeholder="Street">
-      <input ng-model="q.beds" id="search-beds" class="form-control" placeholder="Bedrooms">
-      <input ng-model="q.extra.BathsTotal" id="search-baths" class="form-control" placeholder="Full Bathrooms">
+      <input ng-model="q.ad" id="search-address" class="form-control" placeholder="Address">
+      <input ng-model="q.bd" id="search-beds" class="form-control" placeholder="Beds">
+      <input ng-model="q.ba" id="search-baths" class="form-control" placeholder="Baths">
     </div>
     <style>
-      img {
-        
-        float: left;
-      }
+      img { float: left; }
     </style>
-    <ul class="list" ng-hide="homes.length == 0">
-      <super-navigate location="home#show" data-params-id="{{ home.id }}" dir-paginate="home in homes | filter:q | itemsPerPage: 10" current-page="currentPage">
+    <ul class="list">
+      <super-navigate location="home#show" data-params-id="{{ home.ml }}" dir-paginate="home in homes | filter:q | itemsPerPage: 10" current-page="currentPage">
         <li class="item item-icon-right" layout="flex">
-
-          <img style="height: 100%; max-width: 100%; width: 100%;" src="http://pcspads.com/listing_pics/{{ home.mls_num }}/{{ home.mls_num }}_01.jpg" flex>
+          <img style="height: 100%; max-width: 100%; width: 100%;" src="http://pcspads.com/listing_pics/{{ home.ml }}/{{ home.ml }}_01.jpg" flex>
         
           <div class="padding" style="float:left" flex>
-            <h2>
-              <span ng-bind="home.address_fields.StreetNumber"></span>
-              <span ng-bind="home.address_fields.StreetName"></span>
-            </h2>
+            <h2 ng-bind="home.ad"></h2>
             <p class="house">
-              <span ng-bind="home.price | currency:undefined:0"></span><br>
-              <span ng-bind="home.beds"></span> Bedroom<br>
-              <span ng-bind="home.baths"></span> Bath
+              <span ng-bind="home.pr | currency:undefined:0"></span><br>
+              <span ng-bind="home.bd"></span> Beds<br>
+              <span ng-bind="home.ba"></span> Baths
             </p>
           </div>
-          
 
           <i class="icon super-ios7-arrow-right"></i>
         </li>
       </super-navigate>
-
     </ul>
 
     <dir-pagination-controls template-url="dirPagination.tpl.html"></dir-pagination-controls>
