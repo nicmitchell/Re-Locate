@@ -13,7 +13,14 @@
       <p><span ng-bind="home.ad"></span></p>
       <p>extra: <span ng-bind="home['extra']"></span></p> 
       <p>premium: <span ng-bind="home['premium']"></span></p> 
-      <p>MLS Number: <span ng-bind="home.ml"></span></p>
+      <p>MLS Number: <span ng-bind="home.id"></span></p>
+      <style>
+        .angular-google-map-container { height: 400px; }
+      </style> 
+    
+      <ui-gmap-google-map center='map.center' zoom='map.zoom' style="height:400px">
+        <ui-gmap-marker coords="marker.coords" idkey="marker.id"></ui-gmap-marker>
+      </ui-gmap-google-map>
     </div>
   </div>
 </div>

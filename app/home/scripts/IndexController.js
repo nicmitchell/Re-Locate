@@ -6,9 +6,9 @@ angular
     $scope.currentPage = 1;
 
     Home.all().whenChanged( function (homes) {
-        $scope.$apply( function () {
-          $scope.homes = homes;
-          $scope.showSpinner = false;
-        });
+      $scope.$apply( function () {
+        $scope.homes = homes;
+        $scope.showSpinner = false;
+      });
     });
   });

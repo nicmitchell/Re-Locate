@@ -18,22 +18,27 @@
       img { float: left; }
     </style>
     <ul class="list">
-      <super-navigate location="home#show" data-params-id="{{ home.ml }}" dir-paginate="home in homes | filter:q | itemsPerPage: 10" current-page="currentPage">
-        <li class="item item-icon-right" layout="flex">
-          <img style="height: 100%; max-width: 100%; width: 100%;" src="http://pcspads.com/listing_pics/{{ home.ml }}/{{ home.ml }}_01.jpg" flex>
-        
-          <div class="padding" style="float:left" flex>
-            <h2 ng-bind="home.ad"></h2>
-            <p class="house">
-              <span ng-bind="home.pr | currency:undefined:0"></span><br>
-              <span ng-bind="home.bd"></span> Beds<br>
-              <span ng-bind="home.ba"></span> Baths
-            </p>
-          </div>
+      <div dir-paginate="home in homes | filter:q | itemsPerPage: 10">
+        <super-navigate location="home#show" data-params-id="{{home.id}}" current-page="currentPage">
+          <li class="item item-icon-right" layout="flex">
+            <img style="height: 100%; max-width: 100%; width: 100%;" ng-src="http://pcspads.com/listing_pics/{{ home.id }}/{{ home.id }}_01.jpg" flex>
+          
+            <div class="padding" style="float:left" flex>
+              <h2 ng-bind="home.ad"></h2>
+              <p class="house">
+                <span ng-bind="home.pr | currency:undefined:0"></span><br>
+                <span ng-bind="home.bd"></span> Beds
+                <span ng-bind="home.ba"></span> Baths
+                <br>
+                SqFt: <span ng-bind="home.ft"></span>
+                Year: <span ng-bind="home.yr"></span>
+              </p>
+            </div>
 
-          <i class="icon super-ios7-arrow-right"></i>
-        </li>
-      </super-navigate>
+            <i class="icon super-ios7-arrow-right"></i>
+          </li>
+        </super-navigate>
+      </div>
     </ul>
 
     <dir-pagination-controls template-url="dirPagination.tpl.html"></dir-pagination-controls>
