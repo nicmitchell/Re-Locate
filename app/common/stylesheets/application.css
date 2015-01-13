@@ -6,3 +6,12 @@
 
 .agent-pic { width: 100%; border-bottom: 1px solid black; }
 .agent-contact { text-align: center; }
+
+.homes-show table {
+  table-layout: fixed;
+  width: 100%;
+}
+.homes-show table, .homes-show th, .homes-show td { border: 1px solid #333; }
+.homes-show table.no-top-border { margin-top: -1px; }
+.homes-show td { padding: 0.25em; }
+.homes-show td:first-child { width: 150px; }

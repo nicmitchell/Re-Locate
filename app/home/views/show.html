@@ -1,90 +1,227 @@
-<div ng-controller="ShowController">
+<div ng-controller="ShowController" class='homes-show'>
   <super-navbar>
     <super-navbar-title ng-bind="home.ad"></super-navbar-title>
   </super-navbar>
 
   <div class="padding">
-    <!-- <div ng-show="showSpinner" ng-include="'_spinner.html'"></div> -->
-    <div ng-hide="showSpinner">
+    <div>
       <img style="height: 100%; max-width: 100%; width: 100%;" ng-src="http://pcspads.com/listing_pics/{{ home.id }}/{{ home.id }}_01.jpg" flex>
       <h2 ng-bind="home.pr | currency:undefined:0"></h2>
       <p>
         <span ng-bind="home.ad"></span>
         <br>
         <span ng-bind="home.bd"></span> Beds <span ng-bind="home.ba"></span> Baths
-        <br>
-        Year: <span ng-bind="home.yr"></span>
-        <br>
-        SqFt: <span ng-bind="home.extra.SqFtRange"></span>
       </p>
+
+      <p ng-bind='home.extra.PublicRemarks'></p>
+
+      <table>
+        <tr>
+          <td>Square Feet</td>
+          <td><span ng-bind='home.extra.SqFtRange'></span></td>
+        </tr>
+        <tr>
+          <td>Acreage</td>
+          <td><span ng-bind='home.extra.Acreage'></span></td>
+        </tr>
+        <tr>
+          <td>County</td>
+          <td><span ng-bind='home.extra.County'></span></td>
+        </tr>
+        <tr>
+          <td>Style</td>
+          <td><span ng-bind='home.extra.Style'></span></td>
+        </tr>
+        <tr>
+          <td>MLS Number</td>
+          <td><span ng-bind='home.extra.ListingID'></span></td>
+        </tr>
+      </table>
+
+      <super-navigate ng-hide="isCurrentUser" location="user#edit-user">
+        <button class="button button-block button-positive">
+          Create Account to See All <span class='super-arrow-down-c'></span>
+        </button>
+      </super-navigate>
+
+      <table ng-class='{"no-top-border": isCurrentUser}'>
+        <tr>
+          <td>ListDate</td>
+          <td><span ng-bind='home.extra.ListDate' ng-show='isCurrentUser'></span></td>
+        </tr>
+        <tr>
+          <td>Foreclosure</td>
+          <td><span ng-bind='home.premium.Foreclosure' ng-show='isCurrentUser'></span></td>
+        </tr>
+        <tr>
+          <td>Short Sale?</td>
+          <td><span ng-bind='home.premium.ShortSaleYN' ng-show='isCurrentUser'></span></td>
+        </tr>
+        <tr>
+          <td>Due Diligence Period</td>
+          <td><span ng-bind='home.premium.DueDiligencePeriod' ng-show='isCurrentUser'></span></td>
+        </tr>
+        <tr>
+          <td>Elementary</td>
+          <td><span ng-bind='home.premium.ElementarySchool' ng-show='isCurrentUser'></span></td>
+        </tr>
+        <tr>
+          <td>Middle</td>
+          <td><span ng-bind='home.premium.MiddleSchool' ng-show='isCurrentUser'></span></td>
+        </tr>
+        <tr>
+          <td>High</td>
+          <td><span ng-bind='home.premium.HighSchool' ng-show='isCurrentUser'></span></td>
+        </tr>
+        <tr>
+          <td>Virtual Tour</td>
+          <td><span ng-bind='home.premium.VirtualTourURL' ng-show='isCurrentUser'></span></td>
+        </tr>
+        <tr>
+          <td>Appliances</td>
+          <td><span ng-bind='home.extra.Appliance' ng-show='isCurrentUser'></span></td>
+        </tr>
+        <tr>
+          <td>Condition</td>
+          <td><span ng-bind='home.extra.Condition' ng-show='isCurrentUser'></span></td>
+        </tr>
+        <tr>
+          <td>Includes</td>
+          <td><span ng-bind='home.extra.Includes' ng-show='isCurrentUser'></span></td>
+        </tr>
+        <tr>
+          <td>Fireplace</td>
+          <td><span ng-bind='home.extra.Fireplace' ng-show='isCurrentUser'></span></td>
+        </tr>
+        <tr>
+          <td>Interior</td>
+          <td><span ng-bind='home.extra.InteriorFeatures' ng-show='isCurrentUser'></span></td>
+        </tr>
+        <tr>
+          <td>Dining Room</td>
+          <td><span ng-bind='home.extra.DiningRoom' ng-show='isCurrentUser'></span></td>
+        </tr>
+        <tr>
+          <td>Misc</td>
+          <td><span ng-bind='home.extra.Misc' ng-show='isCurrentUser'></span></td>
+        </tr>
+        <tr>
+          <td>Garage</td>
+          <td><span ng-bind='home.extra.Garage' ng-show='isCurrentUser'></span></td>
+        </tr>
+        <tr>
+          <td>Material</td>
+          <td><span ng-bind='home.extra.PropertyConstructionMaterial' ng-show='isCurrentUser'></span></td>
+        </tr>
+        <tr>
+          <td>Site Description</td>
+          <td><span ng-bind='home.extra.SiteDescription' ng-show='isCurrentUser'></span></td>
+        </tr>
+        <tr>
+          <td>Miscellaneous</td>
+          <td><span ng-bind='home.extra.Miscellaneous' ng-show='isCurrentUser'></span></td>
+        </tr>
+        <tr>
+          <td>Heat</td>
+          <td><span ng-bind='home.extra.TypeHeat' ng-show='isCurrentUser'></span></td>
+        </tr>
+        <tr>
+          <td>Gas</td>
+          <td><span ng-bind='home.extra.Gas' ng-show='isCurrentUser'></span></td>
+        </tr>
+        <tr>
+          <td>Electric</td>
+          <td><span ng-bind='home.extra.Electric' ng-show='isCurrentUser'></span></td>
+        </tr>
+        <tr>
+          <td>Water</td>
+          <td><span ng-bind='home.extra.Water' ng-show='isCurrentUser'></span></td>
+        </tr>
+        <tr>
+          <td>Sewer</td>
+          <td><span ng-bind='home.extra.Sewer' ng-show='isCurrentUser'></span></td>
+        </tr>
+        <tr>
+          <td>Floors</td>
+          <td><span ng-bind='home.extra.Floors' ng-show='isCurrentUser'></span></td>
+        </tr>
+        <tr>
+          <td>Lot Number</td>
+          <td><span ng-bind='home.extra.LotNumber' ng-show='isCurrentUser'></span></td>
+        </tr>
+        <tr>
+          <td>Possession</td>
+          <td><span ng-bind='home.extra.Possession' ng-show='isCurrentUser'></span></td>
+        </tr>
+        <tr>
+          <td>Contingency Status</td>
+          <td><span ng-bind='home.extra.ContingencyStatus' ng-show='isCurrentUser'></span></td>
+        </tr>
+        <tr>
+          <td>Zoning</td>
+          <td><span ng-bind='home.extra.Zoning' ng-show='isCurrentUser'></span></td>
+        </tr>
+        <tr>
+          <td>Units</td>
+          <td><span ng-bind='home.extra.Units' ng-show='isCurrentUser'></span></td>
+        </tr>
+        <tr>
+          <td>Occupancy Description</td>
+          <td><span ng-bind='home.extra.OccupancyDescription' ng-show='isCurrentUser'></span></td>
+        </tr>
+        <tr>
+          <td>Subdivision</td>
+          <td><span ng-bind='home.premium.AddressSubdivisionName' ng-show='isCurrentUser'></span></td>
+        </tr>
+        <tr>
+          <td>Area</td>
+          <td><span ng-bind='home.premium.Area' ng-show='isCurrentUser'></span></td>
+        </tr>
+        <tr>
+          <td>Confirmed Spc Assessment</td>
+          <td><span ng-bind='home.premium.ConfirmedSpcAssessment' ng-show='isCurrentUser'></span></td>
+        </tr>
+        <tr>
+          <td>Proposed Assessments</td>
+          <td><span ng-bind='home.premium.ProposedAssessments' ng-show='isCurrentUser'></span></td>
+        </tr>
+        <tr>
+          <td>Wooded Acres</td>
+          <td><span ng-bind='home.premium.WoodedAcres' ng-show='isCurrentUser'></span></td>
+        </tr>
+        <tr>
+          <td>Tax ID</td>
+          <td><span ng-bind='home.premium.TaxID' ng-show='isCurrentUser'></span></td>
+        </tr>
+        <tr>
+          <td>Deed Book Number</td>
+          <td><span ng-bind='home.premium.DeedBookNumber' ng-show='isCurrentUser'></span></td>
+        </tr>
+        <tr>
+          <td>Deed Page</td>
+          <td><span ng-bind='home.premium.DeedPage' ng-show='isCurrentUser'></span></td>
+        </tr>
+        <tr>
+          <td>Plat Book</td>
+          <td><span ng-bind='home.premium.PlatBook' ng-show='isCurrentUser'></span></td>
+        </tr>
+        <tr>
+          <td>Plat Book Page</td>
+          <td><span ng-bind='home.premium.PlatBookPage' ng-show='isCurrentUser'></span></td>
+        </tr>
+        <tr>
+          <td>Home Warranty?</td>
+          <td><span ng-bind='home.premium.HomeWarrantyYN' ng-show='isCurrentUser'></span></td>
+        </tr>
+      </table>
+
 
       <style>
         .angular-google-map-container { height: 400px; }
       </style>
-      <ui-gmap-google-map center='map.center' zoom='map.zoom' style="height:400px">
+      <ui-gmap-google-map ng-show='home.ad' center='map.center' zoom='map.zoom' style="height:400px">
         <ui-gmap-marker coords="marker.coords" idkey="marker.id"></ui-gmap-marker>
       </ui-gmap-google-map>
-
-      <hr>
-      <h3>{{home.extra.PublicRemarks}}</h3>
-      <h3>Acreage: {{home.extra.Acreage}}</h3>
-      <h3>{{home.extra.County}} County</h3>
-      <h3>Style: {{home.extra.Style}}</h3>
-      <h3>Condition: {{home.extra.Condition}}</h3>
-      <h3>Includes: {{home.extra.Includes}}</h3>
-      <h3>Appliances: {{home.extra.Appliance}}</h3>
-      <h3>Fireplace: {{home.extra.Fireplace}}</h3>
-      <h3>Interior Features: {{home.extra.InteriorFeatures}}</h3>
-      <h3>Dining Room: {{home.extra.DiningRoom}}</h3>
-      <h3>Misc: {{home.extra.Misc}}</h3>
-      <h3>Garage: {{home.extra.Garage}}</h3>
-      <h3>Property Construction Material: {{home.extra.PropertyConstructionMaterial}}</h3>
-      <h3>Site Description: {{home.extra.SiteDescription}}</h3>
-      <h3>Miscellaneous: {{home.extra.Miscellaneous}}</h3>
-      <h3>Heat: {{home.extra.TypeHeat}}</h3>
-      <h3>Gas: {{home.extra.Gas}}</h3>
-      <h3>Electric: {{home.extra.Electric}}</h3>
-      <h3>Sewer: {{home.extra.Sewer}}</h3>
-      <h3>Water: {{home.extra.Water}}</h3>
-      <h3>Floors: {{home.extra.Floors}}</h3>
-      <h3>Lot Number: {{home.extra.LotNumber}}</h3>
-      <h3>Possession: {{home.extra.Possession}}</h3>
-      <h3>Contingency Status: {{home.extra.ContingencyStatus}}</h3>
-      <h3>Zoning: {{home.extra.Zoning}}</h3>
-      <h3>Units: {{home.extra.Units}}</h3>
-      <h3>Occupancy Description: {{home.extra.OccupancyDescription}}</h3>
-      <h3>MLS Number: {{home.extra.ListingID}}</h3>
-
-      <super-navigate ng-hide="isCurrentUser" location="user#edit-user">
-        <button class="button button-block button-positive">
-          Create Account to See Much More
-        </button>
-      </super-navigate>
-
-      <div ng-show='isCurrentUser'>
-        <h3>ListDate: <span ng-bind="home.premium.ListDate"></span></h3>
-        <h3>AddressSubdivisionName: {{home.premium.AddressSubdivisionName}}</h3>
-        <h3>Area: {{home.premium.Area}}</h3>
-        <h3>ProposedAssessments: {{home.premium.ProposedAssessments}}</h3>
-        <h3>ConfirmedSpcAssessment: {{home.premium.ConfirmedSpcAssessment}}</h3>
-        <h3>Foreclosure: {{home.premium.Foreclosure}}</h3>
-        <h3>ShortSaleYN: {{home.premium.ShortSaleYN}}</h3>
-        <h3>DueDiligencePeriod: {{home.premium.DueDiligencePeriod}}</h3>
-        <h3>ElementarySchool: {{home.premium.ElementarySchool}}</h3>
-        <h3>MiddleSchool: {{home.premium.MiddleSchool}}</h3>
-        <h3>HighSchool: {{home.premium.HighSchool}}</h3>
-        <h3>VirtualTourURL: {{home.premium.VirtualTourURL}}</h3>
-        <h3>WoodedAcres: {{home.premium.WoodedAcres}}</h3>
-        <h3>TaxID: {{home.premium.TaxID}}</h3>
-        <h3>DeedBookNumber: {{home.premium.DeedBookNumber}}</h3>
-        <h3>DeedPage: {{home.premium.DeedPage}}</h3>
-        <h3>PlatBook: {{home.premium.PlatBook}}</h3>
-        <h3>PlatBookPage: {{home.premium.PlatBookPage}}</h3>
-        <h3>ClosePrice: {{home.premium.ClosePrice}}</h3>
-        <h3>CloseDate: {{home.premium.CloseDate}}</h3>
-        <h3>OwnerName: {{home.premium.OwnerName}}</h3>
-        <h3>HomeWarrantyYN: {{home.premium.HomeWarrantyYN}}</h3>        
-      </div>
 
     </div>
   </div>

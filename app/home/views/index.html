@@ -1,15 +1,21 @@
 <div ng-controller="IndexController">
   <super-navbar>
+    <super-navbar-button>
+      Sort
+    </super-navbar-button>
     <super-navbar-title>
       Homes
     </super-navbar-title>
+    <super-navbar-button side='right'>
+      Search
+      <!-- http://docs.appgyver.com/supersonic/guides/ui/native-components/navigation-bar/#super-navbar-button -->
+    </super-navbar-button>
   </super-navbar>
 
   <div ng-show="showSpinner" ng-include="'_spinner.html'"></div>
   <div ng-hide="showSpinner">
     
     <div class="search padding">
-      <h3>Filter:</h3>
       <input ng-model="q.ad" id="search-address" class="form-control" placeholder="Address">
       <input ng-model="q.bd" id="search-beds" class="form-control" placeholder="Beds">
       <input ng-model="q.ba" id="search-baths" class="form-control" placeholder="Baths">

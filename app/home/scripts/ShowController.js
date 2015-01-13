@@ -9,7 +9,6 @@ angular
   })
   .controller("ShowController", function ($scope, Home, Geocode, supersonic, User) {
     $scope.home = null;
-    $scope.showSpinner = true;
     $scope.dataId = undefined;
     $scope.map = {};
     $scope.marker = {};
@@ -18,8 +17,6 @@ angular
       Home.find($scope.dataId).then( function (home) {
         $scope.$apply( function () {
           $scope.home = home;
-          console.log('home.premium', home.premium)
-          $scope.showSpinner = false;
 
           // translates address to lat/long for Google maps
           // will need to take an address
@@ -37,6 +34,7 @@ angular
     }
 
     supersonic.ui.views.current.whenVisible( function () {
+      steroids.view.removeLoading();
       if ( $scope.dataId ) {
         _refreshViewData();
       }
