@@ -11,3 +11,5 @@ angular.module('common', [
     name: 'appData' 
   });
 }]);
+
+steroids.screen.setAllowedRotations(['portrait'])
