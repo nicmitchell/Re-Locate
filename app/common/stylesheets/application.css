@@ -14,4 +14,7 @@
 .homes-show table, .homes-show th, .homes-show td { border: 1px solid #333; }
 .homes-show table.no-top-border { margin-top: -1px; }
 .homes-show td { padding: 0.25em; }
-.homes-show td:first-child { width: 150px; }
+.homes-show td:first-child { width: 125px; }
+
+.home-map { margin-top: 1.5em; }
+.home-map .angular-google-map-container { height: 300px; }

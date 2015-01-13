@@ -215,13 +215,11 @@
         </tr>
       </table>
 
-
-      <style>
-        .angular-google-map-container { height: 400px; }
-      </style>
-      <ui-gmap-google-map ng-show='home.ad' center='map.center' zoom='map.zoom' style="height:400px">
-        <ui-gmap-marker coords="marker.coords" idkey="marker.id"></ui-gmap-marker>
-      </ui-gmap-google-map>
+      <div class='home-map' ng-show='home.ad'>
+        <ui-gmap-google-map center='map.center' zoom='map.zoom' style="height:400px">
+          <ui-gmap-marker coords="marker.coords" idkey="marker.id"></ui-gmap-marker>
+        </ui-gmap-google-map>
+      </div>
 
     </div>
   </div>
