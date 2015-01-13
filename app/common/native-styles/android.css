@@ -60,7 +60,7 @@ tab-bar tab-bar-item marker-top:selected {
   background-color: #1596f7;
 }
 
-tab-bar-item#listing {
+tab-bar-item#homes {
   background-image: url(icons/home.svg);
 }
 

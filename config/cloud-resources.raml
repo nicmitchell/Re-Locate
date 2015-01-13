@@ -120,7 +120,7 @@ resourceTypes:
         body:
           application/json:
             schema: |
-              {"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical Home representation","properties":{"ml":{"type":"string"},"pr":{"type":"integer"},"bd":{"type":"integer"},"ba":{"type":"string"},"yr":{"type":"integer"},"ft":{"type":"integer"},"ad":{"type":"string"}},"required":[]}
+              {"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical Home representation","properties":{"ml":{"type":"string"},"pr":{"type":"integer"},"bd":{"type":"integer"},"ba":{"type":"string"},"yr":{"type":"integer"},"ft":{"type":"integer"},"ad":{"type":"string"},"premium":{"type":"string"},"extra":{"type":"string"}},"required":[]}
   
 
   /.json:
@@ -140,7 +140,7 @@ resourceTypes:
           body:
             application/json:
               schema: |
-                {"$schema":"http://json-schema.org/schema","title":"Home collection","type":"array","items":{"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical Home representation","properties":{"ml":{"type":"string"},"pr":{"type":"integer"},"bd":{"type":"integer"},"ba":{"type":"string"},"yr":{"type":"integer"},"ft":{"type":"integer"},"ad":{"type":"string"}},"required":[]}}
+                {"$schema":"http://json-schema.org/schema","title":"Home collection","type":"array","items":{"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical Home representation","properties":{"ml":{"type":"string"},"pr":{"type":"integer"},"bd":{"type":"integer"},"ba":{"type":"string"},"yr":{"type":"integer"},"ft":{"type":"integer"},"ad":{"type":"string"},"premium":{"type":"string"},"extra":{"type":"string"}},"required":[]}}
     
 
   /{id}:
@@ -160,7 +160,7 @@ resourceTypes:
           body:
             application/json:
               schema: |
-                {"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical Home representation","properties":{"ml":{"type":"string"},"pr":{"type":"integer"},"bd":{"type":"integer"},"ba":{"type":"string"},"yr":{"type":"integer"},"ft":{"type":"integer"},"ad":{"type":"string"}},"required":[]}
+                {"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical Home representation","properties":{"ml":{"type":"string"},"pr":{"type":"integer"},"bd":{"type":"integer"},"ba":{"type":"string"},"yr":{"type":"integer"},"ft":{"type":"integer"},"ad":{"type":"string"},"premium":{"type":"string"},"extra":{"type":"string"}},"required":[]}
     
     put:
       is: [ securedBySteroidsApiKey ]
@@ -178,7 +178,7 @@ resourceTypes:
           body:
             application/json:
               schema: |
-                {"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical Home representation","properties":{"ml":{"type":"string"},"pr":{"type":"integer"},"bd":{"type":"integer"},"ba":{"type":"string"},"yr":{"type":"integer"},"ft":{"type":"integer"},"ad":{"type":"string"}},"required":[]}
+                {"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical Home representation","properties":{"ml":{"type":"string"},"pr":{"type":"integer"},"bd":{"type":"integer"},"ba":{"type":"string"},"yr":{"type":"integer"},"ft":{"type":"integer"},"ad":{"type":"string"},"premium":{"type":"string"},"extra":{"type":"string"}},"required":[]}
     
     delete:
       is: [ securedBySteroidsApiKey ]

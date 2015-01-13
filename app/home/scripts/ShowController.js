@@ -7,7 +7,7 @@ angular
           libraries: 'weather,geometry,visualization'
       });
   })
-  .controller("ShowController", function ($scope, Home, Geocode, supersonic) {
+  .controller("ShowController", function ($scope, Home, Geocode, supersonic, User) {
     $scope.home = null;
     $scope.showSpinner = true;
     $scope.dataId = undefined;
@@ -17,6 +17,10 @@ angular
     var _refreshViewData = function () {
       Home.find($scope.dataId).then( function (home) {
         $scope.$apply( function () {
+          $scope.home = home;
+          console.log('home.premium', home.premium)
+          $scope.showSpinner = false;
+
           // translates address to lat/long for Google maps
           // will need to take an address
           Geocode.geocode(home.ad).then(function(data){
@@ -24,11 +28,13 @@ angular
             $scope.marker = data.marker;
           });
 
-          $scope.home = home;
-          $scope.showSpinner = false;
         });
       });
     };
+
+    if(Object.keys(User.getCurrent()).length) {
+      $scope.isCurrentUser = true;
+    }
 
     supersonic.ui.views.current.whenVisible( function () {
       if ( $scope.dataId ) {
@@ -40,7 +46,5 @@ angular
       $scope.dataId = values.id;
       _refreshViewData();
     });
-
-   
 
   });

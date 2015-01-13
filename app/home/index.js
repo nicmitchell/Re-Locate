@@ -3,5 +3,6 @@ angular.module('home', [
   'common',
   'angularUtils.directives.dirPagination',
   'uiGmapgoogle-maps',
+  'user',
   'home.services'
 ]);
