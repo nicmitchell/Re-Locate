@@ -17,14 +17,11 @@ angular
       Home.find($scope.dataId).then( function (home) {
         $scope.$apply( function () {
           $scope.home = home;
-
-          // translates address to lat/long for Google maps
-          // will need to take an address
-          Geocode.geocode(home.ad).then(function(data){
-            $scope.map = data.map;
-            $scope.marker = data.marker;
-          });
-
+        });
+        // translates address to lat/long for Google maps
+        Geocode.geocode(home.ad).then(function(data){
+          $scope.map = data.map;
+          $scope.marker = data.marker;
         });
       });
     };
