@@ -6,9 +6,12 @@
 
   <title><%= yield.viewName %></title>
 
-  <link rel="stylesheet" href="/components/supersonic/css/supersonic.css" />
-  <link rel="stylesheet" href="/common/stylesheets/application.css" />
-  <link rel="stylesheet" href="/components/angular-material/angular-material.css" />
+  <link rel="stylesheet" href="/components/supersonic/css/supersonic.css">
+  <link rel="stylesheet" href="/components/angular-material/angular-material.css">
+  <link rel="stylesheet" href="/components/photoswipe/dist/photoswipe.css">
+  <link rel="stylesheet" href="/components/photoswipe/dist/default-skin/default-skin.css">
+  <link rel="stylesheet" href="/common/stylesheets/application.css">
+
   <link rel="import" href="/components/supersonic/components/import.html">
 
   <script src="http://localhost/cordova.js"></script>
@@ -22,6 +25,8 @@
   <script src="/components/angular-utils-pagination/dirPagination.js"></script>
   <script src='/components/lodash/dist/lodash.min.js'></script>
   <script src='/components/angular-google-maps/dist/angular-google-maps.min.js'></script>
+  <script src='/components/photoswipe/dist/photoswipe.min.js'></script>
+  <script src='/components/photoswipe/dist/photoswipe-ui-default.min.js'></script>
 
   <script src="/app/user.js"></script>
   <% _.each(yield.modules, function(module) { %>
