@@ -19,11 +19,6 @@ module.exports =
       id: "contact"
       location: "example#contact"
     }
-    {
-      title: "drawer too"
-      id: "settings"
-      location: "example#settings"
-    }
   ]
 
   # rootView:
