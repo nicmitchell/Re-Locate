@@ -4,5 +4,6 @@ angular.module('home', [
   'angularUtils.directives.dirPagination',
   'uiGmapgoogle-maps',
   'user',
-  'home.services'
+  'home.services',
+  'vr.directives.slider'
 ]);
