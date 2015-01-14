@@ -6,9 +6,16 @@
   </super-navbar>
 
   <div class="search padding">
-    <input ng-model="q.ad" id="search-address" class="form-control" placeholder="Address">
-    <input ng-model="q.bd" id="search-beds" class="form-control" placeholder="Beds">
-    <input ng-model="q.ba" id="search-baths" class="form-control" placeholder="Baths">
+  <input ng-model='q.bd.from' type="number" min="1" max="10">
+    <!-- <slider style="height: 100px; display: block;"
+        ng-model="q.bd.from"
+        ng-model-range="q.bd.to"
+        buffer="1"
+        floor="1"
+        ceiling="10"
+        step="1"
+        precision="1">
+    </slider> -->
   </div>
 
   <!-- <super-modal-hide>   -->

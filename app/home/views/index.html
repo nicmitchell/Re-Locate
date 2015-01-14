@@ -13,17 +13,10 @@
 
   <div ng-show="showSpinner" ng-include="'_spinner.html'"></div>
   <div ng-hide="showSpinner">
-  Q
-  {{q}}
-  <super-navigate location="example#settings">Settings</super-navigate>
-    
-    <div class="search padding">
-      <input ng-model="q.ad" id="search-address" class="form-control" placeholder="Address">
-      <input ng-model="q.bd" id="search-beds" class="form-control" placeholder="Beds" name="beds">
-      <input ng-model="q.ba" id="search-baths" class="form-control" placeholder="Baths">
-    </div>
 
-    <slider style="height: 100px; display: block;"
+    <input type="text" ng-model="q.ad" placeholder="Address" style="border: 1px solid">
+    <h3>Beds</h3>
+    <slider
         ng-model="q.bd.from"
         ng-model-range="q.bd.to"
         buffer="1"
@@ -32,26 +25,22 @@
         step="1"
         precision="1">
     </slider>
-    <!-- 
-    <section data-range-slider class="range-slider ng-isolate-scope ng-valid" ng-model="q.bd" min="1" max="10"></section>Beds: {{q.bd}}
-
-    <section data-range-slider class="range-slider ng-isolate-scope ng-valid" ng-model="q.ba" min="1" max="10"></section>Baths: {{q.ba}}
-    
-    <section data-range-slider class="range-slider ng-isolate-scope ng-valid" ng-model="q.pr" min="10000" max="1000000"></section> Price: {{q.pr}}
-    
-    <section data-range-slider class="range-slider ng-isolate-scope ng-valid" ng-model="q.ft" min="500" max="5000"></section>Sq Ft: {{q.ft}}
-    
-    <section data-range-slider class="range-slider ng-isolate-scope ng-valid" ng-model="q.yr" min="1900" max="2015"></section>Year: {{q.yr}} -->
-
-    <!-- <div range-slider min="1" max="10" bed-min="min" bed-max="max"></div> -->
-    <!-- <div range-slider min="0" max="100" model-min="min" model-max="max" attach-handle-values="true"></div> -->
+    <h3>Baths</h3>
+    <slider
+        ng-model="q.ba.from"
+        ng-model-range="q.ba.to"
+        buffer="1"
+        floor="1"
+        ceiling="10"
+        step="1"
+        precision="1">
+    </slider>
 
     <style>
       img { float: left; }
     </style>
     <ul class="list">
-      <div dir-paginate="home in homes | qFilter: q| itemsPerPage: 10">
-      <!-- filter:q -->
+      <div dir-paginate="home in homes | homeFilter: q | itemsPerPage: 10">
         <super-navigate location="home#show" data-params-id="{{ home.id }}" current-page="currentPage">
           <li class="item item-icon-right" layout="flex">
             <img style="height: 100%; max-width: 100%; width: 100%;" ng-src="http://pcspads.com/listing_pics/{{ home.id }}/{{ home.id }}_01.jpg" flex>

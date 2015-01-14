@@ -51,7 +51,7 @@ angular
     };
 
     $scope.closeSearch = function(){
-      $scope.q = searchResults(q);
+      // $scope.q = searchResults(q);
       supersonic.ui.drawers.close().then( function() {
         supersonic.logger.debug("search drawer was hidden");
       });
@@ -66,24 +66,5 @@ angular
         $scope.showSpinner = false;
       });
     });
-  })
-  .filter('qFilter', function(){
-    return function(items, q) {
-
-      // Make sure there is something to filter
-      if (items === null || q === undefined) {
-        return;
-      }
-
-      return items.filter(function(item){
-        return (
-          item.bd >= q.bd.from && item.bd <= q.bd.to && // bedrooms
-          item.ba >= q.ba.from && item.ba <= q.ba.to && // bathrooms
-          item.pr >= q.pr.from && item.pr <= q.pr.to && // price
-          item.yr >= q.yr.from && item.yr <= q.yr.to && // year
-          item.ft >= q.ft.from && item.ft <= q.ft.to && // sq feet
-          _.contains(item.ad, q.ad) // address
-        );
-      });
-    };
+    $scope.$broadcast('refreshSlider');
   })
