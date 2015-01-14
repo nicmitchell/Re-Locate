@@ -1,31 +1,47 @@
 <div ng-controller="IndexController">
   <super-navbar>
-    <super-navbar-button>
-      Sort
+    <super-navbar-button side="left" ng-click="openSearch()">
+      Search
     </super-navbar-button>
     <super-navbar-title>
       Homes
     </super-navbar-title>
-    <super-navbar-button side='right'>
-      Search
-      <!-- http://docs.appgyver.com/supersonic/guides/ui/native-components/navigation-bar/#super-navbar-button -->
+    <super-navbar-button side="right">
+      Sort
     </super-navbar-button>
   </super-navbar>
 
   <div ng-show="showSpinner" ng-include="'_spinner.html'"></div>
   <div ng-hide="showSpinner">
-    
-    <div class="search padding">
-      <input ng-model="q.ad" id="search-address" class="form-control" placeholder="Address">
-      <input ng-model="q.bd" id="search-beds" class="form-control" placeholder="Beds">
-      <input ng-model="q.ba" id="search-baths" class="form-control" placeholder="Baths">
-    </div>
+
+    <input type="text" ng-model="q.ad" placeholder="Address" style="border: 1px solid">
+    <h3>Beds</h3>
+    <slider
+        ng-model="q.bd.from"
+        ng-model-range="q.bd.to"
+        buffer="1"
+        floor="1"
+        ceiling="10"
+        step="1"
+        precision="1">
+    </slider>
+    <h3>Baths</h3>
+    <slider
+        ng-model="q.ba.from"
+        ng-model-range="q.ba.to"
+        buffer="1"
+        floor="1"
+        ceiling="10"
+        step="1"
+        precision="1">
+    </slider>
+
     <style>
       img { float: left; }
     </style>
     <ul class="list">
-      <div dir-paginate="home in homes | filter:q | itemsPerPage: 10">
-        <super-navigate location="home#show" data-params-id="{{home.id}}" current-page="currentPage">
+      <div dir-paginate="home in homes | homeFilter: q | itemsPerPage: 10">
+        <super-navigate location="home#show" data-params-id="{{ home.id }}" current-page="currentPage">
           <li class="item item-icon-right" layout="flex">
             <img style="height: 100%; max-width: 100%; width: 100%;" ng-src="http://pcspads.com/listing_pics/{{ home.id }}/{{ home.id }}_01.jpg" flex>
           
