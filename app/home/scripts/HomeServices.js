@@ -28,6 +28,11 @@ angular
         };
       });
     };
+    
+    var searchResults = function(q){
+      return q;
+    };
+
     return {
       geocode: geocode
     };

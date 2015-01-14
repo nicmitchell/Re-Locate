@@ -1,0 +1,19 @@
+<div ng-controller="IndexController">
+  <super-navbar>
+    <super-navbar-title>
+      Search
+    </super-navbar-title>
+  </super-navbar>
+
+  <div class="search padding">
+    <input ng-model="q.ad" id="search-address" class="form-control" placeholder="Address">
+    <input ng-model="q.bd" id="search-beds" class="form-control" placeholder="Beds">
+    <input ng-model="q.ba" id="search-baths" class="form-control" placeholder="Baths">
+  </div>
+
+  <!-- <super-modal-hide>   -->
+    <button class="button button-block" ng-click="closeSearch()">
+      Search 
+    </button>
+  <!-- </super-modal-hide> -->
+</div>

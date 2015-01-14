@@ -38,11 +38,11 @@ module.exports =
 
   drawers:
     left:
-      id: "leftDrawer"
-      location: "example#settings"
+      id: "searchDrawer"
+      location: "home#search"
       showOnAppLoad: false
     options:
-      animation: "swingingDoor"
+      animation: "parallax"
       # http://docs.appgyver.com/supersonic/api-reference/stable/supersonic/ui/drawers/updateoptions/
   
   # initialView:
