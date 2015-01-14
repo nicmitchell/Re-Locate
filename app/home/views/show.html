@@ -8,6 +8,11 @@
 
   <div class="padding">
     <div>
+      <div class="button-bar">
+        <a ng-click="setChoice(true)" ng-class='{ "button-positive" : choice }' class='button super-thumbsup'></a>
+        <a ng-click="setChoice(false)" ng-class='{ "button-positive" : choice === false }' class='button super-thumbsdown'></a>
+      </div>
+
       <h2 ng-bind="home.pr | currency:undefined:0"></h2>
       <p>
         <span ng-bind="home.ad"></span>

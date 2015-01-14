@@ -7,7 +7,7 @@ angular
           libraries: 'weather,geometry,visualization'
       });
   })
-  .controller("ShowController", function ($scope, Home, Geocode, supersonic, User) {
+  .controller("ShowController", function ($scope, Home, Geocode, supersonic, User, Choice) {
     $scope.home = null;
     $scope.dataId = undefined;
     $scope.map = {};
@@ -24,8 +24,17 @@ angular
           $scope.map = data.map;
           $scope.marker = data.marker;
         });
+
+        $scope.choice = Choice.get()[$scope.home.id];
       });
     };
+
+    $scope.setChoice = function(bool) {
+      // null (to unset) if matches
+      $scope.choice = ($scope.choice === bool) ? null : bool;
+      
+      Choice.set($scope.home.id, $scope.choice);
+    };    
 
     if(Object.keys(User.getCurrent()).length) {
       $scope.isCurrentUser = true;
