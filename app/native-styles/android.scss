@@ -1,0 +1,58 @@
+/***********************************************************
+ * These styles apply for native components on Android.
+ * Read more about native styles at http://docs.appgyver.com
+ ***********************************************************/
+
+navigation-bar {
+  background-color: #00B5FF;
+  color: #ffffff;
+  padding-left: 6px;
+  padding-right: 6px;
+  
+  title {
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 600;
+  }
+
+  button {
+    color: #ffffff;
+    font-weight: 300;
+    margin-left: 6px;
+    margin-right: 6px;
+  }
+
+  back-indicator {
+    background-image: url(default_back_icon.png);
+    background-size: 18;
+  }
+
+  back-button {
+    color: #ffffff;
+    font-weight: 300;
+  }
+}
+
+
+/**************************************
+ *  Tab Bar
+ *************************************/
+
+tab-bar {
+  background-color: #ffffff;
+  border-top: 1px #d8d8d8 solid;
+
+  divider { background-color: #D8D8D8; }
+
+  tab-bar-item {
+    color: #b0b1b4;
+    font-family: "Roboto";
+    font-size: 10px;
+
+    &:selected { color: #1596f7; }
+    marker-top:selected { background-color: #1596f7; }
+    &#homes { background-image: url(icons/home.svg); }
+    &#account { background-image: url(icons/person.svg); }
+    &#contact { background-image: url(icons/ios-contact-outline.svg); }
+  }
+}

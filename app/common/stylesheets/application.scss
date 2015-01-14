@@ -1,0 +1,22 @@
+.supersonic-navbar-mock {
+  background-color: #00B5FF !important;
+  text-align: center;
+  font-weight: 600;
+}
+
+.agent-pic { width: 100%; border-bottom: 1px solid black; }
+.agent-contact { text-align: center; }
+
+.homes-show {
+  table {
+    table-layout: fixed;
+    width: 100%;
+  }
+  table, th, td { border: 1px solid #333; }
+  table.no-top-border { margin-top: -1px; }
+  td { padding: 0.25em; }
+  td:first-child { width: 125px; }
+
+  .home-map { margin-top: 1.5em; }
+  .home-map .angular-google-map-container { height: 300px; }
+}
