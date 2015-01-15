@@ -16,7 +16,6 @@ angular
         };
       });
     };
-
     return {
       geocode: geocode
     };
@@ -31,12 +30,12 @@ angular
 
       return items.filter(function(item){
         return (
-          item.bd >= q.bd.from && item.bd <= q.bd.to && // bedrooms
-          item.ba >= q.ba.from && item.ba <= q.ba.to && // bathrooms
-          item.pr >= q.pr.from && item.pr <= q.pr.to && // price
-          item.yr >= q.yr.from && item.yr <= q.yr.to && // year
-          item.ft >= q.ft.from && item.ft <= q.ft.to && // sq feet
-          _.contains(item.ad, q.ad) && // address
+          item.bd >= q.bd && // bedrooms
+          item.ba >= q.ba && // bathrooms
+          item.pr >= q.pr.min && item.pr <= q.pr.max && // price range
+          item.yr >= q.yr && // year
+          item.ft >= q.ft && // sq feet
+          _.contains(item.ad, q.ad) // address
           ((q.group.length > 0) ? _.contains(q.group, item.id) : true) //favs/unfavs (by MLS numbers)
         );
       });
