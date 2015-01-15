@@ -1,26 +1,55 @@
-<div ng-controller="IndexController">
+<div ng-controller="SearchController">
   <super-navbar>
     <super-navbar-title>
       Search
     </super-navbar-title>
   </super-navbar>
-
   <div class="search padding">
-  <input ng-model='q.bd.from' type="number" min="1" max="10">
-    <!-- <slider style="height: 100px; display: block;"
-        ng-model="q.bd.from"
-        ng-model-range="q.bd.to"
+    <input type="text" ng-model="q.ad" placeholder="Address">
+    <h3>Min Beds</h3>
+    <slider class="range"
+        ng-model="q.bd"
         buffer="1"
         floor="1"
         ceiling="10"
-        step="1"
-        precision="1">
-    </slider> -->
-  </div>
+        step="1">
+    </slider>
+    <h3>Min Baths</h3>
+    <slider
+        ng-model="q.ba"
+        buffer="1"
+        floor="1"
+        ceiling="10"
+        step="1">
+    </slider>
+    <h3>Price Range</h3>
+    <slider
+        ng-model="q.pr.min"
+        ng-model-range="q.pr.max"
+        buffer="1000"
+        floor="50000"
+        ceiling="599000"
+        step="1000">
+    </slider>
+    <h3>Min Year</h3>
+    <slider
+        ng-model="q.yr"
+        buffer="5"
+        floor="1950"
+        ceiling="2015"
+        step="1">
+    </slider>
+    <h3>Min Sq Feet</h3>
+    <slider
+        ng-model="q.ft"
+        buffer="100"
+        floor="500"
+        ceiling="3000"
+        step="10">
+    </slider>
 
-  <!-- <super-modal-hide>   -->
-    <button class="button button-block" ng-click="closeSearch()">
+    <button class="button button-block button-positive" ng-click="closeSearch()">
       Search 
     </button>
-  <!-- </super-modal-hide> -->
+  </div>
 </div>

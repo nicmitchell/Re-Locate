@@ -6,4 +6,5 @@ angular.module('home', [
   'user',
   'home.services',
   'vr.directives.slider'
-]);
+])
+

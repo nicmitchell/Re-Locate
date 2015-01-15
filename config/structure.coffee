@@ -31,13 +31,13 @@ module.exports =
     }
   ]
 
-  drawers:
-    left:
-      id: "searchDrawer"
-      location: "home#search"
-      showOnAppLoad: false
-    options:
-      animation: "parallax"
+  # drawers:
+  #   left:
+  #     id: "searchDrawer"
+  #     location: "home#search"
+  #     showOnAppLoad: false
+  #   options:
+  #     animation: "parallax"
       # http://docs.appgyver.com/supersonic/api-reference/stable/supersonic/ui/drawers/updateoptions/
   
   # initialView:

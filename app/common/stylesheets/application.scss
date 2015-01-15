@@ -20,3 +20,13 @@
   .home-map { margin-top: 1.5em; }
   .home-map .angular-google-map-container { height: 300px; }
 }
+
+.search {
+  overflow: hidden;
+  input[type="text"] {
+    border: 1px solid rgba(0,0,0,0.125);
+  }
+  span.bubble.selection.ng-binding {
+      display: none !important;
+  }
+}
