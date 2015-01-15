@@ -13,6 +13,10 @@
 
   <div ng-show="showSpinner" ng-include="'_spinner.html'"></div>
   <div ng-hide="showSpinner">
+    <div class="button-bar">
+      <a ng-click="groupFilter(true)" ng-class='{ "button-positive" : choice }' class='button super-thumbsup'></a>
+      <a ng-click="groupFilter(false)" ng-class='{ "button-positive" : choice === false }' class='button super-thumbsdown'></a>
+    </div>
 
     <input type="text" ng-model="q.ad" placeholder="Address" style="border: 1px solid">
     <h3>Beds</h3>
