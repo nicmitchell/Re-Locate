@@ -1,46 +1,11 @@
 angular
   .module('home')
-  .controller("IndexController", function ($scope, Home, supersonic, $filter, Choice) {
+  .controller("IndexController", function ($scope, Home, Choice, supersonic, query) {
     $scope.homes = null;
     $scope.showSpinner = true;
     $scope.currentPage = 1;
-    $scope.range = function(fieldName, min, max){
-      if (min === undefined) min = 1;
-      if (max === undefined) max = 10;
-      return function predicateFunc(item) {
-        return min <= item[fieldName] && item[fieldName] <= max;
-      };
-    };
+    $scope.q = query; // set query based on defaults
 
-    $scope.range = {
-      from: 2,
-      to: 9
-    };
-
-    $scope.q = {
-      ad: '',
-      group: [],
-      bd: {
-        from: 2,
-        to: 6
-      },
-      ba: {
-        from: 1,
-        to: 4
-      },
-      pr: {
-        from: 100000,
-        to: 500000
-      },
-      yr: {
-        from: 1970,
-        to: 2010
-      },
-      ft: {
-        from: 900,
-        to: 3000
-      }
-    };
 
     $scope.setChoice = function(bool) {
       // null (to unset) if matches
@@ -51,30 +16,28 @@ angular
       $scope.q.group = $scope.setChoice(bool) === null ? [] : Choice.group(bool);
     };
 
+    
+
+    // Open the search modal view and share current search params
     $scope.openSearch = function(){
-      supersonic.ui.drawers.open("left").then( function() {
-        supersonic.logger.debug("search drawer was shown");
+      supersonic.ui.modal.show("home#search").then( function() {
+        supersonic.data.channel('query').publish($scope.q);
       });
-      // supersonic.ui.modal.open("home#search").then( function() {
-      //   supersonic.logger.debug("search modal was shown");
-      // });
     };
 
-    $scope.closeSearch = function(){
-      // $scope.q = searchResults(q);
-      supersonic.ui.drawers.close().then( function() {
-        supersonic.logger.debug("search drawer was hidden");
+    // Receive query params from the search view
+    supersonic.data.channel('query')
+      .subscribe( function(q) {
+        $scope.$apply(function () {
+          $scope.q = q;
+        });
       });
-      // supersonic.ui.modal.hide().then( function() {
-      //   supersonic.logger.debug("search modal was hidden");
-      // });
-    };
 
+    // show the page when $scope.homes is loaded from the model
     Home.all().whenChanged( function (homes) {
       $scope.$apply( function () {
         $scope.homes = homes;
         $scope.showSpinner = false;
       });
     });
-    $scope.$broadcast('refreshSlider');
   })

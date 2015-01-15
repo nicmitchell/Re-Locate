@@ -17,37 +17,19 @@
       <a ng-click="groupFilter(true)" ng-class='{ "button-positive" : choice }' class='button super-thumbsup'></a>
       <a ng-click="groupFilter(false)" ng-class='{ "button-positive" : choice === false }' class='button super-thumbsdown'></a>
     </div>
-
-    <input type="text" ng-model="q.ad" placeholder="Address" style="border: 1px solid">
-    <h3>Beds</h3>
-    <slider
-        ng-model="q.bd.from"
-        ng-model-range="q.bd.to"
-        buffer="1"
-        floor="1"
-        ceiling="10"
-        step="1"
-        precision="1">
-    </slider>
-    <h3>Baths</h3>
-    <slider
-        ng-model="q.ba.from"
-        ng-model-range="q.ba.to"
-        buffer="1"
-        floor="1"
-        ceiling="10"
-        step="1"
-        precision="1">
-    </slider>
-
     <style>
-      img { float: left; }
+      img { 
+        float: left; 
+        height: 100%; 
+        max-width: 100%; 
+        width: 100%;
+      }
     </style>
     <ul class="list">
       <div dir-paginate="home in homes | homeFilter: q | itemsPerPage: 10">
         <super-navigate location="home#show" data-params-id="{{ home.id }}" current-page="currentPage">
           <li class="item item-icon-right" layout="flex">
-            <img style="height: 100%; max-width: 100%; width: 100%;" ng-src="http://pcspads.com/listing_pics/{{ home.id }}/{{ home.id }}_01.jpg" flex>
+            <img ng-src="http://pcspads.com/listing_pics/{{ home.id }}/{{ home.id }}_01.jpg" flex>
           
             <div class="padding" style="float:left" flex>
               <h2 ng-bind="home.ad"></h2>

@@ -11,34 +11,14 @@ angular
         var lat = res.data.results[0].geometry.location.lat;
         var lng = res.data.results[0].geometry.location.lng;
         return { 
-          map: { 
-            center: { 
-              latitude: lat, 
-              longitude: lng
-            }, 
-            zoom: 16
-          },
-          marker: {
-            id: 0,
-            coords: {
-              latitude: lat,
-              longitude: lng
-            }
-          }
+          map: { center: { latitude: lat, longitude: lng }, zoom: 16 },
+          marker: { id: 0, coords: { latitude: lat, longitude: lng } }
         };
       });
     };
 
     return {
       geocode: geocode
-    };
-  })
-  .factory('Search', function(){
-    var query = function(q){
-      return q;
-    };
-    return {
-      query: query
     };
   })
   .filter('homeFilter', function(){
