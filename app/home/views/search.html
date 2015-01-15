@@ -6,7 +6,7 @@
   </super-navbar>
 
   <div class="search padding">
-    <input type="text" ng-model="q.ad" placeholder="Address" style="1px solid rgba(0,0,0,0.125)">
+    <input type="text" ng-model="q.ad" placeholder="Address">
     <h3>Beds</h3>
     <slider
         ng-model="q.bd.from"
@@ -27,9 +27,9 @@
         step="1"
         precision="1">
     </slider>
-  </div>
 
     <button class="button button-block button-positive" ng-click="closeSearch()">
       Search 
     </button>
+  </div>
 </div>
