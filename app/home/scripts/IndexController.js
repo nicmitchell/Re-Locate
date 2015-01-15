@@ -1,6 +1,6 @@
 angular
   .module('home')
-  .controller("IndexController", function ($scope, Home, supersonic, $filter) {
+  .controller("IndexController", function ($scope, Home, supersonic, $filter, Choice) {
     $scope.homes = null;
     $scope.showSpinner = true;
     $scope.currentPage = 1;
@@ -19,6 +19,7 @@ angular
 
     $scope.q = {
       ad: '',
+      group: [],
       bd: {
         from: 2,
         to: 6
@@ -39,6 +40,15 @@ angular
         from: 900,
         to: 3000
       }
+    };
+
+    $scope.setChoice = function(bool) {
+      // null (to unset) if matches
+      return $scope.choice = ($scope.choice === bool) ? null : bool;
+    };
+
+    $scope.groupFilter = function(bool) {
+      $scope.q.group = $scope.setChoice(bool) === null ? [] : Choice.group(bool);
     };
 
     $scope.openSearch = function(){

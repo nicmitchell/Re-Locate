@@ -11,8 +11,19 @@ angular.module('home')
       return localStorage.setItem('choices', JSON.stringify(choices));
     };
 
+    var group = function(bool) {
+      var results = [];
+      _.each(get(), function(value, key, collection) {
+        if (value === bool) {
+          results.push(key);
+        };
+      });
+      return results;
+    };
+
     return { 
       get: get,
-      set: set
+      set: set,
+      group: group
     };
   })

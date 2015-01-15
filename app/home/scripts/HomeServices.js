@@ -56,7 +56,8 @@ angular
           item.pr >= q.pr.from && item.pr <= q.pr.to && // price
           item.yr >= q.yr.from && item.yr <= q.yr.to && // year
           item.ft >= q.ft.from && item.ft <= q.ft.to && // sq feet
-          _.contains(item.ad, q.ad) // address
+          _.contains(item.ad, q.ad) && // address
+          ((q.group.length > 0) ? _.contains(q.group, item.id) : true) //favs/unfavs (by MLS numbers)
         );
       });
     };
