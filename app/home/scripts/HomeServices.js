@@ -28,7 +28,7 @@ angular
       return localStorage.setItem('query', JSON.stringify(q));
     };
     var get = function(){
-      return JSON.parse(localStorage.getItem('query'));
+      return JSON.parse(localStorage.getItem('query')) || query;
     };
     return {
       set: set,
