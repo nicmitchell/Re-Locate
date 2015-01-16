@@ -5,6 +5,7 @@ angular
     $scope.showSpinner = true;
     $scope.currentPage = 1;
     $scope.q = Search.get();  // set query based on defaults
+    // $scope.sort = Sort.get();  // set sort params based on defaults
 
 
     // Infinite scroll for home#index
@@ -29,9 +30,9 @@ angular
       });
     };
 
-    // Open the sort modal view and share current sort params
+    // Open the sort modal view and save sort params to local storage
     $scope.openSort = function(){
-      supersonic.data.channel('sort').publish($scope.sort);
+      Sort.set($scope.sort);
       supersonic.ui.modal.show("home#sort").then( function() {
       });
     };

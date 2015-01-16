@@ -21,7 +21,7 @@ angular
       geocode: geocode
     };
   })
-  
+
   // To share search params across views using local storage
   .factory('Search', function(query){
     var set = function(q){

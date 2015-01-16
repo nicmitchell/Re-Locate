@@ -14,4 +14,3 @@ angular.module('home')
     predicate: 'pr', // sort by price
     reverse: true // sort in descending order
   })
-
