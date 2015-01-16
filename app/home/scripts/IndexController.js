@@ -1,10 +1,11 @@
 angular
   .module('home')
-  .controller("IndexController", function ($scope, Home, Choice, supersonic, query, sort) {
+  .controller("IndexController", function ($scope, Home, Choice, Search, supersonic) {
     $scope.homes = null;
     $scope.showSpinner = true;
     $scope.currentPage = 1;
-    $scope.q = query; // set query based on defaults in QueryValues.js
+    $scope.q = Search.get();  // set query based on defaults
+
 
     // Infinite scroll for home#index
     $scope.scrollLimit = 10;

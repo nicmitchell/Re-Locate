@@ -1,23 +1,14 @@
 angular
   .module('home')
-  .controller("SearchController", function ($scope, supersonic, query) {
+  .controller("SearchController", function ($scope, supersonic, Search) {
 
-    // Set initial search params (required)
-    $scope.q = query;
+    // Load the query parameters from local storage
+    $scope.q = Search.get();
 
-    // Receive query params from the search view
-    supersonic.data.channel('query')
-      .subscribe( function(q) {
-        $scope.$apply(function () {
-          $scope.q = q;
-        });
-      });
-
-    // Hide the search modal view and share current search params
+    // Hide the search modal view and publish search params
     $scope.closeSearch = function(){
       supersonic.data.channel('query').publish($scope.q);
       supersonic.ui.modal.hide().then( function() {
       });
     };
-
   })
