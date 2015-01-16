@@ -1,6 +1,6 @@
 angular
   .module('home')
-  .controller("SortController", function ($scope, supersonic, Search) {
+  .controller("SortController", function ($scope, supersonic, Sort) {
 
     // Load the sort parameters from local storage
     $scope.sort = Sort.get();
