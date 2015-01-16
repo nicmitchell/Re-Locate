@@ -1,6 +1,7 @@
 angular
   .module('home.services', [])
   .factory('Geocode', function($http){
+    // takes a street address and return lat and log for Google Maps
     var geocode = function(address){
       address = address.replace(/ /g, '+');
       return $http({
@@ -20,6 +21,7 @@ angular
       geocode: geocode
     };
   })
+  // Filters home results based on search params
   .filter('homeFilter', function(){
     return function(items, q) {
 
@@ -41,3 +43,4 @@ angular
       });
     };
   })
+

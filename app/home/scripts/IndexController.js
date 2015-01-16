@@ -5,16 +5,13 @@ angular
     $scope.showSpinner = true;
     $scope.currentPage = 1;
     $scope.q = query; // set query based on defaults in QueryValues.js
-    // $scope.sort = {};
 
-    // initialize the variable in local scope
-    // $scope.sort = sor;
-
-    // bind it to superscope
-    // $scope.sort = {}; // set sort based on defaults in QueryValues.js
-    // supersonic.bind($scope, "sort");
-
-
+    // Infinite scroll for home#index
+    $scope.scrollLimit = 10;
+    $scope.scrollLoad = function(){
+      $scope.scrollLimit += 10;
+    };
+    
     $scope.setChoice = function(bool) {
       // null (to unset) if matches
       return $scope.choice = ($scope.choice === bool) ? null : bool;
