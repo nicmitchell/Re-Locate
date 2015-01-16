@@ -21,6 +21,35 @@ angular
       geocode: geocode
     };
   })
+
+  // To share search params across views using local storage
+  .factory('Search', function(query){
+    var set = function(q){
+      return localStorage.setItem('query', JSON.stringify(q));
+    };
+    var get = function(){
+      return JSON.parse(localStorage.getItem('query')) || query;
+    };
+    return {
+      set: set,
+      get: get
+    };
+  })
+  
+  // To share sort params across views using local storage
+  .factory('Sort', function(sort){
+    var set = function(s){
+      return localStorage.setItem('sort', JSON.stringify(s));
+    };
+    var get = function(){
+      return JSON.parse(localStorage.getItem('sort')) || sort;
+    };
+    return {
+      set: set,
+      get: get
+    };
+  })
+
   // Filters home results based on search params
   .filter('homeFilter', function(){
     return function(items, q) {

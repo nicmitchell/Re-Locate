@@ -33,6 +33,10 @@ module.exports =
       id: "sort"
       location: "home#sort"
     }
+    {
+      id: "search"
+      location: "home#search"
+    }
   ]
 
   # drawers:

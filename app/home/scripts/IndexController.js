@@ -1,10 +1,12 @@
 angular
   .module('home')
-  .controller("IndexController", function ($scope, Home, Choice, supersonic, query, sort) {
+  .controller("IndexController", function ($scope, Home, Choice, Search, Sort, supersonic) {
     $scope.homes = null;
     $scope.showSpinner = true;
     $scope.currentPage = 1;
-    $scope.q = query; // set query based on defaults in QueryValues.js
+    $scope.q = Search.get();  // set query based on defaults
+    $scope.sort = Sort.get();  // set sort params based on defaults
+
 
     // Infinite scroll for home#index
     $scope.scrollLimit = 10;
@@ -28,9 +30,9 @@ angular
       });
     };
 
-    // Open the sort modal view and share current sort params
+    // Open the sort modal view and save sort params to local storage
     $scope.openSort = function(){
-      supersonic.data.channel('sort').publish($scope.sort);
+      Sort.set($scope.sort);
       supersonic.ui.modal.show("home#sort").then( function() {
       });
     };
