@@ -3,18 +3,24 @@ angular
   .factory('Geocode', function($http){
     // takes a street address and return lat and log for Google Maps
     var geocode = function(address){
-      address = address.replace(/ /g, '+');
+      address = encodeURIComponent(address.replace(/ /g, '+'));
       return $http({
         method: 'GET',
         url: 'https://maps.googleapis.com/maps/api/geocode/json?address=' + address
       })
       .then(function(res){
-        var lat = res.data.results[0].geometry.location.lat;
-        var lng = res.data.results[0].geometry.location.lng;
-        return { 
-          map: { center: { latitude: lat, longitude: lng }, zoom: 16 },
-          marker: { id: 0, coords: { latitude: lat, longitude: lng } }
-        };
+        if(res.data.results){
+          var lat = res.data.results[0].geometry.location.lat;
+          var lng = res.data.results[0].geometry.location.lng;
+          return { 
+            map: { center: { latitude: lat, longitude: lng }, zoom: 16 },
+            marker: { id: 0, coords: { latitude: lat, longitude: lng } }
+          };
+        } else {
+          console.log('Geocoding: no results found');
+        }
+      }, function(error){
+        console.log('Geocoding: an error has occurred:', error);
       });
     };
     return {
