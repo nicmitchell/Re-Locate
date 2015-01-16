@@ -5,6 +5,7 @@ angular.module('home', [
   'uiGmapgoogle-maps',
   'user',
   'home.services',
-  'vr.directives.slider'
+  'vr.directives.slider',
+  'infinite-scroll'
 ])
 
