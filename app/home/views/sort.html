@@ -1,0 +1,61 @@
+<div ng-controller="SortController">
+  <div class="search padding">
+  {{sort}}
+    <div class="list">
+      <label class="item item-radio">
+        <input type="radio" name="predicate" value="bd" ng-model="sort.predicate">
+        <div class="item-content">
+          Bedrooms
+        </div>
+        <i class="radio-icon super-checkmark"></i>
+      </label>
+      <label class="item item-radio">
+        <input type="radio" name="predicate" value="ba" ng-model="sort.predicate">
+        <div class="item-content">
+          Bathrooms
+        </div>
+        <i class="radio-icon super-checkmark"></i>
+      </label>
+      <label class="item item-radio">
+        <input type="radio" name="predicate" value="pr" ng-model="sort.predicate">
+        <div class="item-content">
+          Price
+        </div>
+        <i class="radio-icon super-checkmark"></i>
+      </label>
+      <label class="item item-radio">
+        <input type="radio" name="predicate" value="yr" ng-model="sort.predicate">
+        <div class="item-content">
+          Year
+        </div>
+        <i class="radio-icon super-checkmark"></i>
+      </label>
+      <label class="item item-radio">
+        <input type="radio" name="predicate" value="ft" ng-model="sort.predicate">
+        <div class="item-content">
+          Sq Feet
+        </div>
+        <i class="radio-icon super-checkmark"></i>
+      </label>
+    </div>
+    <div class="list">
+      <label class="item item-radio">
+        <input type="radio" name="reverse" value="" ng-click="sort.reverse=false" ng-model="sort.reverse">
+        <div class="item-content">
+          Ascending
+        </div>
+        <i class="radio-icon super-checkmark"></i>
+      </label>
+      <label class="item item-radio">
+        <input type="radio" name="reverse" value="" ng-click="sort.reverse=true" ng-model="sort.reverse">
+        <div class="item-content">
+          Descending
+        </div>
+        <i class="radio-icon super-checkmark"></i>
+      </label>
+    </div>
+    <button class="button button-block button-positive" ng-click="closeSort()">
+      Sort 
+    </button>
+  </div>
+</div>
