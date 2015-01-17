@@ -30,12 +30,20 @@ module.exports =
       location: "home#index"
     }
     {
+      id: "preloadedHomeShow"
+      location: "home#show"
+    }
+    {
       id: "preloadedSort"
       location: "home#sort"
     }
     {
       id: "preloadedSearch"
       location: "home#search"
+    }
+    {
+      id: "preloadedUserEdit"
+      location: "user#edit-user"
     }
   ]
 
