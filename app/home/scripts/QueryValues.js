@@ -5,7 +5,8 @@ angular.module('home')
     ba: 2, // min baths
     pr: { // price range
       min: 100000,
-      max: 250000
+      max: 250000,
+      limit: 599000 // the max slider value to include searches above this amount
     },
     yr: 1980, // min year
     ft: 1000 // min sq feet
