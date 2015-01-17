@@ -1,6 +1,10 @@
 <div ng-controller="SortController">
+<super-navbar>
+  <super-navbar-title>
+    Sort
+  </super-navbar-title>
+</super-navbar>
   <div class="search padding">
-  {{sort}}
     <div class="list">
       <label class="item item-radio">
         <input type="radio" name="predicate" value="bd" ng-model="sort.predicate">
@@ -40,14 +44,15 @@
     </div>
     <div class="list">
       <label class="item item-radio">
-        <input type="radio" name="reverse" value="" ng-click="sort.reverse=false" ng-model="sort.reverse">
+        <input type="radio" name="reverse" ng-value="false" ng-model="sort.reverse">
+        <!-- ng-click="sort.reverse=false"  -->
         <div class="item-content">
           Ascending
         </div>
         <i class="radio-icon super-checkmark"></i>
       </label>
       <label class="item item-radio">
-        <input type="radio" name="reverse" value="" ng-click="sort.reverse=true" ng-model="sort.reverse">
+        <input type="radio" name="reverse" ng-value="true" ng-model="sort.reverse">
         <div class="item-content">
           Descending
         </div>

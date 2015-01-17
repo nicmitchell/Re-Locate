@@ -7,3 +7,4 @@
 /web/log/*
 /web/tmp/*
 /web/config/application.yml
+/config/cloud.json

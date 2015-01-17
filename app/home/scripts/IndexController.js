@@ -40,16 +40,20 @@ angular
     // Receive query params from the search view
     supersonic.data.channel('query')
       .subscribe( function(q) {
+        // update the view and scroll to top
         $scope.$apply(function () {
           $scope.q = q;
+          window.scrollTo(0, 0);
         });
       });
 
     // Receive sort params from the sort view
     supersonic.data.channel('sort')
       .subscribe( function(s) {
+        // update the view and scroll to top
         $scope.$apply(function () {
           $scope.sort = s;
+          window.scrollTo(0, 0);
         });
       });
 

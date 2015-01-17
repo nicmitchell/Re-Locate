@@ -4,50 +4,61 @@
       Search
     </super-navbar-title>
   </super-navbar>
+  <style>
+  input::-webkit-input-placeholder {
+    color: #000;
+    font-family: "Helvetica Neue", "Roboto" sans-serif;
+    font-size: 1em;
+    font-weight: 500;
+    font-style: italic;
+  }
+  </style>
   <div class="search padding">
-  {{q}}
-    <input type="text" ng-model="q.ad" placeholder="Address">
-    <h3>Min Beds</h3>
-    <slider class="range"
+    <div class="list">
+      <input class="item item-input" type="text" ng-model="q.ad" placeholder="Address">
+      </div>
+        <h4>Beds: {{ q.bd }}+</h4>
+        <slider class="range" 
         ng-model="q.bd"
         buffer="1"
         floor="1"
         ceiling="10"
         step="1">
-    </slider>
-    <h3>Min Baths</h3>
-    <slider
-        ng-model="q.ba"
-        buffer="1"
-        floor="1"
-        ceiling="10"
-        step="1">
-    </slider>
-    <h3>Price Range</h3>
-    <slider
-        ng-model="q.pr.min"
-        ng-model-range="q.pr.max"
-        buffer="1000"
-        floor="50000"
-        ceiling="599000"
-        step="1000">
-    </slider>
-    <h3>Min Year</h3>
-    <slider
-        ng-model="q.yr"
-        buffer="5"
-        floor="1950"
-        ceiling="2015"
-        step="1">
-    </slider>
-    <h3>Min Sq Feet</h3>
-    <slider
-        ng-model="q.ft"
-        buffer="100"
-        floor="500"
-        ceiling="3000"
-        step="10">
-    </slider>
+        </slider>
+        <h4>Baths: {{ q.ba }}+</h4>
+        <slider class="range"
+          ng-model="q.ba"
+          buffer="1"
+          floor="1"
+          ceiling="10"
+          step="1">
+        </slider>
+        <h4>Price Range: {{ q.pr.min }} to {{ q.pr.max }}</h4>
+        <slider class="range"
+          ng-model="q.pr.min"
+          ng-model-range="q.pr.max"
+          buffer="1000"
+          floor="50000"
+          ceiling="599000"
+            step="1000">
+        </slider>
+        <h4>Year: {{ q.yr }}+</h4>
+        <slider class="range"
+          ng-model="q.yr"
+          buffer="5"
+          floor="1950"
+          ceiling="2015"
+          step="1">
+        </slider>
+        <h4>Sq Feet: {{ q.ft }}+</h4>
+        <slider class="range"
+          ng-model="q.ft"
+          buffer="100"
+          floor="500"
+          ceiling="3000"
+          step="10">
+        </slider>
+  </div>
 
     <button class="button button-block button-positive" ng-click="closeSearch()">
       Search 
