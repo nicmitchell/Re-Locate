@@ -23,6 +23,8 @@
 
 .search {
   overflow-x: hidden;
+  overflow-y: scroll; 
+  -webkit-overflow-scrolling: touch;
   input[type="text"] {
     border: 1px solid rgba(0,0,0,0.125);
   }
