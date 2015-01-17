@@ -6,75 +6,80 @@
 
 <div ng-controller="SearchController">
   <style>
-    input::-webkit-input-placeholder {
-      color: #000;
-      font-family: "Helvetica Neue", "Roboto" sans-serif;
-      font-size: 1em;
-      font-weight: 500;
-      font-style: italic;
-    }
+    
+    
   </style>
 
-  <div class="search padding">
+  <div class="search">
     <div class="list">
-      <input class="item item-input" type="text" ng-model="q.ad" placeholder="Address">
+    <label class="item item-input item-stacked-label">
+      <span class="input-label">Address</span>
+      <input type="text" placeholder="123 Main St">
+    </label>
+
+    <label class="item item-input item-stacked-label">Beds: {{ q.bd }}+
+      <slider class="range"
+        ng-model="q.bd"
+        buffer="1"
+        floor="1"
+        ceiling="10"
+        step="1">
+      </slider>
+    </label>
+
+    <label class="item item-input item-stacked-label">Baths: {{ q.ba }}+
+      <slider class="range"
+        ng-model="q.ba"
+        buffer="1"
+        floor="1"
+        ceiling="5"
+        step="0.5">
+      </slider>
+    </label>
+
+    <label class="item item-input item-stacked-label">Price Range: {{ q.pr.min | currency:undefined:0 }} to {{ q.pr.max | currency:undefined:0 }}
+      <slider class="range dual"
+        ng-model="q.pr.min"
+        ng-model-range="q.pr.max"
+        buffer="1000"
+        floor="50000"
+        ceiling="599000"
+        step="1000">
+      </slider>
+    </label>
+
+    <label class="item item-input item-stacked-label">Year: {{ q.yr }}+
+      <slider class="range"
+        ng-model="q.yr"
+        buffer="5"
+        floor="1950"
+        ceiling="2015"
+        step="1">
+      </slider>
+    </label>
+
+    <label class="item item-input item-stacked-label">Sq Feet: {{ q.ft | number }}+
+      <slider class="range"
+        ng-model="q.ft"
+        buffer="100"
+        floor="500"
+        ceiling="3000"
+        step="10">
+      </slider>
+    </label>
     </div>
-
-    <h4>Beds: {{ q.bd }}+</h4>
-    <slider class="range"
-      ng-model="q.bd"
-      buffer="1"
-      floor="1"
-      ceiling="10"
-      step="1">
-    </slider>
-
-    <h4>Baths: {{ q.ba }}+</h4>
-    <slider class="range"
-      ng-model="q.ba"
-      buffer="1"
-      floor="1"
-      ceiling="5"
-      step="0.5">
-    </slider>
-
-    <h4>Price Range: {{ q.pr.min | currency:undefined:0 }} to {{ q.pr.max | currency:undefined:0 }}</h4>
-    <slider class="range"
-      ng-model="q.pr.min"
-      ng-model-range="q.pr.max"
-      buffer="1000"
-      floor="50000"
-      ceiling="599000"
-      step="1000">
-    </slider>
-
-    <h4>Year: {{ q.yr }}+</h4>
-    <slider class="range"
-      ng-model="q.yr"
-      buffer="5"
-      floor="1950"
-      ceiling="2015"
-      step="1">
-    </slider>
-
-    <h4>Sq Feet: {{ q.ft | number }}+</h4>
-    <slider class="range"
-      ng-model="q.ft"
-      buffer="100"
-      floor="500"
-      ceiling="3000"
-      step="10">
-    </slider>
-
-    <button class="button button-block button-positive" ng-click="closeSearch()">
-      Search 
-    </button>
-
-    <super-modal-hide>
-      <button class="button button-block">
-        Cancel
+    
+    <section class="padding">
+      <button class="button button-block button-positive" ng-click="closeSearch()">
+        Search 
       </button>
-    </super-modal-hide>
+
+      <super-modal-hide>
+        <button class="button button-block">
+          Cancel
+        </button>
+      </super-modal-hide>
+    </section>
   </div>
 
 </div>
