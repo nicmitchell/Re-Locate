@@ -29,4 +29,11 @@
   span.bubble.selection.ng-binding {
     display: none !important;
   }
+  input::-webkit-input-placeholder {
+    color: #000;
+    font-family: "Helvetica Neue", "Roboto" sans-serif;
+    font-size: 1em;
+    font-weight: 500;
+    font-style: italic;
+  }
 }
