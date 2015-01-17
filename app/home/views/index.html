@@ -10,7 +10,6 @@
       Sort
     </super-navbar-button>
   </super-navbar>
-
   <div ng-show="showSpinner" ng-include="'_spinner.html'"></div>
   <div ng-hide="showSpinner">
     <div class="button-bar">
@@ -28,7 +27,7 @@
     <ul class="list">
     <dir-pagination-controls template-url="items-total.tpl.html"></dir-pagination-controls>
       <div infinite-scroll="scrollLoad()" infinite-scroll-distance="1" can-load="true">
-        <div dir-paginate="home in homes | homeFilter: q | itemsPerPage: scrollLimit" current-page="currentPage">
+        <div dir-paginate="home in homes | homeFilter: q | orderBy: sort.predicate: sort.reverse | itemsPerPage: scrollLimit" current-page="currentPage">
           <super-navigate location="home#show" data-params-id="{{ home.id }}">
             <li class="item item-icon-right" layout="flex">
               <img ng-src="http://pcspads.com/listing_pics/{{ home.id }}/{{ home.id }}_01.jpg" flex>
