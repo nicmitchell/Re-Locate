@@ -36,8 +36,7 @@
         step="0.5">
       </slider>
     </label>
-
-    <label class="item item-input item-stacked-label">Price Range: {{ q.pr.min | currency:undefined:0 }} to {{ q.pr.max | currency:undefined:0 }} <span ng-show="q.pr.max === 599000">+</span>
+    <label class="item item-input item-stacked-label">Price Range: {{ q.pr.min | currency:undefined:0 }} to {{ q.pr.max | currency:undefined:0 }} <span ng-show="q.pr.max === q.pr.limit">+</span>
       <slider class="range dual"
         ng-model="q.pr.min"
         ng-model-range="q.pr.max"

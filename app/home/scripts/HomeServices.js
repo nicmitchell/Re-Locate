@@ -69,7 +69,7 @@ angular
         return (
           item.bd >= q.bd && // bedrooms
           item.ba >= q.ba && // bathrooms
-          ((q.pr.max === 599000) ? item.pr >= q.pr.min : 
+          ((q.pr.max === q.pr.limit) ? item.pr >= q.pr.min : 
           item.pr >= q.pr.min && item.pr <= q.pr.max) && // price range
           item.yr >= q.yr && // year
           item.ft >= q.ft && // sq feet
