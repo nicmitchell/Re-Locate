@@ -1,3 +1,9 @@
+<super-navbar>
+  <super-navbar-title>
+    Sort
+  </super-navbar-title>
+</super-navbar>
+
 <div ng-controller="SortController">
   <div class="search padding">
   {{sort}}
@@ -54,8 +60,16 @@
         <i class="radio-icon super-checkmark"></i>
       </label>
     </div>
+
     <button class="button button-block button-positive" ng-click="closeSort()">
       Sort 
     </button>
+
+    <super-modal-hide>
+      <button class="button button-block">
+        Cancel
+      </button>
+    </super-modal-hide>
+
   </div>
 </div>
