@@ -17,6 +17,7 @@ angular
       Home.find($scope.dataId).then( function (home) {
         $scope.$apply( function () {
           $scope.home = home;
+          steroids.view.removeLoading();
         });
 
         // translates address to lat/long for Google maps
@@ -69,7 +70,6 @@ angular
     };
 
     supersonic.ui.views.current.whenVisible( function () {
-      steroids.view.removeLoading();
       if ( $scope.dataId ) {
         _refreshViewData();
       }

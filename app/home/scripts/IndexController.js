@@ -26,14 +26,14 @@ angular
     // Open the search modal view and share current search params
     $scope.openSearch = function(){
       supersonic.data.channel('query').publish($scope.q);
-      supersonic.ui.modal.show("home#search").then( function() {
+      supersonic.ui.modal.show('preloadedSearch').then( function() {
       });
     };
 
     // Open the sort modal view and save sort params to local storage
     $scope.openSort = function(){
       Sort.set($scope.sort);
-      supersonic.ui.modal.show("home#sort").then( function() {
+      supersonic.ui.modal.show('preloadedSort').then( function() {
       });
     };
 

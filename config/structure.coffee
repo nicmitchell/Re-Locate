@@ -26,15 +26,15 @@ module.exports =
 
   preloads: [
     {
-      id: "homes"
+      id: "preloadedHomeIndex"
       location: "home#index"
     }
     {
-      id: "sort"
+      id: "preloadedSort"
       location: "home#sort"
     }
     {
-      id: "search"
+      id: "preloadedSearch"
       location: "home#search"
     }
   ]
