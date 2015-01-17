@@ -8,17 +8,36 @@ angular
       });
   })
   .controller("ShowController", function ($scope, Home, Geocode, supersonic, User, Choice) {
-    $scope.home = null;
-    $scope.dataId = undefined;
+    $scope.home = {ad: 'Loading...'}; // nav title
+    $scope.showSpinner = true; // for initial page preload
     $scope.map = {};
     $scope.marker = {};
 
-    var _refreshViewData = function () {
-      Home.find($scope.dataId).then( function (home) {
+    var _messageReceived = function(event) {
+      if (event.data.recipient == 'homeShow') { // message intended for us?
+
+        if (event.data.id) {
+          _refreshViewData(event.data.id);
+        } else { // reset view for next load
+          $scope.$apply(function() {
+            $scope.home = {ad: 'Loading...'}; // clear last address
+            window.scrollTo(0, 0); // preloaded page retains last position
+            $scope.showSpinner = true; //ready for next load
+          });
+        }
+      }
+
+    };
+    window.addEventListener('message', _messageReceived);
+
+    var _refreshViewData = function(mls) {
+      Home.find(mls).then( function (home) {
         $scope.$apply( function () {
+          $scope.showSpinner = false;
           $scope.home = home;
-          steroids.view.removeLoading();
         });
+
+        $scope.choice = Choice.get()[$scope.home.id];
 
         // translates address to lat/long for Google maps
         Geocode.geocode(home.ad).then(function(data){
@@ -26,8 +45,9 @@ angular
           $scope.marker = data.marker;
         });
 
-        $scope.choice = Choice.get()[$scope.home.id];
       });
+
+      return;
     };
 
     $scope.setChoice = function(bool) {
@@ -68,16 +88,5 @@ angular
       var gallery = new PhotoSwipe( pswpElement, PhotoSwipeUI_Default, items, options);
       gallery.init();
     };
-
-    supersonic.ui.views.current.whenVisible( function () {
-      if ( $scope.dataId ) {
-        _refreshViewData();
-      }
-    });
-
-    supersonic.ui.views.current.params.onValue( function (values) {
-      $scope.dataId = values.id;
-      _refreshViewData();
-    });
 
   });

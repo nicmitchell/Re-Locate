@@ -7,6 +7,17 @@ angular
     $scope.q = Search.get();  // set query based on defaults
     $scope.sort = Sort.get();  // set sort params based on defaults
 
+    supersonic.ui.views.current.whenVisible( function () {
+      // alert preloadedHomeShow to clear last home
+      window.postMessage({ recipient: 'homeShow', id: null });
+    });
+
+    $scope.openShow = function(id) {
+      window.postMessage({ recipient: 'homeShow', id: id });
+      supersonic.ui.views.find('preloadedHomeShow').then(function(view) {
+        supersonic.ui.layers.push(view);
+      });
+    };
 
     // Infinite scroll for home#index
     $scope.scrollLimit = 10;
