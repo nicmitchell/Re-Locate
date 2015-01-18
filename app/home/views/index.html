@@ -16,37 +16,29 @@
       <a ng-click="groupFilter(true)" ng-class='{ "button-positive" : choice }' class='button super-thumbsup'></a>
       <a ng-click="groupFilter(false)" ng-class='{ "button-positive" : choice === false }' class='button super-thumbsdown'></a>
     </div>
-    <style>
-      img { 
-        float: left; 
-        height: 100%; 
-        max-width: 100%; 
-        width: 100%;
-      }
-    </style>
-    <ul class="list">
+    <ul class="list homes-index">
     <dir-pagination-controls template-url="items-total.tpl.html"></dir-pagination-controls>
       <div infinite-scroll="scrollLoad()" infinite-scroll-distance="1" can-load="true">
-        <div dir-paginate="home in homes | homeFilter: q | orderBy: sort.predicate: sort.reverse | itemsPerPage: scrollLimit" current-page="currentPage">
-          
-          <li ng-click='openShow(home.id)' class="item item-icon-right" layout="flex">
-            <img ng-src="http://pcspads.com/listing_pics/{{ home.id }}/{{ home.id }}_01.jpg" flex>
-          
-            <div class="padding" style="float:left" flex>
-              <h2 ng-bind="home.ad"></h2>
-              <p class="house">
-                <span ng-bind="home.pr | currency:undefined:0"></span><br>
-                <span ng-bind="home.bd"></span> Beds
-                <span ng-bind="home.ba"></span> Baths
-                <br>
-                SqFt: <span ng-bind="home.ft"></span>
-                Year: <span ng-bind="home.yr"></span>
-              </p>
+        <div dir-paginate="home in homes | homeFilter: q | orderBy: sort.predicate: sort.reverse | itemsPerPage: scrollLimit" current-page="currentPage" class="repeat">
+          <li ng-click='openShow(home.id)' class="item item-icon-right no-padding">
+            <img class="full-image" ng-src="http://pcspads.com/listing_pics/{{ home.id }}/{{ home.id }}_01.jpg">
+            <div class="details">
+              <div class="row">
+                <h2 class="col" ng-bind="home.ad"></h2>
+              </div>
+              <div class="row house">
+                <div class="col">
+                  <span ng-bind="home.pr | currency:undefined:0"></span><br>
+                  <span ng-bind="home.bd" flex></span> Bd / 
+                  <span ng-bind="home.ba" flex></span> Bth
+                </div>
+                <div class="col">
+                  <span>SqFt: </span><span ng-bind="home.ft"></span><br>
+                  <span>Year: </span><span ng-bind="home.yr"></span>
+                </div>
+              </div>
             </div>
-
-            <i class="icon super-ios7-arrow-right"></i>
           </li>
-
         </div>
       </div>
     </ul>
@@ -54,6 +46,5 @@
     <h4 ng-show="homes.length === 0" class="assertive padding">
       No homes found.
     </h4>
-
   </div>
 </div>
