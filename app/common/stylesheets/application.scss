@@ -4,34 +4,39 @@
   font-weight: 600;
 }
 
+/* Contact */
 .agent-pic { width: 100%; border-bottom: 1px solid black; }
 .agent-contact { text-align: center; }
 
+/* Invidivual Listing */
 .homes-show {
   table {
     table-layout: fixed;
     width: 100%;
   }
-  table, th, td { border: 1px solid #333; }
+
   table.no-top-border { margin-top: -1px; }
   td { padding: 0.25em; }
   td:first-child { width: 125px; }
+
+  table tr:nth-child(odd) {
+    background-color: #e5e5e5;
+  }
+
+  table tr td:first-child {
+    text-align: right;
+    font-weight: bold;
+  }
 
   .home-map { margin-top: 1.5em; }
   .home-map .angular-google-map-container { height: 300px; }
 }
 
-.search {
-  overflow-x: hidden;
-  overflow-y: scroll; 
-  -webkit-overflow-scrolling: touch;
-
-  span.bubble.selection.ng-binding {
-    display: none !important;
-  }
+.button-bar .button {
+  font-size: 2em;
 }
 
-/* home#index */
+/* Multiple Listings */
 .homes-index {
   .details {
     bottom: 0;
@@ -65,5 +70,19 @@
   }
   .details .row {
     padding: 0;
+  }
+  .range-label {
+    padding: 0 10px;
+  }
+}
+
+/* Search */
+.search {
+  overflow-x: hidden;
+  overflow-y: scroll; 
+  -webkit-overflow-scrolling: touch;
+
+  span.bubble.selection.ng-binding {
+    display: none !important;
   }
 }
