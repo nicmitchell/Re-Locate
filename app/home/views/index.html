@@ -13,8 +13,8 @@
   <div ng-show="showSpinner" ng-include="'_spinner.html'"></div>
   <div ng-hide="showSpinner">
     <div class="button-bar">
-      <a ng-click="groupFilter(true)" ng-class='{ "button-positive" : choice }' class='button super-thumbsup'></a>
-      <a ng-click="groupFilter(false)" ng-class='{ "button-positive" : choice === false }' class='button super-thumbsdown'></a>
+      <a ng-click="groupFilter(true)" ng-class='{ "button-positive" : choice }' class='button super-star'></a>
+      <a ng-click="groupFilter(false)" ng-class='{ "button-positive" : choice === false }' class='button super-trash-a'></a>
     </div>
     <ul class="list homes-index">
     <dir-pagination-controls template-url="items-total.tpl.html"></dir-pagination-controls>
