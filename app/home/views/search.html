@@ -5,67 +5,60 @@
 </super-navbar>
 
 <div ng-controller="SearchController">
-  <style>
-    
-    
-  </style>
-
   <div class="search">
     <div class="list">
-    <label class="item item-input item-stacked-label">
-      <span class="input-label">Address</span>
-      <input type="text" placeholder="123 Main St">
-    </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Address</span>
+        <input type="text" placeholder="123 Main St">
+      </label>
 
-    <label class="item item-input item-stacked-label">Beds: {{ q.bd }}+
-      <slider class="range"
-        ng-model="q.bd"
-        buffer="1"
-        floor="1"
-        ceiling="10"
-        step="1">
-      </slider>
-    </label>
+      <label class="item item-input item-stacked-label">Price Range: {{ q.pr.min | currency:undefined:0 }} to {{ q.pr.max | currency:undefined:0 }} <span ng-show="q.pr.max === q.pr.limit">+</span>
+        <slider class="range dual"
+          ng-model="q.pr.min"
+          ng-model-range="q.pr.max"
+          buffer="60000"
+          floor="60000"
+          ceiling="599000"
+          step="10000">
+        </slider>
+      </label>
 
-    <label class="item item-input item-stacked-label">Baths: {{ q.ba }}+
-      <slider class="range"
-        ng-model="q.ba"
-        buffer="1"
-        floor="1"
-        ceiling="5"
-        step="0.5">
-      </slider>
-    </label>
-    <label class="item item-input item-stacked-label">Price Range: {{ q.pr.min | currency:undefined:0 }} to {{ q.pr.max | currency:undefined:0 }} <span ng-show="q.pr.max === q.pr.limit">+</span>
-      <slider class="range dual"
-        ng-model="q.pr.min"
-        ng-model-range="q.pr.max"
-        buffer="60000"
-        floor="50000"
-        ceiling="599000"
-        step="5000">
-      </slider>
-    </label>
+      <label class="item item-input item-stacked-label">Beds: {{ q.bd }}+
+        <slider class="range"
+          ng-model="q.bd"
+          floor="1"
+          ceiling="6"
+          step="1">
+        </slider>
+      </label>
 
-    <label class="item item-input item-stacked-label">Year: {{ q.yr }}+
-      <slider class="range"
-        ng-model="q.yr"
-        buffer="5"
-        floor="1950"
-        ceiling="2015"
-        step="1">
-      </slider>
-    </label>
+      <label class="item item-input item-stacked-label">Baths: {{ q.ba }}+
+        <slider class="range"
+          ng-model="q.ba"
+          floor="1"
+          ceiling="5"
+          precision="1"
+          step="0.5">
+        </slider>
+      </label>
 
-    <label class="item item-input item-stacked-label">Sq Feet: {{ q.ft | number }}+
-      <slider class="range"
-        ng-model="q.ft"
-        buffer="100"
-        floor="500"
-        ceiling="3000"
-        step="10">
-      </slider>
-    </label>
+      <label class="item item-input item-stacked-label">Sq Feet: {{ q.ft | number }}+
+        <slider class="range"
+          ng-model="q.ft"
+          floor="500"
+          ceiling="5000"
+          step="250">
+        </slider>
+      </label>
+
+      <label class="item item-input item-stacked-label">Year: {{ q.yr }}+
+        <slider class="range"
+          ng-model="q.yr"
+          floor="1900"
+          ceiling="{{q.currYr}}"
+          step="5">
+        </slider>
+      </label>
     </div>
     
     <section class="padding">

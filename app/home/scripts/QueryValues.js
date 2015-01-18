@@ -8,8 +8,9 @@ angular.module('home')
       max: 250000,
       limit: 599000 // the max slider value to include searches above this amount
     },
-    yr: 1980, // min year
-    ft: 1000 // min sq feet
+    yr: 1985, // min year
+    ft: 1250, // min sq feet
+    currYr: new Date().getFullYear()
   })
   .value('sort', {
     predicate: 'pr', // sort by price
