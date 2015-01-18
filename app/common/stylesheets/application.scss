@@ -30,3 +30,40 @@
     display: none !important;
   }
 }
+
+/* home#index */
+.homes-index {
+  .details {
+    bottom: 0;
+    left: 0;
+    background: #fff;
+    width: 100%;
+  }
+  .details i {
+    background: #fff;
+  }
+  .item.no-padding {
+    padding: 0 0 0 0;
+  }
+  .repeat::after {
+    content: ' ';
+    height: 1em;
+    width: 100%;
+    background: #00B5FF;
+    display: block;
+  }
+  .details h2.col, .details .col span {
+    font-size: 1.2 em;
+  }
+  .details .row.house .col {
+    border: 1px solid rgba(0,0,0,0.2);
+    padding: 1em;
+    margin: 0;
+  }
+  .details .row .col {
+    padding: 1em;
+  }
+  .details .row {
+    padding: 0;
+  }
+}
