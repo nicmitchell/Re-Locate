@@ -13,12 +13,21 @@
   <div class="search padding">
     <div class="list">
       <label class="item item-radio">
+        <input type="radio" name="predicate" value="pr" ng-model="sort.predicate">
+        <div class="item-content">
+          Price
+        </div>
+        <i class="radio-icon super-checkmark"></i>
+      </label>
+
+      <label class="item item-radio">
         <input type="radio" name="predicate" value="bd" ng-model="sort.predicate">
         <div class="item-content">
           Bedrooms
         </div>
         <i class="radio-icon super-checkmark"></i>
       </label>
+
       <label class="item item-radio">
         <input type="radio" name="predicate" value="ba" ng-model="sort.predicate">
         <div class="item-content">
@@ -26,20 +35,7 @@
         </div>
         <i class="radio-icon super-checkmark"></i>
       </label>
-      <label class="item item-radio">
-        <input type="radio" name="predicate" value="pr" ng-model="sort.predicate">
-        <div class="item-content">
-          Price
-        </div>
-        <i class="radio-icon super-checkmark"></i>
-      </label>
-      <label class="item item-radio">
-        <input type="radio" name="predicate" value="yr" ng-model="sort.predicate">
-        <div class="item-content">
-          Year
-        </div>
-        <i class="radio-icon super-checkmark"></i>
-      </label>
+
       <label class="item item-radio">
         <input type="radio" name="predicate" value="ft" ng-model="sort.predicate">
         <div class="item-content">
@@ -47,7 +43,16 @@
         </div>
         <i class="radio-icon super-checkmark"></i>
       </label>
+
+      <label class="item item-radio">
+        <input type="radio" name="predicate" value="yr" ng-model="sort.predicate">
+        <div class="item-content">
+          Year
+        </div>
+        <i class="radio-icon super-checkmark"></i>
+      </label>
     </div>
+
     <div class="list">
       <label class="item item-radio">
         <input type="radio" name="reverse" ng-value="false" ng-model="sort.reverse">
@@ -57,6 +62,7 @@
         </div>
         <i class="radio-icon super-checkmark"></i>
       </label>
+
       <label class="item item-radio">
         <input type="radio" name="reverse" ng-value="true" ng-model="sort.reverse">
         <div class="item-content">
