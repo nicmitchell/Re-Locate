@@ -21,7 +21,7 @@
       <div infinite-scroll="scrollLoad()" infinite-scroll-distance="1" can-load="true">
         <div dir-paginate="home in homes | homeFilter: q | orderBy: sort.predicate: sort.reverse | itemsPerPage: scrollLimit" current-page="currentPage" class="repeat">
           <li ng-click='openShow(home.id)' class="item item-icon-right no-padding">
-            <img class="full-image" ng-src="http://pcspads.com/listing_pics/{{ home.id }}/{{ home.id }}_01.jpg">
+            <img class="full-image" ng-src="http://pcspads.com/listing_pics/{{ home.ml }}/{{ home.ml }}_01.jpg">
             <div class="details">
               <div class="row">
                 <h2 class="col" ng-bind="home.ad"></h2>

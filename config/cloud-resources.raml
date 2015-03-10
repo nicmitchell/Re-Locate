@@ -9,15 +9,18 @@ traits:
         steroidsApiKey:
           type: string
           example: exampleapikey
-          default: 5c24c99770650e0f2d82a3a8378355e1c1cd3ecbf71b5a8cab280129279f95ab
+          default: a254e2f5a3ae4de710212be8ae7f0dab008530aa86a5ed12c73fe653437d32df
         steroidsAppId:
           type: integer
           example: 1234
-          default: 38093
+          default: 39720
 
+schemas:
+  - home_collection: '{"$schema":"http://json-schema.org/schema","title":"home collection","type":"object","properties":{"results":{"type":"array","items":{"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical home representation","properties":{"ad":{"type":"string"},"ba":{"type":"string"},"bd":{"type":"integer"},"createdAt":{"type":"string"},"ft":{"type":"integer"},"ml":{"type":"string"},"objectId":{"type":"string"},"pr":{"type":"integer"},"updatedAt":{"type":"string"},"yr":{"type":"integer"}},"required":[]}}}}'
+  - home_member: '{"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical home representation","properties":{"ad":{"type":"string"},"ba":{"type":"string"},"bd":{"type":"integer"},"createdAt":{"type":"string"},"ft":{"type":"integer"},"ml":{"type":"string"},"objectId":{"type":"string"},"pr":{"type":"integer"},"updatedAt":{"type":"string"},"yr":{"type":"integer"}},"required":[]}'
 
 resourceTypes:
-  - dolan_db_collection:
+  - parse_collection:
       usage: This resourceType should be used for any collection of items
       is: [ securedBySteroidsApiKey ]
       get:
@@ -29,32 +32,27 @@ resourceTypes:
           200:
             description: |
               {
-                "rootKey": "objects"
+                "rootKey": "results"
               }
             body:
               application/json:
-                schema: <<resourcePathName>> # e.g cars
+                schema: <<resourcePathName>>_collection # e.g cars
       post:
         description: |
           {
-            "action": "create",
-            "rootKey": "object"
+            "action": "create"
           }
         body:
           application/json:
-            schema: <<resourcePathName | !singularize>>
+            schema: <<resourcePathName>>_member
         responses:
           200:
-            description: |
-              {
-                "rootKey": "object"
-              }
             body:
               application/json:
-                schema: <<resourcePathName | !singularize>> # e.g. car
+                schema: <<resourcePathName>>_member # e.g. car
 
-  - dolan_db_member:
-      usage: This resourceType should be used for any built.io item
+  - parse_member:
+      usage: This resourceType should be used for any parse item
       is: [ securedBySteroidsApiKey ]
       get:
         description: |
@@ -63,31 +61,22 @@ resourceTypes:
           }
         responses:
           200:
-            description: |
-              {
-                "rootKey": "object"
-              }
             body:
               application/json:
-                schema: <<resourcePathName>> # e.g. car
+                schema: <<resourcePathName>>_member # e.g. car
       put:
         description: |
           {
-            "action": "update",
-            "rootKey": "object"
+            "action": "update"
           }
         body:
           application/json:
-            schema: <<resourcePathName | !singularize>>
+            schema: <<resourcePathName>>_member
         responses:
           200:
-            description: |
-              {
-                "rootKey": "object"
-              }
             body:
               application/json:
-                schema: <<resourcePathName>>
+                schema: <<resourcePathName>>_member
       delete:
         description: |
           {
@@ -95,97 +84,16 @@ resourceTypes:
           }
         responses:
           200:
-      
 
 
-/Home:
+/home:
   description: |
     {
-      "resourceName": "Home",
-      "identifierKey": "ml"
+      "resourceName": "home",
+      "identifierKey": "objectId"
     }
-  get:
-    is: [ securedBySteroidsApiKey ]
-    description: |
-      {
-        "action": "collection"
-      }
-  
-    responses:
-      200:
-        description: |
-          {
-          }
-  
-        body:
-          application/json:
-            schema: |
-              {"$schema":"http://json-schema.org/schema","title":"Home collection","type":"array","items":{"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical Home representation","properties":{"ml":{"type":"string"},"pr":{"type":"integer"},"bd":{"type":"integer"},"ba":{"type":"string"},"yr":{"type":"integer"},"ft":{"type":"integer"},"ad":{"type":"string"},"premium":{"type":"string"},"extra":{"type":"string"}},"required":[]}}
-  
-  post:
-    is: [ securedBySteroidsApiKey ]
-    description: |
-      {
-        "action": "create"
-      }
-  
-    responses:
-      200:
-        description: |
-          {
-          }
-  
-        body:
-          application/json:
-            schema: |
-              {"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical Home representation","properties":{"ml":{"type":"string"},"pr":{"type":"integer"},"bd":{"type":"integer"},"ba":{"type":"string"},"yr":{"type":"integer"},"ft":{"type":"integer"},"ad":{"type":"string"},"premium":{"type":"string"},"extra":{"type":"string"}},"required":[]}
-  
-
+  type: parse_collection
   /{id}:
-    get:
-      is: [ securedBySteroidsApiKey ]
-      description: |
-        {
-          "action": "find"
-        }
-    
-      responses:
-        200:
-          description: |
-            {
-            }
-    
-          body:
-            application/json:
-              schema: |
-                {"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical Home representation","properties":{"ml":{"type":"string"},"pr":{"type":"integer"},"bd":{"type":"integer"},"ba":{"type":"string"},"yr":{"type":"integer"},"ft":{"type":"integer"},"ad":{"type":"string"},"premium":{"type":"string"},"extra":{"type":"string"}},"required":[]}
-    
-    put:
-      is: [ securedBySteroidsApiKey ]
-      description: |
-        {
-          "action": "update"
-        }
-    
-      responses:
-        200:
-          description: |
-            {
-            }
-    
-          body:
-            application/json:
-              schema: |
-                {"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical Home representation","properties":{"ml":{"type":"string"},"pr":{"type":"integer"},"bd":{"type":"integer"},"ba":{"type":"string"},"yr":{"type":"integer"},"ft":{"type":"integer"},"ad":{"type":"string"},"premium":{"type":"string"},"extra":{"type":"string"}},"required":[]}
-    
-    delete:
-      is: [ securedBySteroidsApiKey ]
-      description: |
-        {
-          "action": "destroy"
-        }
-    
-      responses:
-        200:
+    type: parse_member
 
 

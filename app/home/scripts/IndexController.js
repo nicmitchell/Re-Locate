@@ -1,7 +1,7 @@
 angular
   .module('home')
   .controller("IndexController", function ($scope, Home, Choice, Search, Sort, supersonic) {
-    $scope.homes = null;
+    $scope.homes = Home;//null;
     $scope.showSpinner = true;
     $scope.currentPage = 1;
     $scope.q = Search.get();  // set query based on defaults

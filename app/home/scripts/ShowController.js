@@ -9,7 +9,7 @@ angular
   })
   .controller("ShowController", function ($scope, Home, Geocode, supersonic, User, Choice) {
     $scope.home = {ad: 'Loading...'}; // nav title
-    $scope.showSpinner = true; // for initial page preload
+    // $scope.showSpinner = true; // for initial page preload
     $scope.map = {};
     $scope.marker = {};
 
@@ -20,9 +20,9 @@ angular
           _refreshViewData(event.data.id);
         } else { // reset view for next load
           $scope.$apply(function() {
-            $scope.home = {ad: 'Loading...'}; // clear last address
+            // $scope.home = {ad: 'Loading...'}; // clear last address
             window.scrollTo(0, 0); // preloaded page retains last position
-            $scope.showSpinner = true; //ready for next load
+            // $scope.showSpinner = true; //ready for next load
           });
         }
       }
