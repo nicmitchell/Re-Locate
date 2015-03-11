@@ -59,9 +59,10 @@ angular
   // Filters home results based on search params
   .filter('homeFilter', function(){
     return function(items, q) {
+      console.log('filter items',items);
 
       // Make sure there is something to filter
-      if (items === null || q === undefined) {
+      if (items === null || typeof items === 'function' || q === undefined) {
         return;
       }
 
