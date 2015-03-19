@@ -2,36 +2,10 @@ angular
   .module('home')
   .controller("IndexController", function ($scope, Choice, Search, Sort, supersonic) {
     $scope.homes = [];
-    $scope.showSpinner = true;
+    // $scope.showSpinner = true;
     $scope.currentPage = 1;
     $scope.q = Search.get();  // set query based on defaults
     $scope.sort = Sort.get();  // set sort params based on defaults
-    $scope.test = null;
-    var testSearch = function(){
-
-      var model = Parse.Object.extend("home");
-      var query = new Parse.Query(model);
-
-      query.equalTo("bd", 4);
-      query.find({
-        success: function(results) {
-          console.log("Successfully retrieved " + results.length + " homes.");
-          // Do something with the returned Parse.Object values
-          $scope.$apply( function () {
-            for (var i = 0; i < results.length; i++) { 
-              var object = results[i].attributes;
-              $scope.homes.push(object);
-            }
-            $scope.showSpinner = false;
-          });
-        },
-        error: function(error) {
-          console.log("Error: " + error.code + " " + error.message);
-        }
-      });
-      
-    };
-    testSearch();
 
     supersonic.ui.views.current.whenVisible( function () {
       // alert preloadedHomeShow to clear last home
@@ -61,28 +35,31 @@ angular
       $scope.q.group = $scope.setChoice(bool) === null ? [] : Choice.group(bool);
     };
 
-    // Open the search modal view and share current search params
+    // Open the search view and share current search params
     $scope.openSearch = function(){
-      supersonic.data.channel('query').publish($scope.q);
-      supersonic.ui.modal.show('preloadedSearch').then( function() {
+      supersonic.ui.views.find("preloadedSearch").then( function(view) {
+        supersonic.ui.layers.push(view);
       });
     };
 
-    // Open the sort modal view and save sort params to local storage
+    // Open the sort view and save sort params to local storage
     $scope.openSort = function(){
       Sort.set($scope.sort);
-      supersonic.ui.modal.show('preloadedSort').then( function() {
+      supersonic.ui.views.find("preloadedSort").then( function(view) {
+        supersonic.ui.layers.push(view);
       });
     };
 
     // Receive query params from the search view
     supersonic.data.channel('query')
-      .subscribe( function(q, homes) {
+      .subscribe( function(message) {
+        $scope.showSpinner = true;
         // update the view and scroll to top
+        var homes = message.homes;
         $scope.$apply(function () {
-          $scope.q = q;
           $scope.homes = homes;
           window.scrollTo(0, 0);
+          $scope.showSpinner = false;
         });
       });
 
@@ -95,12 +72,4 @@ angular
           window.scrollTo(0, 0);
         });
       });
-
-    // show the page when $scope.homes is loaded from the model
-    // Home.all().whenChanged( function (homes) {
-    //   $scope.$apply( function () {
-    //     $scope.homes = homes;
-    //     $scope.showSpinner = false;
-    //   });
-    // });
   })

@@ -3,7 +3,6 @@
     Search
   </super-navbar-title>
 </super-navbar>
-
 <div ng-controller="SearchController">
   <div class="search">
     <div class="list">
@@ -62,15 +61,17 @@
     </div>
     
     <section class="padding">
+      <div ng-show="error">{{ error }}</div>
       <button class="button button-block button-positive" ng-click="closeSearch()">
         Search 
       </button>
 
-      <super-modal-hide>
-        <button class="button button-block">
-          Cancel
-        </button>
-      </super-modal-hide>
+      <button class="button button-block" ng-click="cancelSearch()">
+        Cancel
+      </button>
+      <button class="button button-block" ng-click="showError()">
+        Error
+      </button>
     </section>
   </div>
 
