@@ -61,16 +61,15 @@
     </div>
     
     <section class="padding">
-      <div ng-show="error">{{ error }}</div>
+      <div class="padding" ng-show="error">
+        <span class="assertive">{{ error }}</span>
+      </div>
       <button class="button button-block button-positive" ng-click="closeSearch()">
         Search 
       </button>
 
       <button class="button button-block" ng-click="cancelSearch()">
         Cancel
-      </button>
-      <button class="button button-block" ng-click="showError()">
-        Error
       </button>
     </section>
   </div>

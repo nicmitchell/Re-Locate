@@ -37,9 +37,8 @@ angular
 
     // Open the search view and share current search params
     $scope.openSearch = function(){
-      supersonic.ui.views.find("preloadedSearch").then( function(view) {
-        supersonic.ui.layers.push(view);
-      });
+      $scope.showSpinner = true;
+      supersonic.ui.modal.show("preloadedSearch");
     };
 
     // Open the sort view and save sort params to local storage
