@@ -34,7 +34,7 @@ angular
       return localStorage.setItem('query', JSON.stringify(q));
     };
     var get = function(){
-      return query;//JSON.parse(localStorage.getItem('query')) || query;
+      return JSON.parse(localStorage.getItem('query')) || query;
     };
     var fetch = function(q, callback){
       var model = Parse.Object.extend("home");

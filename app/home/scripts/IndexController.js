@@ -29,7 +29,7 @@ angular
     supersonic.ui.views.current.whenVisible( function () {
       // alert preloadedHomeShow to clear last home
       window.postMessage({ recipient: 'homeShow', id: null });
-      fetch($scope.q, $scope.currentPage);
+      // fetch($scope.q, $scope.currentPage);
     });
 
     $scope.openShow = function(id) {
