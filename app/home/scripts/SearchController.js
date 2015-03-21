@@ -8,14 +8,7 @@ angular
 
     // Hide the search modal view and publish search params
     $scope.closeSearch = function(){
-      // run search query
-        // Search.query(q)
-
-
       $scope.error = false;
-      // var model = Parse.Object.extend("home");
-      // var query = new Parse.Query(model);
-
       Search.fetch($scope.q, function(data){
         if(data.error){
           $scope.$apply(function(){
@@ -25,9 +18,7 @@ angular
         if(!data.error){
           $scope.homes = data.homes;
           // var query = { homes: homes };
-          supersonic.data.channel('query').publish(data.homes);
-          // console.log('homes', data.homes);
-          localStorage.setItem('homes', JSON.stringify(data.homes));
+          supersonic.data.channel('query').publish(data);
           Search.set($scope.q);
           supersonic.ui.modal.hide();  
         }

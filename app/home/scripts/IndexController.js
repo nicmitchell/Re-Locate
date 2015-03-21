@@ -1,28 +1,35 @@
 angular
   .module('home')
   .controller("IndexController", function ($scope, Choice, Search, Sort, supersonic) {
-    // $scope.homes = [];
-    // var init = function(){
-    //   $scope.$apply(function(){
-    //     $scope.homes = JSON.parse(localStorage.getItem('homes'));
-    //   });
-    // }; 
-    // init();
-
-    // $localForage.getItem('homes').then(function(data) {
-    //     $scope.$apply(function(){
-    //         $scope.homes = data;
-    //     });
-    //   });
+    $scope.homes = [];
 
     // $scope.showSpinner = true;
     $scope.currentPage = 1;
     $scope.q = Search.get();  // set query based on defaults
     $scope.sort = Sort.get();  // set sort params based on defaults
 
+    var fetch = function(params, page){
+      Search.fetch(query, updateHomes($scope.q));
+    };
+
+    var updateHomes = function(data){
+      $scope.showSpinner = true;
+        // update the view and scroll to top
+        var homes = data.homes;
+        $scope.$apply(function () {
+          supersonic.logger.log('Update homes called');
+          $scope.homes = homes;
+          window.scrollTo(0, 0);
+          $scope.showSpinner = false;
+        });
+    };
+
+    // fetch($scope.q, $scope.currentPage);
+
     supersonic.ui.views.current.whenVisible( function () {
       // alert preloadedHomeShow to clear last home
       window.postMessage({ recipient: 'homeShow', id: null });
+      fetch($scope.q, $scope.currentPage);
     });
 
     $scope.openShow = function(id) {
@@ -64,15 +71,8 @@ angular
 
     // Receive query params from the search view
     supersonic.data.channel('query')
-      .subscribe( function(message) {
-        $scope.showSpinner = true;
-        // update the view and scroll to top
-        // var homes = message.homes;
-        $scope.$apply(function () {
-          $scope.homes = localStorage.getItem('homes');
-          window.scrollTo(0, 0);
-          $scope.showSpinner = false;
-        });
+      .subscribe( function(data) {
+        updateHomes(data);
       });
 
     // Receive sort params from the sort view
