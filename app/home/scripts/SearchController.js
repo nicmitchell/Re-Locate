@@ -8,49 +8,28 @@ angular
 
     // Hide the search modal view and publish search params
     $scope.closeSearch = function(){
+      // run search query
+        // Search.query(q)
+
 
       $scope.error = false;
-      var model = Parse.Object.extend("home");
-      var query = new Parse.Query(model);
+      // var model = Parse.Object.extend("home");
+      // var query = new Parse.Query(model);
 
-      // scope.q  === values of search input fields
-      // set query.values for each search parameter
-      // TODO: add faves / unfaves
-      query.greaterThan('bd', $scope.q.bd);
-      query.greaterThan('ba', $scope.q.ba);
-      query.greaterThan('yr', $scope.q.yr);
-      query.greaterThan('ft', $scope.q.ft);
-      query.greaterThan('pr', $scope.q.pr.min);
-      query.lessThan('pr', $scope.q.pr.max);
-      if($scope.q.ad){
-        query.startsWith('ad', $scope.q.ad);
-      }
-
-      query.find({
-        success: function(results) {
-
-          // check for results
-          if (!results.length){
-            $scope.$apply(function(){
-              $scope.error = 'Sorry, no results were found. Please update your search and try again.';
-            });
-            return;
-          }
-            
-          // var q 
-          var homes = [];
-          for (var i = 0; i < results.length; i++) { 
-            var home = results[i].attributes;
-            homes.push(home);
-          }
-          $scope.homes = homes;
-          var query = { homes: homes };
-          supersonic.data.channel('query').publish(query);
+      Search.fetch($scope.q, function(data){
+        if(data.error){
+          $scope.$apply(function(){
+            $scope.error = data.error;
+          });
+        }
+        if(!data.error){
+          $scope.homes = data.homes;
+          // var query = { homes: homes };
+          supersonic.data.channel('query').publish(data.homes);
+          // console.log('homes', data.homes);
+          localStorage.setItem('homes', JSON.stringify(data.homes));
+          Search.set($scope.q);
           supersonic.ui.modal.hide();  
-        },
-        error: function(error) {
-          console.log("Error: " + error.code + " " + error.message);
-          $scope.error = "Oops, something went wrong. Please try again";
         }
       });
     };
@@ -59,10 +38,10 @@ angular
       var query = { homes: $scope.homes };
       supersonic.data.channel('query').publish(query);
       $scope.error = false;
-      supersonic.ui.layers.pop();
+      supersonic.ui.modal.hide();
     };
     
-    $scope.showError = function(){
+    $scope.errorTest = function(){
       $scope.error = "Oops, something went wrong. Please try again";
     };
   })

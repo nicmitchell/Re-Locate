@@ -1,7 +1,20 @@
 angular
   .module('home')
   .controller("IndexController", function ($scope, Choice, Search, Sort, supersonic) {
-    $scope.homes = [];
+    // $scope.homes = [];
+    // var init = function(){
+    //   $scope.$apply(function(){
+    //     $scope.homes = JSON.parse(localStorage.getItem('homes'));
+    //   });
+    // }; 
+    // init();
+
+    // $localForage.getItem('homes').then(function(data) {
+    //     $scope.$apply(function(){
+    //         $scope.homes = data;
+    //     });
+    //   });
+
     // $scope.showSpinner = true;
     $scope.currentPage = 1;
     $scope.q = Search.get();  // set query based on defaults
@@ -37,8 +50,8 @@ angular
 
     // Open the search view and share current search params
     $scope.openSearch = function(){
-      $scope.showSpinner = true;
       supersonic.ui.modal.show("preloadedSearch");
+      $scope.showSpinner = true;
     };
 
     // Open the sort view and save sort params to local storage
@@ -54,9 +67,9 @@ angular
       .subscribe( function(message) {
         $scope.showSpinner = true;
         // update the view and scroll to top
-        var homes = message.homes;
+        // var homes = message.homes;
         $scope.$apply(function () {
-          $scope.homes = homes;
+          $scope.homes = localStorage.getItem('homes');
           window.scrollTo(0, 0);
           $scope.showSpinner = false;
         });

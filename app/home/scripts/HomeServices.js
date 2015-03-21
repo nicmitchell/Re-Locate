@@ -36,9 +36,58 @@ angular
     var get = function(){
       return JSON.parse(localStorage.getItem('query')) || query;
     };
+    var fetch = function(q, callback){
+      var model = Parse.Object.extend("home");
+      var query = new Parse.Query(model);
+      var data = { error: false, homes: [] };
+
+      query.greaterThan('bd', q.bd);
+      query.greaterThan('ba', q.ba);
+      query.greaterThan('yr', q.yr);
+      query.greaterThan('ft', q.ft);
+      query.greaterThan('pr', q.pr.min);
+      query.lessThan('pr', q.pr.max);
+      query.limit(10);
+      if(q.ad){
+        query.startsWith('ad', q.ad);
+      }
+      query.find({
+        success: function(results) {
+
+          // check for results
+          if (!results.length){
+            data.error = 'Sorry, no results were found. Please update your search and try again.';
+            // return data;
+          }
+            
+          // var q 
+          var homes = [];
+          for (var i = 0; i < results.length; i++) { 
+            var home = results[i].attributes;
+            if(home.ad && home.ml){
+              data.homes.push(home);
+              // console.log('home', home);
+            }
+          }
+          console.log('data in service', data);
+          // data = JSON.parse(data);
+          callback(data);
+          // $scope.homes = homes;
+          // var query = { homes: homes };
+          // supersonic.data.channel('query').publish(query);
+          // supersonic.ui.modal.hide();  
+        },
+        error: function(error) {
+          console.log("Error: " + error.code + " " + error.message);
+          data.error = "Oops, something went wrong. Please try again";
+          callback(data);
+        }
+      });
+    };
     return {
       set: set,
-      get: get
+      get: get,
+      fetch: fetch
     };
   })
   
