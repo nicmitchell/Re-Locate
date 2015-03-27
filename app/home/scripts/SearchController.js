@@ -2,14 +2,14 @@ angular
   .module('home')
   .controller("SearchController", function ($scope, supersonic, Search) {
     // Load the query parameters from local storage
-    $scope.q = Search.get();
+    $scope.query = Search.get();
     $scope.homes = [];
     $scope.error = false;
 
     // Hide the search modal view and publish search params
     $scope.closeSearch = function(){
       $scope.error = false;
-      Search.fetch($scope.q, function(data){
+      Search.fetch($scope.query, function(data){
         if(data.error){
           $scope.$apply(function(){
             $scope.error = data.error;
@@ -19,7 +19,7 @@ angular
           $scope.homes = data.homes;
           // var query = { homes: homes };
           supersonic.data.channel('query').publish(data);
-          Search.set($scope.q);
+          Search.set($scope.query);
           supersonic.ui.modal.hide();  
         }
       });

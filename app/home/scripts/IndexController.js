@@ -5,11 +5,11 @@ angular
 
     // $scope.showSpinner = true;
     $scope.currentPage = 1;
-    $scope.q = Search.get();  // set query based on defaults
+    $scope.query = Search.get();  // set query based on defaults
     $scope.sort = Sort.get();  // set sort params based on defaults
 
     var fetch = function(params, page){
-      Search.fetch(query, updateHomes($scope.q));
+      Search.fetch(query, updateHomes($scope.query));
     };
 
     var updateHomes = function(data){
@@ -24,12 +24,12 @@ angular
         });
     };
 
-    // fetch($scope.q, $scope.currentPage);
+    // fetch($scope.query, $scope.currentPage);
 
     supersonic.ui.views.current.whenVisible( function () {
       // alert preloadedHomeShow to clear last home
       window.postMessage({ recipient: 'homeShow', id: null });
-      // fetch($scope.q, $scope.currentPage);
+      // fetch($scope.query, $scope.currentPage);
     });
 
     $scope.openShow = function(id) {
@@ -52,7 +52,7 @@ angular
     };
 
     $scope.groupFilter = function(bool) {
-      $scope.q.group = $scope.setChoice(bool) === null ? [] : Choice.group(bool);
+      $scope.query.group = $scope.setChoice(bool) === null ? [] : Choice.group(bool);
     };
 
     // Open the search view and share current search params
