@@ -66,6 +66,7 @@ angular
           var homes = [];
           for (var i = 0; i < results.length; i++) { 
             var home = results[i].attributes;
+            home.id = results[i].id;
             if(home.ad && home.ml){
               data.homes.push(home);
               // console.log('home', home);

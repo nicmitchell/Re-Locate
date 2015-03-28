@@ -16,7 +16,7 @@ angular.module('home')
       _.each(get(), function(value, key, collection) {
         if (value === bool) {
           results.push(key);
-        };
+        }
       });
       return results;
     };

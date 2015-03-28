@@ -7,7 +7,7 @@
 
   <div ng-show="showSpinner" ng-include="'_spinner.html'"></div>
   <div ng-hide="showSpinner">{{ home}}
-    <img ng-click='photoSwipe()' style="height: 100%; max-width: 100%; width: 100%;" ng-src="http://pcspads.com/listing_pics/{{ home.id }}/{{ home.id }}_01.jpg" flex>
+    <img ng-click='photoSwipe()' style="height: 100%; max-width: 100%; width: 100%;" ng-src="http://pcspads.com/listing_pics/{{ home.ml }}/{{ home.ml }}_01.jpg" flex>
     <div class="button-bar">
       <a ng-click="setChoice(true)" ng-class='{ "button-positive" : choice }' class='button super-star'></a>
       <a ng-click="setChoice(false)" ng-class='{ "button-positive" : choice === false }' class='button super-trash-a'></a>

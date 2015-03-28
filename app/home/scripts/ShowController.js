@@ -14,9 +14,9 @@ angular
     $scope.marker = {};
 
     var _messageReceived = function(event) {
-      console.log('message recieved triggered');
+      console.log('_messageRecieved triggered', event);
       if (event.data.recipient === 'homeShow') { // message intended for us?
-        console.log('messge inteded for home show');
+        console.log('message intended for home show, event.data.id', event.data.id);
 
         if (event.data.id) {
           _refreshViewData(event.data.id);
@@ -32,31 +32,37 @@ angular
     };
     window.addEventListener('message', _messageReceived);
 
-    var _refreshViewData = function(mls) {
-      console.log('refreshView called');
-      var home = Parse.Object.extend('Home');
+    var _refreshViewData = function(id) {
+      console.log('_refreshView called, id is', id);
+      var home = Parse.Object.extend('home');
       var query = new Parse.Query(home);
-      query.equalTo(ml, mls);
-      query.find({
-        success: function(results){
-          console.log('single query results', results);
+      query.get(id, {
+        success: function(home){
+          console.log('single query home', home);
+          $scope.$apply( function () {
+              $scope.showSpinner = false;
+              $scope.home = home.attributes;
+            });
+        },
+        error: function(error){
+          console.log('error', error);
         }
       });
-      Home.find(mls).then( function (home) {
-        $scope.$apply( function () {
-          $scope.showSpinner = false;
-          $scope.home = home;
-        });
+      // Home.find(mls).then( function (home) {
+      //   $scope.$apply( function () {
+      //     $scope.showSpinner = false;
+      //     $scope.home = home;
+      //   });
 
-        $scope.choice = Choice.get()[$scope.home.id];
+      //   $scope.choice = Choice.get()[$scope.home.id];
 
-        // translates address to lat/long for Google maps
-        Geocode.geocode(home.ad).then(function(data){
-          $scope.map = data.map;
-          $scope.marker = data.marker;
-        });
+      //   // translates address to lat/long for Google maps
+      //   Geocode.geocode(home.ad).then(function(data){
+      //     $scope.map = data.map;
+      //     $scope.marker = data.marker;
+      //   });
 
-      });
+      // });
 
       return;
     };
@@ -76,8 +82,9 @@ angular
       var pswpElement = document.querySelectorAll('.pswp')[0];
 
       var items = [];
-      var mls = $scope.home.id;
+      var mls = $scope.home.ml;
       var base_url = 'http://pcspads.com/listing_pics/' + mls + '/' + mls;
+      console.log('base_url', base_url);
       var num, pic;
       
       for(var i = 1; i <= $scope.home.extra.PhotoCount; i++) {
