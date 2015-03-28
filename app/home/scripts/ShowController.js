@@ -14,7 +14,9 @@ angular
     $scope.marker = {};
 
     var _messageReceived = function(event) {
-      if (event.data.recipient == 'homeShow') { // message intended for us?
+      console.log('message recieved triggered');
+      if (event.data.recipient === 'homeShow') { // message intended for us?
+        console.log('messge inteded for home show');
 
         if (event.data.id) {
           _refreshViewData(event.data.id);
@@ -31,6 +33,15 @@ angular
     window.addEventListener('message', _messageReceived);
 
     var _refreshViewData = function(mls) {
+      console.log('refreshView called');
+      var home = Parse.Object.extend('Home');
+      var query = new Parse.Query(home);
+      query.equalTo(ml, mls);
+      query.find({
+        success: function(results){
+          console.log('single query results', results);
+        }
+      });
       Home.find(mls).then( function (home) {
         $scope.$apply( function () {
           $scope.showSpinner = false;

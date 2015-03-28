@@ -8,23 +8,21 @@ angular
     $scope.query = Search.get();  // set query based on defaults
     $scope.sort = Sort.get();  // set sort params based on defaults
 
-    var fetch = function(params, page){
-      Search.fetch(query, updateHomes($scope.query));
+    var fetch = function(query, page){
+      Search.fetch(query, updateHomes);
     };
 
     var updateHomes = function(data){
+      // update the view and scroll to top
+      supersonic.logger.log('Update homes called');
       $scope.showSpinner = true;
-        // update the view and scroll to top
-        var homes = data.homes;
-        $scope.$apply(function () {
-          supersonic.logger.log('Update homes called');
-          $scope.homes = homes;
-          window.scrollTo(0, 0);
-          $scope.showSpinner = false;
-        });
+      var homes = data.homes;
+      $scope.homes = homes;
+      window.scrollTo(0, 0);
+      $scope.showSpinner = false;
     };
-
-    // fetch($scope.query, $scope.currentPage);
+    // supersonic.logger.log()
+    fetch($scope.query, $scope.currentPage);
 
     supersonic.ui.views.current.whenVisible( function () {
       // alert preloadedHomeShow to clear last home

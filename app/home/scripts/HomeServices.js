@@ -37,6 +37,8 @@ angular
       return JSON.parse(localStorage.getItem('query')) || query;
     };
     var fetch = function(q, callback){
+      console.log('args', arguments);
+      // debugger;
       var model = Parse.Object.extend("home");
       var query = new Parse.Query(model);
       var data = { error: false, homes: [] };
@@ -70,12 +72,7 @@ angular
             }
           }
           console.log('data in service', data);
-          // data = JSON.parse(data);
           callback(data);
-          // $scope.homes = homes;
-          // var query = { homes: homes };
-          // supersonic.data.channel('query').publish(query);
-          // supersonic.ui.modal.hide();  
         },
         error: function(error) {
           console.log("Error: " + error.code + " " + error.message);
