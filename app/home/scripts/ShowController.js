@@ -83,14 +83,15 @@ angular
 
       var items = [];
       var mls = $scope.home.ml;
-      var base_url = 'http://pcspads.com/listing_pics/' + mls + '/' + mls;
-      console.log('base_url', base_url);
+      var base_url = '/img/interior-images/interior_';
+      // console.log('base_url', base_url);
       var num, pic;
       
       for(var i = 1; i <= $scope.home.extra.PhotoCount; i++) {
         num = i < 10 ? '0' + i : i;
         pic = { w: 580, h: 436 };
-        pic.src = base_url + '_' + num + '.jpg';
+        pic.src = base_url + num + '.jpg';
+        console.log('pic src', pic.src);
 
         items.push(pic);
       }
