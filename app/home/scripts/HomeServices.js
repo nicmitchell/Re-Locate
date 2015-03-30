@@ -36,8 +36,8 @@ angular
     var get = function(){
       return JSON.parse(localStorage.getItem('query')) || query;
     };
-    var fetch = function(q, callback){
-      console.log('args', arguments);
+    var fetch = function(q, page, callback){
+      // console.log('args', arguments);
       // debugger;
       var model = Parse.Object.extend("home");
       var query = new Parse.Query(model);
@@ -50,11 +50,15 @@ angular
       query.greaterThan('pr', q.pr.min);
       query.lessThan('pr', q.pr.max);
       query.limit(10);
+      if (page > 1) { 
+        query.skip((page - 1) * 10);
+      }
       if(q.ad){
         query.startsWith('ad', q.ad);
       }
       query.find({
         success: function(results) {
+          console.log('raw results', results);
 
           // check for results
           if (!results.length){

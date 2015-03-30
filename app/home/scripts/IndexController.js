@@ -4,12 +4,13 @@ angular
     $scope.homes = [];
 
     // $scope.showSpinner = true;
-    $scope.currentPage = 1;
+    $scope.currentPage = 0;
+    $scope.pageChunk = 0;
     $scope.query = Search.get();  // set query based on defaults
     $scope.sort = Sort.get();  // set sort params based on defaults
 
-    var fetch = function(query, page){
-      Search.fetch(query, updateHomes);
+    var fetch = function(query){
+      Search.fetch(query, $scope.currentPage, updateHomes);
     };
 
     var updateHomes = function(data){
@@ -17,12 +18,16 @@ angular
       supersonic.logger.log('Update homes called');
       $scope.showSpinner = true;
       var homes = data.homes;
-      $scope.homes = homes;
-      window.scrollTo(0, 0);
+      for (var i = 0, l = homes.length; i < l; i++){
+        $scope.homes.push(homes[i]);
+      }
+      console.log('homes in updateHomes', $scope.homes);
+      // $scope.homes = $scope.homes.concat(homes);
+      // window.scrollTo(0, 0);
       $scope.showSpinner = false;
     };
     // supersonic.logger.log()
-    fetch($scope.query, $scope.currentPage);
+    // fetch($scope.query);
 
     supersonic.ui.views.current.whenVisible( function () {
       // alert preloadedHomeShow to clear last home
@@ -38,9 +43,12 @@ angular
     };
 
     // Infinite scroll for home#index
-    $scope.scrollLimit = 5;
+    // $scope.scrollLimit = 5;
     $scope.scrollLoad = function(){
-      $scope.scrollLimit += 5;
+      // $scope.scrollLimit += 5;
+        $scope.currentPage += 1;
+        fetch($scope.query);
+        supersonic.logger.log('scrollLoad called');
     };
     
     $scope.setChoice = function(bool) {
