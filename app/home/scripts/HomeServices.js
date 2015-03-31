@@ -41,7 +41,7 @@ angular
       // debugger;
       var model = Parse.Object.extend("home");
       var query = new Parse.Query(model);
-      var data = { error: false, homes: [] };
+      var data = { error: false, homes: [], count: 0 };
 
       query.greaterThan('bd', q.bd);
       query.greaterThan('ba', q.ba);
@@ -49,6 +49,17 @@ angular
       query.greaterThan('ft', q.ft);
       query.greaterThan('pr', q.pr.min);
       query.lessThan('pr', q.pr.max);
+      query.count({
+        success: function(count) {
+          // The count request succeeded. Show the count
+          data.count = count;
+        },
+        error: function(error) {
+          // The request failed
+          console.log("Error: " + error.code + " " + error.message);
+          data.error = "Oops, something went wrong. Please try again";
+        }
+      });
       query.limit(10);
       if (page > 1) { 
         query.skip((page - 1) * 10);
@@ -82,7 +93,6 @@ angular
         error: function(error) {
           console.log("Error: " + error.code + " " + error.message);
           data.error = "Oops, something went wrong. Please try again";
-          callback(data);
         }
       });
     };

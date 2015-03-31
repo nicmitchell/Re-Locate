@@ -3,9 +3,10 @@ angular
   .controller("IndexController", function ($scope, Choice, Search, Sort, supersonic) {
     $scope.homes = [];
 
-    // $scope.showSpinner = true;
+    $scope.showSpinner = true;
     $scope.currentPage = 0;
     $scope.pageChunk = 0;
+    $scope.count = 0;
     $scope.query = Search.get();  // set query based on defaults
     $scope.sort = Sort.get();  // set sort params based on defaults
 
@@ -17,6 +18,7 @@ angular
       // update the view and scroll to top
       supersonic.logger.log('Update homes called');
       $scope.showSpinner = true;
+      $scope.count = data.count;
       var homes = data.homes;
       for (var i = 0, l = homes.length; i < l; i++){
         $scope.homes.push(homes[i]);
