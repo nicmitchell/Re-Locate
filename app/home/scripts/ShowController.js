@@ -71,7 +71,7 @@ angular
       // null (to unset) if matches
       $scope.choice = ($scope.choice === bool) ? null : bool;
       
-      Choice.set($scope.home.id, $scope.choice);
+      Choice.set($scope.home.ml, $scope.choice);
     };    
 
     if(Object.keys(User.getCurrent()).length) {

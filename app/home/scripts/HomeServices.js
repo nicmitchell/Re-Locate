@@ -49,6 +49,7 @@ angular
       query.greaterThan('ft', q.ft);
       query.greaterThan('pr', q.pr.min);
       query.lessThan('pr', q.pr.max);
+      query.ascending('pr');
       query.count({
         success: function(count) {
           // The count request succeeded. Show the count

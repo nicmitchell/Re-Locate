@@ -3,7 +3,7 @@ angular
   .controller("IndexController", function ($scope, Choice, Search, Sort, supersonic) {
     $scope.homes = [];
 
-    $scope.showSpinner = true;
+    // $scope.showSpinner = true;
     $scope.currentPage = 0;
     $scope.pageChunk = 0;
     $scope.count = 0;
@@ -48,9 +48,9 @@ angular
     // $scope.scrollLimit = 5;
     $scope.scrollLoad = function(){
       // $scope.scrollLimit += 5;
-        $scope.currentPage += 1;
-        fetch($scope.query);
-        supersonic.logger.log('scrollLoad called');
+      $scope.currentPage += 1;
+      fetch($scope.query);
+      supersonic.logger.log('scrollLoad called');
     };
     
     $scope.setChoice = function(bool) {
@@ -80,7 +80,11 @@ angular
     // Receive query params from the search view
     supersonic.data.channel('query')
       .subscribe( function(data) {
-        updateHomes(data);
+        console.log('data from search', data);
+        $scope.$apply(function(){
+          $scope.homes = [];
+          updateHomes(data);
+        });
       });
 
     // Receive sort params from the sort view

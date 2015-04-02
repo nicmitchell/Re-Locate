@@ -9,7 +9,7 @@ angular
     // Hide the search modal view and publish search params
     $scope.closeSearch = function(){
       $scope.error = false;
-      Search.fetch($scope.query, function(data){
+      Search.fetch($scope.query, 0, function(data){
         if(data.error){
           $scope.$apply(function(){
             $scope.error = data.error;
@@ -26,8 +26,8 @@ angular
     };
 
     $scope.cancelSearch = function(){
-      var query = { homes: $scope.homes };
-      supersonic.data.channel('query').publish(query);
+      // var query = { homes: $scope.homes };
+      // supersonic.data.channel('query').publish(query);
       $scope.error = false;
       supersonic.ui.modal.hide();
     };

@@ -19,7 +19,7 @@
     </div>
     <ul class="list homes-index">
     <!-- <dir-pagination-controls template-url="items-total.tpl.html"></dir-pagination-controls> -->
-    <h4 ng-if="count > 0" class="range-label">Showing {{ count }} listings</h4>
+    <h4 class="range-label">Showing {{ count }} listings</h4>
       <div infinite-scroll="scrollLoad()" infinite-scroll-distance="0" can-load="true">
         <!-- <div dir-paginate="home in homes | orderBy: sort.predicate: sort.reverse | itemsPerPage: scrollLimit" current-page="currentPage" class="repeat"> -->
         <div ng-repeat="home in homes"current-page="currentPage" class="repeat">
@@ -47,6 +47,7 @@
     </ul>
     <!-- <dir-pagination-controls template-url="items-loading.tpl.html"></dir-pagination-controls> -->
     <h4>Loading more homes ...</h4>
+    <div ng-show="showSpinner" ng-include="'_spinner.html'"></div>
     <h4 ng-show="homes.length === 0" class="assertive padding">
       No homes found.
     </h4>
