@@ -137,7 +137,7 @@ angular
         //   item.yr >= q.yr && // year
         //   item.ft >= q.ft && // sq feet
         //   _.contains(item.ad, q.ad) && // address
-          return ((q.group && q.group.length > 0) ? _.contains(q.group, item.id) : true); //favs/unfavs (by MLS numbers)
+          return ((q.group && q.group.length > 0) ? _.contains(q.group, item.ml) : true); //favs/unfavs (by MLS numbers)
         // );
       });
     };

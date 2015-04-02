@@ -21,8 +21,8 @@
     <!-- <dir-pagination-controls template-url="items-total.tpl.html"></dir-pagination-controls> -->
     <h4 class="range-label">Showing {{ count }} listings</h4>
       <div infinite-scroll="scrollLoad()" infinite-scroll-distance="0" can-load="true">
-        <!-- <div dir-paginate="home in homes | orderBy: sort.predicate: sort.reverse | itemsPerPage: scrollLimit" current-page="currentPage" class="repeat"> -->
-        <div ng-repeat="home in homes | homeFilter" current-page="currentPage" class="repeat">
+        <!-- <div dir-paginate="home in homes | homeFilter: q | orderBy: sort.predicate: sort.reverse | itemsPerPage: scrollLimit" current-page="currentPage" class="repeat"> -->
+        <div ng-repeat="home in homes | homeFilter: query" current-page="currentPage" class="repeat">
           <li ng-click='openShow(home.id)' class="item item-icon-right no-padding">
             <img class="full-image" ng-src="http://pcspads.com/listing_pics/{{ home.ml }}/{{ home.ml }}_01.jpg">
             <div class="details">
