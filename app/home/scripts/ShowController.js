@@ -40,9 +40,13 @@ angular
         success: function(home){
           console.log('single query home', home);
           $scope.$apply( function () {
-              $scope.showSpinner = false;
-              $scope.home = home.attributes;
-            });
+            $scope.showSpinner = false;
+            $scope.home = home.attributes;
+          });
+          Geocode.geocode($scope.home.ad).then(function(data){
+            $scope.map = data.map;
+            $scope.marker = data.marker;
+          });
         },
         error: function(error){
           console.log('error', error);
@@ -52,10 +56,6 @@ angular
       //   $scope.choice = Choice.get()[$scope.home.id];
 
       //   // translates address to lat/long for Google maps
-      //   Geocode.geocode(home.ad).then(function(data){
-      //     $scope.map = data.map;
-      //     $scope.marker = data.marker;
-      //   });
 
       // });
 

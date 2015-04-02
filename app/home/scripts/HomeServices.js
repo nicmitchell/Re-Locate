@@ -121,24 +121,12 @@ angular
   // Filters home results based on search params
   .filter('homeFilter', function(){
     return function(items, q) {
-      console.log('filter items', items);
-
-      // Make sure there is something to filter
-      if (items === null || typeof items === 'function' || q === undefined) {
+      // Make sure there is something valid to filter
+      if (!items || !q || typeof items === 'function') {
         return;
       }
-
       return items.filter(function(item){
-        // return (
-        //   item.bd >= q.bd && // bedrooms
-        //   item.ba >= q.ba && // bathrooms
-        //   ((q.pr.max === q.pr.limit) ? item.pr >= q.pr.min : 
-        //   item.pr >= q.pr.min && item.pr <= q.pr.max) && // price range
-        //   item.yr >= q.yr && // year
-        //   item.ft >= q.ft && // sq feet
-        //   _.contains(item.ad, q.ad) && // address
-          return ((q.group && q.group.length > 0) ? _.contains(q.group, item.ml) : true); //favs/unfavs (by MLS numbers)
-        // );
+        return ((q.group && q.group.length > 0) ? _.contains(q.group, item.ml) : true); //favs/unfavs (by MLS numbers)
       });
     };
   })
