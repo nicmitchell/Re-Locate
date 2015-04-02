@@ -42,6 +42,7 @@ angular
           $scope.$apply( function () {
             $scope.showSpinner = false;
             $scope.home = home.attributes;
+            $scope.choice = Choice.get()[$scope.home.ml];
           });
           Geocode.geocode($scope.home.ad).then(function(data){
             $scope.map = data.map;
@@ -53,7 +54,6 @@ angular
         }
       });
 
-      //   $scope.choice = Choice.get()[$scope.home.id];
 
       //   // translates address to lat/long for Google maps
 
