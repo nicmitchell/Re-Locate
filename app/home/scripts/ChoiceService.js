@@ -11,6 +11,7 @@ angular.module('home')
       return localStorage.setItem('choices', JSON.stringify(choices));
     };
 
+    // Returns an array of each item key (mls) set in Local Storage for either true (fave) or false (trash)
     var group = function(bool) {
       var results = [];
       _.each(get(), function(value, key, collection) {

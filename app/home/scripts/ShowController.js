@@ -48,11 +48,6 @@ angular
           console.log('error', error);
         }
       });
-      // Home.find(mls).then( function (home) {
-      //   $scope.$apply( function () {
-      //     $scope.showSpinner = false;
-      //     $scope.home = home;
-      //   });
 
       //   $scope.choice = Choice.get()[$scope.home.id];
 
@@ -70,7 +65,6 @@ angular
     $scope.setChoice = function(bool) {
       // null (to unset) if matches
       $scope.choice = ($scope.choice === bool) ? null : bool;
-      
       Choice.set($scope.home.ml, $scope.choice);
     };    
 

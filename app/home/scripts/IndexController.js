@@ -15,7 +15,7 @@ angular
     };
 
     var updateHomes = function(data){
-      // update the view and scroll to top
+      // update homes on $scope
       supersonic.logger.log('Update homes called');
       $scope.showSpinner = true;
       $scope.count = data.count;
@@ -24,12 +24,9 @@ angular
         $scope.homes.push(homes[i]);
       }
       console.log('homes in updateHomes', $scope.homes);
-      // $scope.homes = $scope.homes.concat(homes);
       // window.scrollTo(0, 0);
       $scope.showSpinner = false;
     };
-    // supersonic.logger.log()
-    // fetch($scope.query);
 
     supersonic.ui.views.current.whenVisible( function () {
       // alert preloadedHomeShow to clear last home
@@ -53,14 +50,16 @@ angular
       supersonic.logger.log('scrollLoad called');
     };
     
+    // Determines whether user has clicked Fave or Trash
     $scope.setChoice = function(bool) {
       // null (to unset) if matches
       $scope.choice = ($scope.choice === bool) ? null : bool;
       return $scope.choice;
     };
 
+    // Called when clicking on Fave or Trash buttons in homes#index
     $scope.groupFilter = function(bool) {
-      $scope.query.group = $scope.setChoice(bool) === null ? [] : Choice.group(bool);
+      $scope.query.group = ($scope.setChoice(bool) === null ) ? [] : Choice.group(bool);
     };
 
     // Open the search view and share current search params
@@ -84,6 +83,7 @@ angular
         $scope.$apply(function(){
           $scope.homes = [];
           updateHomes(data);
+          window.scrollTo(0, 0);
         });
       });
 
