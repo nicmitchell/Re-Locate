@@ -3,7 +3,7 @@ angular
   .controller("IndexController", function ($scope, Choice, Search, Sort, supersonic) {
     $scope.homes = [];
 
-    // $scope.showSpinner = true;
+    $scope.showSpinner = true;
     $scope.loadingHomes = true;
     $scope.currentPage = 0;
     $scope.pageChunk = 0;
@@ -31,11 +31,7 @@ angular
       $scope.showSpinner = false;
     };
 
-    supersonic.ui.views.current.whenVisible( function () {
-      // alert preloadedHomeShow to clear last home
-      window.postMessage({ recipient: 'homeShow', id: null });
-      // fetch($scope.query, $scope.currentPage);
-    });
+    
 
     $scope.openShow = function(id) {
       window.postMessage({ recipient: 'homeShow', id: id });
@@ -102,9 +98,10 @@ angular
            updateHomes(data);
            window.scrollTo(0, 0);
          });
-        // $scope.$apply(function () {
-        //   $scope.sort = s;
-        //   window.scrollTo(0, 0);
-        // });
       });
+
+    supersonic.ui.views.current.whenVisible( function () {
+      // alert preloadedHomeShow to clear last home
+      window.postMessage({ recipient: 'homeShow', id: null });
+    });
   })

@@ -68,13 +68,11 @@ angular
         success: function(results) {
           console.log('raw results', results);
 
-          // check for results
+          // Make sure there are  for results
           if (!results.length){
             data.error = 'Sorry, no results were found. Please update your search and try again.';
-            // return data;
           }
             
-          // var q 
           var homes = [];
           for (var i = 0; i < results.length; i++) { 
             var home = results[i].attributes;
