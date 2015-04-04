@@ -2,19 +2,12 @@ angular
   .module('home')
   .controller("IndexController", function ($scope, Choice, Search, Sort, supersonic) {
     $scope.homes = [];
-
     $scope.showSpinner = true;
     $scope.loadingHomes = true;
     $scope.currentPage = 0;
-    $scope.pageChunk = 0;
     $scope.count = 0;
     $scope.query = Search.get();  // set query based on defaults
     $scope.sort = Sort.get();  // set sort params based on defaults
-
-    // var fetch = function(query){
-    //   Search.fetch(query, $scope.sort, $scope.currentPage, updateHomes);
-    //   $scope.loadingHomes = true;
-    // };
 
     var updateHomes = function(data){
       // update homes on $scope
@@ -26,18 +19,8 @@ angular
         $scope.homes.push(homes[i]);
       }
       console.log('homes in updateHomes', $scope.homes);
-      // window.scrollTo(0, 0);
       $scope.loadingHomes = false;
       $scope.showSpinner = false;
-    };
-
-    
-
-    $scope.openShow = function(id) {
-      window.postMessage({ recipient: 'homeShow', id: id });
-      supersonic.ui.views.find('preloadedHomeShow').then(function(view) {
-        supersonic.ui.layers.push(view);
-      });
     };
 
     // Infinite scroll for home#index
@@ -62,6 +45,14 @@ angular
       $scope.query.group = ($scope.setChoice(bool) === null ) ? [] : Choice.group(bool);
     };
 
+    // Open the single home view and pass in the home ID
+    $scope.openShow = function(id) {
+      window.postMessage({ recipient: 'homeShow', id: id });
+      supersonic.ui.views.find('preloadedHomeShow').then(function(view) {
+        supersonic.ui.layers.push(view);
+      });
+    };
+
     // Open the search view and share current search params
     $scope.openSearch = function(){
       supersonic.ui.modal.show("preloadedSearch");
@@ -72,20 +63,24 @@ angular
     $scope.openSort = function(){
       supersonic.ui.modal.show("preloadedSort");
       $scope.showSpinner = true;
-      // supersonic.ui.views.find("preloadedSort").then( function(view) {
-      //   supersonic.ui.layers.push(view);
+    };
+
+    var receiveData = function(data){
+      // $scope.$apply(function(){
+        $scope.homes = [];
+        updateHomes(data);
+        window.scrollTo(0, 0);
       // });
     };
 
     // Receive query params from the search view
     supersonic.data.channel('query')
       .subscribe( function(data) {
-        console.log('data from search', data);
-        $scope.$apply(function(){
-          $scope.homes = [];
-          updateHomes(data);
-          window.scrollTo(0, 0);
-        });
+        console.log('data from search', data.view);
+        receiveData(data);
+          // $scope.homes = [];
+          // updateHomes(data);
+          // window.scrollTo(0, 0);
       });
 
     // Receive sort params from the sort view
@@ -93,15 +88,16 @@ angular
       .subscribe( function(data) {
         // update the view and scroll to top
          console.log('data from sort', data);
-         $scope.$apply(function(){
-           $scope.homes = [];
-           updateHomes(data);
-           window.scrollTo(0, 0);
-         });
+         receiveData(data);
+         // $scope.$apply(function(){
+         //   $scope.homes = [];
+         //   updateHomes(data);
+         //   window.scrollTo(0, 0);
+         // });
       });
 
+    // alert preloadedHomeShow to clear last home
     supersonic.ui.views.current.whenVisible( function () {
-      // alert preloadedHomeShow to clear last home
       window.postMessage({ recipient: 'homeShow', id: null });
     });
   })
