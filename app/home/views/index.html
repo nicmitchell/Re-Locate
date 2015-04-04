@@ -46,9 +46,8 @@
       </div>
     </ul>
     <!-- <dir-pagination-controls template-url="items-loading.tpl.html"></dir-pagination-controls> -->
-    <h4>Loading more homes ...</h4>
-    <div ng-show="showSpinner" ng-include="'_spinner.html'"></div>
-    <h4 ng-show="homes.length === 0" class="assertive padding">
+    <h4 ng-show="loadingHomes === true">Loading more homes ...</h4>
+    <h4 ng-show="homes.length === 0 && loadingHomes === false" class="assertive padding">
       No homes found.
     </h4>
   </div>

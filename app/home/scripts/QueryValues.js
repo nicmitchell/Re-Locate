@@ -13,6 +13,6 @@ angular.module('home')
     currYr: new Date().getFullYear()
   })
   .value('sort', {
-    predicate: 'pr', // sort by price
-    reverse: true // sort in descending order
+    property: 'pr', // sort by price
+    order: 'descending' // sort in descending order
   })

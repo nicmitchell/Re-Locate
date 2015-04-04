@@ -10,11 +10,11 @@
         <span class="input-label">Address</span>
         <input type="text" placeholder="123 Main St">
       </label>
-
-      <label class="item item-input item-stacked-label">Price Range: {{ q.pr.min | currency:undefined:0 }} to {{ q.pr.max | currency:undefined:0 }} <span ng-show="q.pr.max === q.pr.limit">+</span>
+  q - {{q}}
+      <label class="item item-input item-stacked-label">Price Range: {{ query.pr.min | currency:undefined:0 }} to {{ query.pr.max | currency:undefined:0 }} <span ng-show="query.pr.max === query.pr.limit">+</span>
         <slider class="range dual"
-          ng-model="q.pr.min"
-          ng-model-range="q.pr.max"
+          ng-model="query.pr.min"
+          ng-model-range="query.pr.max"
           buffer="60000"
           floor="60000"
           ceiling="599000"
@@ -22,18 +22,18 @@
         </slider>
       </label>
 
-      <label class="item item-input item-stacked-label">Beds: {{ q.bd }}+
+      <label class="item item-input item-stacked-label">Beds: {{ query.bd }}+
         <slider class="range"
-          ng-model="q.bd"
+          ng-model="query.bd"
           floor="1"
           ceiling="6"
           step="1">
         </slider>
       </label>
 
-      <label class="item item-input item-stacked-label">Baths: {{ q.ba }}+
+      <label class="item item-input item-stacked-label">Baths: {{ query.ba }}+
         <slider class="range"
-          ng-model="q.ba"
+          ng-model="query.ba"
           floor="1"
           ceiling="5"
           precision="1"
@@ -41,20 +41,20 @@
         </slider>
       </label>
 
-      <label class="item item-input item-stacked-label">Sq Feet: {{ q.ft | number }}+
+      <label class="item item-input item-stacked-label">Sq Feet: {{ query.ft | number }}+
         <slider class="range"
-          ng-model="q.ft"
+          ng-model="query.ft"
           floor="500"
           ceiling="5000"
           step="250">
         </slider>
       </label>
 
-      <label class="item item-input item-stacked-label">Year: {{ q.yr }}+
+      <label class="item item-input item-stacked-label">Year: {{ query.yr }}+
         <slider class="range"
-          ng-model="q.yr"
-          floor="1900"
-          ceiling="{{q.currYr}}"
+          ng-model="query.yr"
+          floor="1950"
+          ceiling="{{query.currYr}}"
           step="5">
         </slider>
       </label>

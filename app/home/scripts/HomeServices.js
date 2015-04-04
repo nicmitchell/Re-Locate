@@ -36,9 +36,7 @@ angular
     var get = function(){
       return JSON.parse(localStorage.getItem('query')) || query;
     };
-    var fetch = function(q, page, callback){
-      // console.log('args', arguments);
-      // debugger;
+    var fetch = function(q, sort, page, callback){
       var model = Parse.Object.extend("home");
       var query = new Parse.Query(model);
       var data = { error: false, homes: [], count: 0 };
@@ -49,14 +47,12 @@ angular
       query.greaterThan('ft', q.ft);
       query.greaterThan('pr', q.pr.min);
       query.lessThan('pr', q.pr.max);
-      query.ascending('pr');
+      query[sort.order](sort.property);
       query.count({
         success: function(count) {
-          // The count request succeeded. Show the count
           data.count = count;
         },
         error: function(error) {
-          // The request failed
           console.log("Error: " + error.code + " " + error.message);
           data.error = "Oops, something went wrong. Please try again";
         }

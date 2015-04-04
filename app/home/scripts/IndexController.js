@@ -4,6 +4,7 @@ angular
     $scope.homes = [];
 
     // $scope.showSpinner = true;
+    $scope.loadingHomes = true;
     $scope.currentPage = 0;
     $scope.pageChunk = 0;
     $scope.count = 0;
@@ -11,7 +12,8 @@ angular
     $scope.sort = Sort.get();  // set sort params based on defaults
 
     var fetch = function(query){
-      Search.fetch(query, $scope.currentPage, updateHomes);
+      Search.fetch(query, $scope.sort, $scope.currentPage, updateHomes);
+      $scope.loadingHomes = true;
     };
 
     var updateHomes = function(data){
@@ -25,6 +27,7 @@ angular
       }
       console.log('homes in updateHomes', $scope.homes);
       // window.scrollTo(0, 0);
+      $scope.loadingHomes = false;
       $scope.showSpinner = false;
     };
 
