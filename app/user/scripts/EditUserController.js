@@ -5,6 +5,7 @@ angular
 
     $scope.submitForm = function() {
       User.setCurrent($scope.user);
+      supersonic.data.channel('user').publish('updated');
       return supersonic.ui.layers.pop(); //back
     };
 

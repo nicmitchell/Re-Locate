@@ -42,6 +42,7 @@ angular
           $scope.$apply( function () {
             $scope.showSpinner = false;
             $scope.home = home.attributes;
+            $scope.home.id = home.id;
             $scope.choice = Choice.get()[$scope.home.ml];
           });
           Geocode.geocode($scope.home.ad).then(function(data){
@@ -65,6 +66,16 @@ angular
     if(Object.keys(User.getCurrent()).length) {
       $scope.isCurrentUser = true;
     }
+
+    // Update viewable info after updating user
+    supersonic.data.channel('user')
+      .subscribe( function(data) {
+        var id = $scope.home.id;
+        $scope.showSpinner = true;
+        $scope.home = {};
+        console.log('data from user', data);
+        _refreshViewData(id);
+      });
 
     $scope.photoSwipe = function() {
       var pswpElement = document.querySelectorAll('.pswp')[0];

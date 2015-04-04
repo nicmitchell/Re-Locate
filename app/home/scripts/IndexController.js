@@ -26,9 +26,13 @@ angular
     // processes search results from Search and Sort views
     var receiveData = function(data){
       $scope.$apply(function(){
-        $scope.homes = [];
-        updateHomes(data);
-        window.scrollTo(0, 0);
+        if (data === 'cancel'){
+          $scope.showSpinner = false;
+        } else {
+          $scope.homes = [];
+          updateHomes(data);
+          window.scrollTo(0, 0);
+        }
       });
     };
 
@@ -76,7 +80,7 @@ angular
     // Receive query params from the search view
     supersonic.data.channel('query')
       .subscribe( function(data) {
-        console.log('data from search', data.view);
+        console.log('data from search', data);
         receiveData(data);
       });
 

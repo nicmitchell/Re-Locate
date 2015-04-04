@@ -27,6 +27,7 @@ angular
 
     $scope.cancelSearch = function(){
       $scope.error = false;
+      supersonic.data.channel('query').publish('cancel');
       supersonic.ui.modal.hide();
     };
     
