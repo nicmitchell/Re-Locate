@@ -13,7 +13,7 @@
   <div class="search padding">
     <div class="list">
       <label class="item item-radio">
-        <input type="radio" name="predicate" value="pr" ng-model="sort.predicate">
+        <input type="radio" name="property" value="pr" ng-model="sort.property">
         <div class="item-content">
           Price
         </div>
@@ -21,7 +21,7 @@
       </label>
 
       <label class="item item-radio">
-        <input type="radio" name="predicate" value="bd" ng-model="sort.predicate">
+        <input type="radio" name="property" value="bd" ng-model="sort.property">
         <div class="item-content">
           Bedrooms
         </div>
@@ -29,7 +29,7 @@
       </label>
 
       <label class="item item-radio">
-        <input type="radio" name="predicate" value="ba" ng-model="sort.predicate">
+        <input type="radio" name="property" value="ba" ng-model="sort.property">
         <div class="item-content">
           Bathrooms
         </div>
@@ -37,7 +37,7 @@
       </label>
 
       <label class="item item-radio">
-        <input type="radio" name="predicate" value="ft" ng-model="sort.predicate">
+        <input type="radio" name="property" value="ft" ng-model="sort.property">
         <div class="item-content">
           Sq Feet
         </div>
@@ -45,7 +45,7 @@
       </label>
 
       <label class="item item-radio">
-        <input type="radio" name="predicate" value="yr" ng-model="sort.predicate">
+        <input type="radio" name="property" value="yr" ng-model="sort.property">
         <div class="item-content">
           Year
         </div>
@@ -55,16 +55,15 @@
 
     <div class="list">
       <label class="item item-radio">
-        <input type="radio" name="reverse" ng-value="false" ng-model="sort.reverse">
-        <!-- ng-click="sort.reverse=false"  -->
+        <input type="radio" name="order" value="ascending" ng-model="sort.order">
+        <!-- ng-click="sort.order=false"  -->
         <div class="item-content">
           Ascending
         </div>
         <i class="radio-icon super-checkmark"></i>
       </label>
-
       <label class="item item-radio">
-        <input type="radio" name="reverse" ng-value="true" ng-model="sort.reverse">
+        <input type="radio" name="order" value="descending" ng-model="sort.order">
         <div class="item-content">
           Descending
         </div>

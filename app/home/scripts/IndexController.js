@@ -73,10 +73,11 @@ angular
 
     // Open the sort view and save sort params to local storage
     $scope.openSort = function(){
-      Sort.set($scope.sort);
-      supersonic.ui.views.find("preloadedSort").then( function(view) {
-        supersonic.ui.layers.push(view);
-      });
+      supersonic.ui.modal.show("preloadedSort");
+      $scope.showSpinner = true;
+      // supersonic.ui.views.find("preloadedSort").then( function(view) {
+      //   supersonic.ui.layers.push(view);
+      // });
     };
 
     // Receive query params from the search view
@@ -92,11 +93,17 @@ angular
 
     // Receive sort params from the sort view
     supersonic.data.channel('sort')
-      .subscribe( function(s) {
+      .subscribe( function(data) {
         // update the view and scroll to top
-        $scope.$apply(function () {
-          $scope.sort = s;
-          window.scrollTo(0, 0);
-        });
+         console.log('data from sort', data);
+         $scope.$apply(function(){
+           $scope.homes = [];
+           updateHomes(data);
+           window.scrollTo(0, 0);
+         });
+        // $scope.$apply(function () {
+        //   $scope.sort = s;
+        //   window.scrollTo(0, 0);
+        // });
       });
   })
