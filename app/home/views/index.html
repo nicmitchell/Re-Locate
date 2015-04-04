@@ -18,7 +18,7 @@
       <a ng-click="groupFilter(false)" ng-class='{ "button-positive" : choice === false }' class='button super-trash-a'></a>
     </div>
     <ul class="list homes-index">
-    <h4 class="range-label">Found {{ count }} listings</h4>
+    <h4 ng-if="count > 0" class="range-label">Found {{ count }} listings</h4>
       <div infinite-scroll="scrollLoad()" infinite-scroll-distance="0" can-load="true">
         <div ng-repeat="home in homes | homeFilter: query" current-page="currentPage" class="repeat">
           <li ng-click='openShow(home.id)' class="item item-icon-right no-padding">

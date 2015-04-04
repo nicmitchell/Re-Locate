@@ -4,7 +4,7 @@ angular
     // Load the query parameters from local storage
     $scope.query = Search.get();
     $scope.sort = Sort.get();
-    $scope.homes = [];
+    $scope.homes = []; // not necessary, but useful for debugging
     $scope.error = false;
 
     // Hide the search modal view and publish search params

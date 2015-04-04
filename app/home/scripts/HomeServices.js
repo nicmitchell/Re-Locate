@@ -48,6 +48,9 @@ angular
       query.greaterThan('pr', q.pr.min);
       query.lessThan('pr', q.pr.max);
       query[sort.order](sort.property);
+      if(q.ad){
+        query.contains('ad', q.ad);
+      }
       query.count({
         success: function(count) {
           data.count = count;
@@ -60,9 +63,6 @@ angular
       query.limit(10);
       if (page > 1) { 
         query.skip((page - 1) * 10);
-      }
-      if(q.ad){
-        query.startsWith('ad', q.ad);
       }
       query.find({
         success: function(results) {

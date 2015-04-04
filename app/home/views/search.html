@@ -4,11 +4,12 @@
   </super-navbar-title>
 </super-navbar>
 <div ng-controller="SearchController">
+q {{query.ad}}
   <div class="search">
     <div class="list">
       <label class="item item-input item-stacked-label">
         <span class="input-label">Address</span>
-        <input type="text" placeholder="123 Main St">
+        <input type="text" placeholder="123 Main St" ng-model="query.ad">
       </label>
       <label class="item item-input item-stacked-label">Price Range: {{ query.pr.min | currency:undefined:0 }} to {{ query.pr.max | currency:undefined:0 }} <span ng-show="query.pr.max === query.pr.limit">+</span>
         <slider class="range dual"

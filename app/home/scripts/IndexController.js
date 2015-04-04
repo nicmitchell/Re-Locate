@@ -9,8 +9,8 @@ angular
     $scope.query = Search.get();  // set query based on defaults
     $scope.sort = Sort.get();  // set sort params based on defaults
 
+    // update homes on $scope
     var updateHomes = function(data){
-      // update homes on $scope
       supersonic.logger.log('Update homes called');
       $scope.showSpinner = true;
       $scope.count = data.count;
@@ -23,17 +23,25 @@ angular
       $scope.showSpinner = false;
     };
 
+    // processes search results from Search and Sort views
+    var receiveData = function(data){
+      $scope.$apply(function(){
+        $scope.homes = [];
+        updateHomes(data);
+        window.scrollTo(0, 0);
+      });
+    };
+
     // Infinite scroll for home#index
     $scope.scrollLoad = function(){
+      console.log('scrollLoad called');
       $scope.loadingHomes = true;
       console.log('loading homes in scrollLoad', $scope.loadingHomes);
       $scope.currentPage += 1;
-      // fetch($scope.query);
       Search.fetch($scope.query, $scope.sort, $scope.currentPage, updateHomes);
-      supersonic.logger.log('scrollLoad called');
     };
     
-    // Determines whether user has clicked Fave or Trash
+    // Determines whether user has clicked Fave or Trash button
     $scope.setChoice = function(bool) {
       // null (to unset) if matches
       $scope.choice = ($scope.choice === bool) ? null : bool;
@@ -65,35 +73,18 @@ angular
       $scope.showSpinner = true;
     };
 
-    var receiveData = function(data){
-      // $scope.$apply(function(){
-        $scope.homes = [];
-        updateHomes(data);
-        window.scrollTo(0, 0);
-      // });
-    };
-
     // Receive query params from the search view
     supersonic.data.channel('query')
       .subscribe( function(data) {
         console.log('data from search', data.view);
         receiveData(data);
-          // $scope.homes = [];
-          // updateHomes(data);
-          // window.scrollTo(0, 0);
       });
 
     // Receive sort params from the sort view
     supersonic.data.channel('sort')
       .subscribe( function(data) {
-        // update the view and scroll to top
          console.log('data from sort', data);
          receiveData(data);
-         // $scope.$apply(function(){
-         //   $scope.homes = [];
-         //   updateHomes(data);
-         //   window.scrollTo(0, 0);
-         // });
       });
 
     // alert preloadedHomeShow to clear last home
