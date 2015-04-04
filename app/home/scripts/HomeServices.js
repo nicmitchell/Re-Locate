@@ -40,6 +40,14 @@ angular
       var model = Parse.Object.extend("home");
       var query = new Parse.Query(model);
       var data = { error: false, homes: [], count: 0 };
+      // converts address to Title Case
+      var titleCase = function toTitleCase(address){
+        if(typeof address !== 'number'){
+          return address.replace(/([^\W_]+[^\s-]*) */g, function(txt){
+            return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+          });
+        }
+      };
 
       query.greaterThan('bd', q.bd);
       query.greaterThan('ba', q.ba);
@@ -49,7 +57,9 @@ angular
       query.lessThan('pr', q.pr.max);
       query[sort.order](sort.property);
       if(q.ad){
-        query.contains('ad', q.ad);
+        // format to match address title case field in Parse
+        var address = titleCase(q.ad);
+        query.contains('ad', address);
       }
       query.count({
         success: function(count) {
