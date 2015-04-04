@@ -53,12 +53,6 @@ angular
           console.log('error', error);
         }
       });
-
-
-      //   // translates address to lat/long for Google maps
-
-      // });
-
       return;
     };
 
@@ -78,7 +72,6 @@ angular
       var items = [];
       var mls = $scope.home.ml;
       var base_url = '/img/interior-images/interior_';
-      // console.log('base_url', base_url);
       var num, pic;
       
       for(var i = 1; i <= $scope.home.extra.PhotoCount; i++) {
@@ -92,8 +85,6 @@ angular
 
       // define options (if needed)
       var options = {
-          // optionName: 'option value'
-          // for example:
           index: 0 // start at first slide
       };
 
