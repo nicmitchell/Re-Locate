@@ -28,3 +28,15 @@ angular.module('home')
       group: group
     };
   })
+  // Filters Fave / Trash
+  .filter('homeFilter', function(){
+    return function(items, q) {
+      // Make sure there is something valid to filter
+      if (!items || !q || typeof items === 'function') {
+        return;
+      }
+      return items.filter(function(item){
+        return ((q.group && q.group.length > 0) ? _.contains(q.group, item.ml) : true); //favs/unfavs (by MLS numbers)
+      });
+    };
+  })

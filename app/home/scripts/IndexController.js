@@ -11,10 +11,10 @@ angular
     $scope.query = Search.get();  // set query based on defaults
     $scope.sort = Sort.get();  // set sort params based on defaults
 
-    var fetch = function(query){
-      Search.fetch(query, $scope.sort, $scope.currentPage, updateHomes);
-      $scope.loadingHomes = true;
-    };
+    // var fetch = function(query){
+    //   Search.fetch(query, $scope.sort, $scope.currentPage, updateHomes);
+    //   $scope.loadingHomes = true;
+    // };
 
     var updateHomes = function(data){
       // update homes on $scope
@@ -45,11 +45,12 @@ angular
     };
 
     // Infinite scroll for home#index
-    // $scope.scrollLimit = 5;
     $scope.scrollLoad = function(){
-      // $scope.scrollLimit += 5;
+      $scope.loadingHomes = true;
+      console.log('loading homes in scrollLoad', $scope.loadingHomes);
       $scope.currentPage += 1;
-      fetch($scope.query);
+      // fetch($scope.query);
+      Search.fetch($scope.query, $scope.sort, $scope.currentPage, updateHomes);
       supersonic.logger.log('scrollLoad called');
     };
     

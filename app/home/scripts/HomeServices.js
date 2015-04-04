@@ -114,16 +114,3 @@ angular
     };
   })
 
-  // Filters home results based on search params
-  .filter('homeFilter', function(){
-    return function(items, q) {
-      // Make sure there is something valid to filter
-      if (!items || !q || typeof items === 'function') {
-        return;
-      }
-      return items.filter(function(item){
-        return ((q.group && q.group.length > 0) ? _.contains(q.group, item.ml) : true); //favs/unfavs (by MLS numbers)
-      });
-    };
-  })
-
