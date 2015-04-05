@@ -7,7 +7,7 @@ angular
           libraries: 'weather,geometry,visualization'
       });
   })
-  .controller("ShowController", function ($scope, Home, Geocode, supersonic, User, Choice) {
+  .controller("ShowController", function ($scope, Geocode, supersonic, User, Choice) {
     $scope.home = {ad: 'Loading...'}; // nav title
     $scope.showSpinner = true; // for initial page preload
     $scope.map = {};

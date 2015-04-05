@@ -41,6 +41,7 @@ angular
       var query = new Parse.Query(model);
       var data = { error: false, homes: [], count: 0 };
       // converts address to Title Case
+      // TODO: add lower case column of address to Parse
       var titleCase = function toTitleCase(address){
         if(typeof address !== 'number'){
           return address.replace(/([^\W_]+[^\s-]*) */g, function(txt){
