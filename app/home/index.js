@@ -1,10 +1,10 @@
 angular.module('home', [
   /* Declare any module-specific dependencies here */
   'common',
-  'angularUtils.directives.dirPagination',
+  // 'angularUtils.directives.dirPagination',
   'uiGmapgoogle-maps',
   'user',
-  'home.services',
+  // 'home.services',
   'vr.directives.slider',
   'infinite-scroll'
 ])

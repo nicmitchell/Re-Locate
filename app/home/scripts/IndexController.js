@@ -18,7 +18,6 @@ angular
       for (var i = 0, l = homes.length; i < l; i++){
         $scope.homes.push(homes[i]);
       }
-      console.log('homes in updateHomes', $scope.homes);
       $scope.loadingHomes = false;
       $scope.showSpinner = false;
     };
@@ -38,9 +37,7 @@ angular
 
     // Infinite scroll for home#index
     $scope.scrollLoad = function(){
-      console.log('scrollLoad called');
       $scope.loadingHomes = true;
-      console.log('loading homes in scrollLoad', $scope.loadingHomes);
       $scope.currentPage += 1;
       Search.fetch($scope.query, $scope.sort, $scope.currentPage, updateHomes);
     };
@@ -80,14 +77,12 @@ angular
     // Receive query params from the search view
     supersonic.data.channel('query')
       .subscribe( function(data) {
-        console.log('data from search', data);
         receiveData(data);
       });
 
     // Receive sort params from the sort view
     supersonic.data.channel('sort')
       .subscribe( function(data) {
-         console.log('data from sort', data);
          receiveData(data);
       });
 

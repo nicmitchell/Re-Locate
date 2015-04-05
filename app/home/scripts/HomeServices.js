@@ -1,5 +1,5 @@
 angular
-  .module('home.services', [])
+  .module('home')
   .factory('Geocode', function($http){
     // takes a street address and return lat and log for Google Maps
     var geocode = function(address){
@@ -77,13 +77,10 @@ angular
       }
       query.find({
         success: function(results) {
-          console.log('raw results', results);
-
-          // Make sure there are  for results
+          // Make sure there are results
           if (!results.length){
             data.error = 'Sorry, no results were found. Please update your search and try again.';
           }
-            
           var homes = [];
           for (var i = 0; i < results.length; i++) { 
             var home = results[i].attributes;
@@ -93,7 +90,6 @@ angular
               // console.log('home', home);
             }
           }
-          console.log('data in service', data);
           callback(data);
         },
         error: function(error) {
