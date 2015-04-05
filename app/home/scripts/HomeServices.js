@@ -118,4 +118,3 @@ angular
       get: get
     };
   })
-
