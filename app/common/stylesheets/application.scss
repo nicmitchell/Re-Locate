@@ -4,6 +4,11 @@
   font-weight: 600;
 }
 
+h4 {
+  font-size: 1em;
+  margin: 1.33em 0;
+}
+
 /* Contact */
 .agent-pic { width: 100%; border-bottom: 1px solid black; }
 .agent-contact { text-align: center; }
@@ -73,8 +78,6 @@
   }
   .range-label {
     padding: 0 10px;
-    font-size: 1em;
-    margin: 1.33em 0;
   }
 }
 
