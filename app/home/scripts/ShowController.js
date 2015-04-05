@@ -14,10 +14,7 @@ angular
     $scope.marker = {};
 
     var _messageReceived = function(event) {
-      console.log('_messageRecieved triggered', event);
       if (event.data.recipient === 'homeShow') { // message intended for us?
-        console.log('message intended for home show, event.data.id', event.data.id);
-
         if (event.data.id) {
           _refreshViewData(event.data.id);
         } else { // reset view for next load
@@ -28,17 +25,14 @@ angular
           });
         }
       }
-
     };
     window.addEventListener('message', _messageReceived);
 
     var _refreshViewData = function(id) {
-      console.log('_refreshView called, id is', id);
       var home = Parse.Object.extend('home');
       var query = new Parse.Query(home);
       query.get(id, {
         success: function(home){
-          console.log('single query home', home);
           $scope.$apply( function () {
             $scope.showSpinner = false;
             $scope.home = home.attributes;
@@ -73,7 +67,6 @@ angular
     supersonic.data.channel('user')
       .subscribe( function(data) {
         $scope.isCurrentUser = true;
-        console.log('data from user', data);
       });
 
     // Photo gallery
@@ -89,8 +82,6 @@ angular
         num = i < 10 ? '0' + i : i;
         pic = { w: 580, h: 436 };
         pic.src = base_url + num + '.jpg';
-        console.log('pic src', pic.src);
-
         items.push(pic);
       }
 
