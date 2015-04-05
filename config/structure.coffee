@@ -17,7 +17,7 @@ module.exports =
     {
       title: "Contact"
       id: "contact"
-      location: "example#contact"
+      location: "contact#contact"
     }
   ]
 
