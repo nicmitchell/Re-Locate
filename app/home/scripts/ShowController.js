@@ -57,12 +57,14 @@ angular
       return;
     };
 
+    // Sets the Fave/Trash status
     $scope.setChoice = function(bool) {
       // null (to unset) if matches
       $scope.choice = ($scope.choice === bool) ? null : bool;
       Choice.set($scope.home.ml, $scope.choice);
     };    
 
+    // Is there a current user registered?
     if(Object.keys(User.getCurrent()).length) {
       $scope.isCurrentUser = true;
     }
@@ -70,13 +72,11 @@ angular
     // Update viewable info after updating user
     supersonic.data.channel('user')
       .subscribe( function(data) {
-        var id = $scope.home.id;
-        $scope.showSpinner = true;
-        $scope.home = {};
+        $scope.isCurrentUser = true;
         console.log('data from user', data);
-        _refreshViewData(id);
       });
 
+    // Photo gallery
     $scope.photoSwipe = function() {
       var pswpElement = document.querySelectorAll('.pswp')[0];
 

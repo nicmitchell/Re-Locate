@@ -56,7 +56,6 @@
     <div class="list">
       <label class="item item-radio">
         <input type="radio" name="order" value="ascending" ng-model="sort.order">
-        <!-- ng-click="sort.order=false"  -->
         <div class="item-content">
           Ascending
         </div>
@@ -76,7 +75,7 @@
     </button>
 
     <super-modal-hide>
-      <button class="button button-block">
+      <button class="button button-block" ng-click="cancelSort()">
         Cancel
       </button>
     </super-modal-hide>
