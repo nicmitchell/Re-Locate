@@ -16,3 +16,6 @@ angular.module('home')
     property: 'pr', // sort by price
     order: 'descending' // sort in descending order
   })
+  // .value('listingImage', { // location of listing images
+  //   url: 'http://reapp-demo.parseapp.com/homes/'
+  // })
