@@ -9,7 +9,7 @@ angular
         url: 'https://maps.googleapis.com/maps/api/geocode/json?address=' + address
       })
       .then(function(res){
-        if(res.data.results){
+        if(res.data.results.length){
           var lat = res.data.results[0].geometry.location.lat;
           var lng = res.data.results[0].geometry.location.lng;
           return { 
@@ -17,7 +17,13 @@ angular
             marker: { id: 0, coords: { latitude: lat, longitude: lng } }
           };
         } else {
-          console.log('Geocoding: no results found');
+          console.log('Geocoding: no results found. Substituting Googleplex instead.');
+          var lat = 37.422038;
+          var lng = -122.084026;
+          return { 
+            map: { center: { latitude: lat, longitude: lng }, zoom: 16 },
+            marker: { id: 0, coords: { latitude: lat, longitude: lng } }
+          };
         }
       }, function(error){
         console.log('Geocoding: an error has occurred:', error);

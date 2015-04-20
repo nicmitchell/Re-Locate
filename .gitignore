@@ -9,3 +9,4 @@
 /web/config/application.yml
 /config/cloud.json
 /app/common/assets/parse.js
+/config/*
