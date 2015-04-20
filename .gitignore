@@ -9,4 +9,6 @@
 /web/config/application.yml
 /config/cloud.json
 /app/common/assets/parse.js
-/config/*
+/config/cloud-resources.raml
+/config/cloud.json
+/config/sandboxdb.yaml
