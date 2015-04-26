@@ -7,6 +7,7 @@ A white label real estate mobile app originally designed to pull listings direct
 - [Follow the instructions for your OS for getting AppGyver set up](https://academy.appgyver.com/installwizard/steps#/choose-os).
 - `npm install`
 - `bower install`
+- `steroids connect --livereload`
 
 ##If Using Parse.com:
 **Data**
