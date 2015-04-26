@@ -12,15 +12,15 @@ A white label real estate mobile app originally designed to pull listings direct
 **Data**
 - Create the application in Parse.com
 - Add a class called 'home'
-- Upload sample data from `app > common > assets > home.json`
+- Upload sample data from `app/common/assets/home.json`
 - Get the keys for your Parse.com application from `Settings > Keys`
-- Follow the instructions in `app > common > assets > parse-example.js`
+- Follow the instructions in `app/common/assets/parse-example.js`
 - Rename `parse-example.js` to `parse.js`
 
 **Images**
 - [Follow instructions for setting up hosting](https://www.parse.com/docs/hosting_guide)
-- Upload images from `app > common > assets > img > listing-images` to your new host
-- Update URLs in `app > home > views > index.html` and `app > home > views > show.html` to your host
+- Upload images from `app/common/assets/img/listing-images` to your new host
+- Update URLs in `app/home/views/index.html` and `app/home/views/show.html` to your host
 
 ##Todo:
 - Thin out the controllers and abstract more logic into services
